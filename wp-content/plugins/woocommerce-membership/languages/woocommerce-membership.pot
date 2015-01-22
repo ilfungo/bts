@@ -1,0 +1,314 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Membership\n"
+"POT-Creation-Date: 2014-08-28 21:10+0300\n"
+"PO-Revision-Date: 2014-08-28 21:10+0300\n"
+"Last-Translator: \n"
+"Language-Team: RightPress <info@rightpress.net>\n"
+"Language: en_EN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e;_c;__ngettext:1,2;_n:1,2;_nc:1,2;"
+"__ngettext_noop:1,2;_n_noop:1,2;_x:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: /var/www/3.9.2/wp-content/plugins/woocommerce-"
+"membership\n"
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:124
+msgid "Support"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:126
+msgid "Settings"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:434
+msgid "Your settings have been saved."
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:440
+msgid "Reverted to a previous value."
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:443
+msgid "must be numeric"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:444
+msgid "must be either 0 or 1"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:445
+msgid "is not allowed"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:446
+msgid "is not a valid email address"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:447
+msgid "is not a valid URL"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:448
+msgid "is not a valid text string"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:454
+msgid "Value of"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:541
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/details.php:22
+msgid "name not set"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:542
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/details.php:29
+msgid "key not set"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:543
+msgid "Membership product"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:544
+msgid "No plans match"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/woocommerce-membership.php:545
+msgid "Select Some Plans"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/rpwcm-plugin-settings.inc.php:13
+msgid "General"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/product/simple-product-meta.php:16
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:83
+msgid "Membership Plans"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/product/variation-meta.php:16
+msgid "Membership Plans:"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/post/restrict-access.php:15
+msgid "Restrict access to members only."
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/members.php:19
+msgid "Member Name"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/members.php:20
+msgid "Email Address"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/members.php:21
+msgid "Member Since"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/members.php:45
+msgid "No members found."
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/details.php:29
+msgid "Key:"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/products.php:19
+msgid "Product Name"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/products.php:20
+msgid "Type"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/products.php:21
+msgid "Current Price"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/products.php:48
+msgid "No related products found."
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/actions.php:25
+msgid "Delete Permanently"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/actions.php:25
+msgid "Move to Trash"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/views/backend/plan/actions.php:29
+msgid "Submit"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:84
+msgid "Membership Plan"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:85
+msgid "Add Plan"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:86
+msgid "Add Membership Plan"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:87
+msgid "Edit Plan"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:88
+msgid "New Membership Plan"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:89
+msgid " Plans"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:90
+msgid "View Membership Plan"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:91
+msgid "Search Plans"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:92
+msgid "No Plans Found"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:93
+msgid "No Plans Found In Trash"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:95
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-product.class.php:195
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-product.class.php:235
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-product.class.php:381
+msgid "Membership"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:101
+msgid "WooCommerce Membership Plans"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:119
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:121
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:122
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:499
+msgid "Status"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:154
+msgid "Enter plan name here"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:194
+msgid "Membership Plan Details"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:204
+msgid "Related Products"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:214
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:501
+msgid "Members"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:224
+msgid "Plan Actions"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:441
+msgid "All statuses"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:497
+msgid "Name"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:498
+msgid "Key"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:500
+msgid "Products"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:836
+msgid "enabled"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:839
+msgid "disabled"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:855
+msgid "Save Plan"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:864
+msgid "Enable Plan"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:869
+msgid "Disable Plan"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:913
+msgid "Simple Product"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-plan.class.php:941
+msgid "Product Variation"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-post.class.php:66
+msgid "Restrict Access"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-post.class.php:406
+msgid "Members-only"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-post.class.php:406
+msgid "Members-Only Content"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-post.class.php:426
+msgid "Access is restricted to members only"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-product.class.php:196
+msgid "This product grants access to one or more membership plans."
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-product.class.php:235
+msgid "This variation grants access to one or more membership plans."
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-product.class.php:381
+msgid "Membership Product"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-product.class.php:405
+msgid "This product is a membership"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-product.class.php:405
+msgid "Contains at least one membership"
+msgstr ""
+
+#: /var/www/3.9.2/wp-content/plugins/woocommerce-membership/includes/classes/woocommerce-membership-order.class.php:189
+msgid "My Memberships"
+msgstr ""

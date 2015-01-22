@@ -1,0 +1,10 @@
+Version 1.0.1, September 1 2014
+------------------------------------------------------------------------------------
+[+] Added functions to restrict access to content from within templates
+[*] Improved actions and filters available in this plugin
+[*] Fixed "Can't use method return value in write context" bug in older PHP versions
+[*] Improved function that determines system's time zone
+
+Version 1.0, August 29 2014
+------------------------------------------------------------------------------------
+[+] Initial release

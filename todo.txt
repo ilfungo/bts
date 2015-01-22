@@ -1,0 +1,90 @@
+- fare la prova con WCVendors + AAM per capire se posso dare la proprietà dello shop a più managers.
+
+- sistema di redirect per scuola-shop
+
+- farre funzionare il social login plugin!!!
+
+- riguarda il video
+https://www.facebook.com/video.php?v=401778113249772
+
+X - togli l'obbligo di inserire la data in  http://localhost/bts/wp-admin/admin.php?page=ptp_bulk_import
+basta commentare l'html... e funziona... non è pulito
+
+- capire se si può usare impostare un vendor e poi usare uno o più utenti per caricare le foto da BPTPI
+in modo da far risultare le foto come parte di un negozio senza fare "giri più complessi"
+
+- dalla pagina del prodotto togli le recensioni
+http://localhost/bts/negozio/img_1676/
+
+- il login dello shop deve essere fatto da facebook
+
+- nel checkout togliere completamente indirizzo di spedizione , lascia solo i dettagli
+fatturazione cui cambi nome e cui aggiungi il numero di telefono
+rendere obbligatoria la creazion di un account
+possibilità creazione
+
+X - unica modalità di pagamento è il preordine
+
+- livello controllo utenti
+admin shop
+rappresentante di istituto
+rappresentante di classe
+acquirenti
+
+
+- cercare i resize della foto impostati, e capire come "deregistrarli" -> cioè al caricamento la foto non deve subire
+resize alcuno (il caricamento deve essere veloce!!!)
+
+- scegliere un layout grafico
+
+- togliere le recensioni dalla pagina prodotto
+
+- metà di marzo inizio 9 scuole
+
+SIMONE
+
+- Prodotti correlati
+http://localhost/bts/negozio/img_1676-2/ diventa "Altre foto della classe"
+
+
+
+====================Domande====================Domande====================Domande====================
+
+ha senso che una classe abbia una password o ha senso che ce l'abbia la scuola?
+cosa vendete??? :)
+foto di classe ritratto?!
+
+====================Domande====================Domande====================Domande====================
+===================Risposte===================Risposte====================Risposte===================
+-> Time interval for each product creation 0.2 <-
+
+
+caricamento immagini in locale 20  immagini 11,5 MB circa con creazione watermark e utilizzo di "basic" uploader
+40,45 sec
+creazione prodotti -> 26,83
+questo crea sia img con watermark sia anche thumb
+nonostante sia flaggato in "Images Settings" Prevent WordPress from generating thumbnails
+
+se lo deflaggo mi pare che sia tutto uguale
+
+RIPROVO
+no flag -> 39 sec -> 120 elementi
+si flag -> 48 ->  160 elementi
+
+You are using the "image" uploader
+no flag -> 40 sec -> 160 elementi
+si flag ->  33 sec -> elementi
+si flag ->  46 sec -> 120 elementi
+
+così non crea il watermark!!!
+
+un ridimensionamento lo crea propri il plugin
+altri forse di woocommerce???
+add_image_size( 'ptp-uploaded-item', 178, 178, true );
+
+se forzo woocommerce a 178 ... non cambia per nulla il tempo di caricamento immagini
+se commento add_image_size in woocommerce allora diminuisco di 3 sec 36 sec
+
+il tema si crea questa e io provo a commenatre
+set_post_thumbnail_size( 604, 270, true );
+allora arrivo a 34 sec.. cambiancazzo in termini di tempo, così però in effetti creo solo 40 immagini (20+1 preview)

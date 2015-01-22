@@ -1,0 +1,971 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Obox Mobile\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2011-05-22 00:59+0000\n"
+"Last-Translator: admin <me@nickhamze.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: themes/default/comments.php:31
+#: themes/tinyblog/comments.php:31
+#@ obox-mobile
+msgid "Leave a Comment"
+msgstr ""
+
+#: themes/default/comments.php:35
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1383
+#: themes/tinyblog/comments.php:35
+#@ obox-mobile
+#@ woothemes
+msgid "Name"
+msgstr ""
+
+#: themes/default/comments.php:39
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1394
+#: themes/tinyblog/comments.php:39
+#@ obox-mobile
+#@ woothemes
+msgid "Email"
+msgstr ""
+
+#: themes/default/comments.php:19
+#: themes/tinyblog/comments.php:19
+#@ obox-mobile
+msgid "Comment is awaiting moderation."
+msgstr ""
+
+#: themes/default/functions.php:42
+#@ $themename
+msgid "Primary Navigation"
+msgstr ""
+
+#: themes/default/ocmx/custom.php:151
+#@ default
+msgid "Excerpt"
+msgstr ""
+
+#: themes/default/ocmx/front-end/comment-post.php:63
+#@ default
+msgid "Sorry, you must be logged in to post a comment."
+msgstr ""
+
+#: themes/default/ocmx/front-end/comment-post.php:70
+#@ default
+msgid "<p>Error: please fill the required fields (name, email).</p>"
+msgstr ""
+
+#: themes/default/ocmx/front-end/comment-post.php:72
+#@ default
+msgid "<p>Error: please enter a valid email address.</p>"
+msgstr ""
+
+#: themes/default/ocmx/front-end/comment-post.php:76
+#@ default
+msgid "<p>Error: please type a comment.</p>"
+msgstr ""
+
+#: admin/includes/media.php:53
+#@ default
+msgid "Could not read image size"
+msgstr ""
+
+#: admin/includes/media.php:93
+#: admin/includes/media.php:96
+#: admin/includes/media.php:101
+#@ default
+msgid "Resize path invalid"
+msgstr ""
+
+#: admin/includes/theme-delete.php:30
+#@ default
+msgid "Could not access filesystem."
+msgstr ""
+
+#: admin/includes/theme-delete.php:33
+#@ default
+msgid "Filesystem error."
+msgstr ""
+
+#: admin/interface/form-items.php:34
+#: admin/interface/form-items.php:36
+#@ default
+msgid "All"
+msgstr ""
+
+#: admin/interface/form-items.php:38
+#@ default
+msgid "Use a Custom Description"
+msgstr ""
+
+#: admin/interface/form-items.php:134
+#@ default
+msgid "Browse"
+msgstr ""
+
+#: admin/interface/form-items.php:135
+#@ default
+msgid "Clear"
+msgstr ""
+
+#: admin-ajax.php:1339
+#@ default
+msgid "Title"
+msgstr ""
+
+#: admin/interface/general.php:13
+#@ default
+msgid "label"
+msgstr ""
+
+#: admin/interface/general.php:15
+#@ default
+msgid "description"
+msgstr ""
+
+#: admin/interface/general.php:8
+#@ default
+msgid "main_section"
+msgstr ""
+
+#: admin/interface/general.php:10
+#@ default
+msgid "main_description"
+msgstr ""
+
+#: admin/interface/ocmx-container.php:23
+#@ default
+msgid "Your changes were successful."
+msgstr ""
+
+#: admin/interface/ocmx-container.php:25
+#@ default
+msgid "These Options Have Been Reset."
+msgstr ""
+
+#: admin/interface/ocmx-container.php:33
+#: admin/interface/ocmx-container.php:94
+#@ default
+msgid "Reset"
+msgstr ""
+
+#: admin/interface/ocmx-container.php:43
+#@ default
+msgid "top_buttonhtml"
+msgstr ""
+
+#: admin/interface/ocmx-container.php:102
+#@ default
+msgid "base_buttonhtml"
+msgstr ""
+
+#: themes/default/header.php:48
+#: themes/default/header.php:55
+#: themes/tinyblog/header.php:47
+#: themes/tinyblog/header.php:54
+#@ obox-mobile
+msgid "Search"
+msgstr ""
+
+#: themes/default/functions/fetch-post.php:42
+#: themes/default/header.php:52
+#: themes/tinyblog/functions/fetch-post.php:122
+#: themes/tinyblog/header.php:51
+#@ obox-mobile
+msgid "Categories"
+msgstr ""
+
+#: admin/includes/theme-delete.php:38
+#@ default
+msgid "Unable to locate WordPress theme directory."
+msgstr ""
+
+#: admin/includes/theme-delete.php:46
+#, php-format
+#@ default
+msgid "Could not fully remove the theme %s."
+msgstr ""
+
+#: admin/includes/theme-install-class.php:8
+#@ default
+msgid "The theme is at the latest version."
+msgstr ""
+
+#: admin/includes/theme-install-class.php:9
+#@ default
+msgid "Upgrade package not available."
+msgstr ""
+
+#: admin/includes/theme-install-class.php:10
+#, php-format
+#@ default
+msgid "Downloading update from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: admin/includes/theme-install-class.php:11
+#@ default
+msgid "Unpacking the update&#8230;"
+msgstr ""
+
+#: admin/includes/theme-install-class.php:12
+#@ default
+msgid "Removing the old version of the theme&#8230;"
+msgstr ""
+
+#: admin/includes/theme-install-class.php:13
+#@ default
+msgid "Could not remove the old theme."
+msgstr ""
+
+#: admin/includes/theme-install-class.php:14
+#@ default
+msgid "Theme upgrade failed."
+msgstr ""
+
+#: admin/includes/theme-install-class.php:15
+#@ default
+msgid "Theme upgraded successfully."
+msgstr ""
+
+#: admin/includes/theme-install-class.php:19
+#@ default
+msgid "Install package not available."
+msgstr ""
+
+#: admin/includes/theme-install-class.php:20
+#, php-format
+#@ default
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: admin/includes/theme-install-class.php:21
+#@ default
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: admin/includes/theme-install-class.php:22
+#@ default
+msgid "Installing the theme&#8230;"
+msgstr ""
+
+#: admin/includes/theme-install-class.php:23
+#@ default
+msgid "Theme install failed."
+msgstr ""
+
+#: admin/includes/theme-install-class.php:24
+#@ default
+msgid "Theme installed successfully."
+msgstr ""
+
+#: admin/includes/theme-install.php:52
+#: admin/interface/theme_list.php:63
+#, php-format
+#@ default
+msgid "Preview of &#8220;%s&#8221;"
+msgstr ""
+
+#: admin/includes/theme-install.php:59
+#, php-format
+#@ default
+msgid "Activate %s"
+msgstr ""
+
+#: admin/includes/theme-install.php:61
+#, php-format
+#@ default
+msgid "Preview %s"
+msgstr ""
+
+#: admin/includes/theme-install.php:61
+#: admin/interface/theme_list.php:71
+#@ default
+msgid "Preview"
+msgstr ""
+
+#: admin/includes/theme-install.php:62
+#: admin/interface/theme_list.php:72
+#@ default
+msgid "Activate"
+msgstr ""
+
+#: admin/includes/theme-install.php:72
+#@ default
+msgid "New"
+msgstr ""
+
+#: admin/includes/theme-install.php:73
+#: admin/interface/theme_list.php:84
+#, php-format
+#@ default
+msgid "%1$s %2$s by %3$s"
+msgstr ""
+
+#: admin/includes/theme-install.php:76
+#: admin/interface/theme_list.php:87
+#@ default
+msgid "Delete Theme"
+msgstr ""
+
+#: admin/includes/themes.php:45
+#@ default
+msgid "Stylesheet is missing."
+msgstr ""
+
+#: admin/includes/themes.php:59
+#@ default
+msgid "File not readable."
+msgstr ""
+
+#: admin/includes/themes.php:100
+#@ default
+msgid "Template is missing."
+msgstr ""
+
+#: admin/includes/update-class.php:26
+#@ default
+msgid "<li><div>Invalid Data provided.</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:27
+#@ default
+msgid "<li><div>Could not access filesystem.</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:28
+#@ default
+msgid "<li><div>Filesystem error.</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:29
+#@ default
+msgid "<li><div>Unable to locate WordPress Root directory.</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:30
+#@ default
+msgid "<li><div>Unable to locate WordPress Content directory (wp-content).</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:31
+#@ default
+msgid "<li><div>Unable to locate WordPress Plugin directory.</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:32
+#@ default
+msgid "<li><div>Unable to locate WordPress Theme directory.</div></li>"
+msgstr ""
+
+#. translators: %s: directory name
+#: admin/includes/update-class.php:34
+#, php-format
+#@ default
+msgid "<li><div>Unable to locate needed folder (%s).</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:36
+#@ default
+msgid "<li><div>Download failed.</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:37
+#@ default
+msgid "<li><div>Installing the latest version&#8230;</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:38
+#@ default
+msgid "<li><div>Destination folder already exists.</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:39
+#@ default
+msgid "<li><div>Could not create directory.</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:40
+#@ default
+msgid "<li><div>Incompatible Archive.</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:42
+#@ default
+msgid "<li><div>Enabling Maintenance mode&#8230;</div></li>"
+msgstr ""
+
+#: admin/includes/update-class.php:43
+#@ default
+msgid "<li><div>Disabling Maintenance mode&#8230;</div></li>"
+msgstr ""
+
+#: admin/interface/form-items.php:40
+#@ default
+msgid "None"
+msgstr ""
+
+#: admin/interface/form-items.php:136
+#@ default
+msgid "Your image will not be automatically resized."
+msgstr ""
+
+#: admin/interface/general.php:22
+#@ default
+msgid "note"
+msgstr ""
+
+#: admin/interface/theme_list.php:13
+#: admin-ajax.php:1259
+#: admin-ajax.php:1263
+#@ default
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: admin/interface/theme_list.php:69
+#, php-format
+#@ default
+msgid "Activate &#8220;%s&#8221;"
+msgstr ""
+
+#: admin/interface/theme_list.php:71
+#, php-format
+#@ default
+msgid "Preview &#8220;%s&#8221;"
+msgstr ""
+
+#: admin/interface/theme_list.php:95
+#@ default
+msgid "Add a New Theme"
+msgstr ""
+
+#: admin/interface/upgrade.php:4
+#@ default
+msgid "License Key"
+msgstr ""
+
+#: admin/interface/upgrade.php:11
+#@ default
+msgid "Enter your License Key from Obox or your Purchase Code from Theme Forest. This is only for <em>updates</em>, it is not required to use Obox Mobile."
+msgstr ""
+
+#: admin/interface/upgrade.php:16
+#@ default
+msgid "Progress"
+msgstr ""
+
+#: admin-ajax.php:44
+#, php-format
+#@ default
+msgid "<strong>ALERT: You are logged out!</strong> Could not save draft. <a href=\"%s\" target=\"_blank\">Please log in again.</a>"
+msgstr ""
+
+#: admin-ajax.php:208
+#@ default
+msgid "&laquo;"
+msgstr ""
+
+#: admin-ajax.php:209
+#@ default
+msgid "&raquo;"
+msgstr ""
+
+#: admin-ajax.php:377
+#, php-format
+#@ default
+msgid "Can&#8217;t delete the <strong>%s</strong> category: this is the default one"
+msgstr ""
+
+#: admin-ajax.php:470
+#, php-format
+#@ default
+msgid "Comment %d does not exist"
+msgstr ""
+
+#: admin-ajax.php:533
+#@ default
+msgid "You did not enter a category name."
+msgstr ""
+
+#: admin-ajax.php:574
+#: admin-ajax.php:1438
+#@ default
+msgid "An error has occured. Please reload the page and try again."
+msgstr ""
+
+#: admin-ajax.php:627
+#@ default
+msgid "No tags found!"
+msgstr ""
+
+#: admin-ajax.php:726
+#@ default
+msgid "Error: you are replying to a comment on a draft post."
+msgstr ""
+
+#: admin-ajax.php:741
+#@ default
+msgid "Sorry, you must be logged in to reply to a comment."
+msgstr ""
+
+#: admin-ajax.php:745
+#: admin-ajax.php:791
+#@ default
+msgid "Error: please type a comment."
+msgstr ""
+
+#: admin-ajax.php:884
+#: admin-ajax.php:889
+#: admin-ajax.php:909
+#@ default
+msgid "Please provide a custom field value."
+msgstr ""
+
+#: admin-ajax.php:907
+#@ default
+msgid "Please provide a custom field name."
+msgstr ""
+
+#: admin-ajax.php:956
+#, php-format
+#@ default
+msgid "User <a href=\"#%s\">%s</a> added"
+msgstr ""
+
+#. translators: draft saved date format, see http://php.net/date
+#: admin-ajax.php:977
+#@ default
+msgid "g:i:s a"
+msgstr ""
+
+#. translators: %s: date and time
+#: admin-ajax.php:979
+#, php-format
+#@ default
+msgid "Draft saved at %s."
+msgstr ""
+
+#: admin-ajax.php:997
+#: admin-ajax.php:1209
+#@ default
+msgid "Someone"
+msgstr ""
+
+#: admin-ajax.php:999
+#, php-format
+#@ default
+msgid "Autosave disabled: %s is currently editing this page."
+msgstr ""
+
+#: admin-ajax.php:999
+#, php-format
+#@ default
+msgid "Autosave disabled: %s is currently editing this post."
+msgstr ""
+
+#: admin-ajax.php:1008
+#: admin-ajax.php:1198
+#@ default
+msgid "You are not allowed to edit this page."
+msgstr ""
+
+#: admin-ajax.php:1011
+#: admin-ajax.php:1201
+#@ default
+msgid "You are not allowed to edit this post."
+msgstr ""
+
+#: admin-ajax.php:1210
+#, php-format
+#@ default
+msgid "Saving is disabled: %s is currently editing this page."
+msgstr ""
+
+#: admin-ajax.php:1210
+#, php-format
+#@ default
+msgid "Saving is disabled: %s is currently editing this post."
+msgstr ""
+
+#: admin-ajax.php:1275
+#@ default
+msgid "Category not updated."
+msgstr ""
+
+#: admin-ajax.php:1290
+#: admin-ajax.php:1299
+#@ default
+msgid "Item not updated."
+msgstr ""
+
+#: admin-ajax.php:1339
+#@ default
+msgid "Date"
+msgstr ""
+
+#: admin-ajax.php:1339
+#@ default
+msgid "Status"
+msgstr ""
+
+#: admin-ajax.php:1345
+#@ default
+msgid "Published"
+msgstr ""
+
+#: admin-ajax.php:1348
+#@ default
+msgid "Scheduled"
+msgstr ""
+
+#: admin-ajax.php:1351
+#@ default
+msgid "Pending Review"
+msgstr ""
+
+#: admin-ajax.php:1354
+#@ default
+msgid "Draft"
+msgstr ""
+
+#. translators: date format in table columns, see http://php.net/date
+#: admin-ajax.php:1362
+#@ default
+msgid "Y/m/d"
+msgstr ""
+
+#: functions/mobi_switch.php:5
+#@ default
+msgid "Turn off Mobile"
+msgstr ""
+
+#: functions/mobi_switch.php:7
+#@ default
+msgid "Turn on Mobile"
+msgstr ""
+
+#: functions/post.php:53
+#@ obox-mobile
+msgid "by"
+msgstr ""
+
+#: functions/post.php:55
+#@ obox-mobile
+msgid "By"
+msgstr ""
+
+#: functions/post.php:62
+#@ obox-mobile
+msgid "Posted In"
+msgstr ""
+
+#: mobile.php:75
+#@ default
+msgid "Obox Mobile"
+msgstr ""
+
+#: mobile.php:76
+#@ default
+msgid "General"
+msgstr ""
+
+#: mobile.php:77
+#@ default
+msgid "Themes"
+msgstr ""
+
+#: mobile.php:78
+#@ default
+msgid "Adverts"
+msgstr ""
+
+#: mobile.php:79
+#@ default
+msgid "Update"
+msgstr ""
+
+#: mobile.php:116
+#@ mobile
+msgid "Mobile Navigation"
+msgstr ""
+
+#: themes/default/ajax/show-comments.php:43
+#@ default
+msgid "Comment"
+msgstr ""
+
+#: themes/default/comments.php:43
+#: themes/tinyblog/comments.php:43
+#@ obox-mobile
+msgid "Link"
+msgstr ""
+
+#: themes/default/comments.php:47
+#: themes/tinyblog/comments.php:47
+#@ obox-mobile
+msgid "Twitter"
+msgstr ""
+
+#: themes/default/footer.php:4
+#: themes/tinyblog/footer.php:4
+#@ obox-mobile
+msgid "Copyright"
+msgstr ""
+
+#: themes/default/functions.php:52
+#: themes/default/search.php:24
+#: themes/tinyblog/search.php:24
+#@ default
+#@ obox-mobile
+msgid "There are no posts which match your selected criteria."
+msgstr ""
+
+#: themes/default/header.php:36
+#: themes/tinyblog/header.php:34
+#@ obox-mobile
+msgid "Menu"
+msgstr ""
+
+#: themes/default/header.php:53
+#: themes/tinyblog/header.php:52
+#@ obox-mobile
+msgid "Pages"
+msgstr ""
+
+#: themes/default/header.php:54
+#: themes/tinyblog/header.php:53
+#@ obox-mobile
+msgid "Tags"
+msgstr ""
+
+#: themes/default/ocmx/front-end/bread-crumbs.php:53
+#@ default
+msgid "Your search results for: "
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:317
+#@ woothemes
+msgid "No related posts found"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:812
+#@ woothemes
+msgid "Hide the Content"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:813
+#@ woothemes
+msgid "Show the Content"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:820
+#@ woothemes
+msgid "Read More"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:821
+#@ woothemes
+msgid "Read Less"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:932
+#@ woothemes
+msgid "Message via the contact form"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:933
+#@ woothemes
+msgid "Submit"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1229
+#@ woothemes
+msgid "Please enter your name"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1230
+#@ woothemes
+msgid "Please enter your email address (and please make sure it's valid)"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1231
+#@ woothemes
+msgid "Please enter your message"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1314
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1322
+#@ woothemes
+msgid "From: "
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1314
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1322
+#@ woothemes
+msgid "Reply-To: "
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1344
+#@ woothemes
+msgid "Your email was successfully sent."
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1353
+#@ woothemes
+msgid "There were one or more errors while submitting the form."
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1361
+#@ woothemes
+msgid "E-mail has not been setup properly. Please add your contact e-mail!"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1405
+#@ woothemes
+msgid "Message"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1541
+#@ woothemes
+msgid "Send a copy of this email to yourself"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1550
+#@ woothemes
+msgid "If you want to submit this form, do not enter anything in this field"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1921
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1971
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1987
+#, php-format
+#@ woothemes
+msgid "My %s Profile"
+msgstr ""
+
+#: themes/default/ocmx/shortcodes/woo-shortcodes.php:1942
+#@ woothemes
+msgid "Subscribe to our RSS feed"
+msgstr ""
+
+#: themes/default/search.php:22
+#: themes/tinyblog/search.php:22
+#@ obox-mobile
+msgid "No Posts"
+msgstr ""
+
+#: functions/post.php:65
+#@ obox-mobile
+msgid "Tagged"
+msgstr ""
+
+#: themes/default/comments.php:9
+#: themes/tinyblog/comments.php:9
+#@ obox-mobile
+msgid "0 Comments"
+msgstr ""
+
+#: themes/default/comments.php:9
+#: themes/tinyblog/comments.php:9
+#@ obox-mobile
+msgid "1 Comment"
+msgstr ""
+
+#: themes/default/comments.php:9
+#: themes/tinyblog/comments.php:9
+#@ obox-mobile
+msgid "% Comments"
+msgstr ""
+
+#: themes/tinyblog/functions/fetch-list.php:46
+#: themes/tinyblog/functions/fetch-post.php:15
+#@ obox-mobile
+msgid "aside"
+msgstr ""
+
+#: themes/tinyblog/functions/fetch-list.php:62
+#: themes/tinyblog/functions/fetch-post.php:26
+#@ obox-mobile
+msgid "image"
+msgstr ""
+
+#: themes/tinyblog/functions/fetch-list.php:80
+#: themes/tinyblog/functions/fetch-post.php:38
+#@ obox-mobile
+msgid "link"
+msgstr ""
+
+#: themes/tinyblog/functions/fetch-list.php:96
+#: themes/tinyblog/functions/fetch-post.php:48
+#@ obox-mobile
+msgid "quote"
+msgstr ""
+
+#: themes/tinyblog/functions/fetch-list.php:123
+#: themes/tinyblog/functions/fetch-post.php:68
+#@ obox-mobile
+msgid "audio"
+msgstr ""
+
+#: themes/tinyblog/functions/fetch-list.php:167
+#: themes/tinyblog/functions/fetch-post.php:108
+#@ obox-mobile
+msgid "page"
+msgstr ""
+
+#: themes/tinyblog/functions/fetch-list.php:167
+#: themes/tinyblog/functions/fetch-post.php:108
+#@ obox-mobile
+msgid "post"
+msgstr ""
+
+#: themes/tinyblog/functions/fetch-list.php:109
+#: themes/tinyblog/functions/fetch-post.php:58
+#@ obox-mobile
+msgid "video"
+msgstr ""
+
+#: themes/default/archives.php:28
+#: themes/tinyblog/archives.php:28
+#@ obox-mobile
+msgid "Comments"
+msgstr ""
+
+#: themes/default/functions/fetch-list.php:75
+#: themes/default/functions/fetch-list.php:91
+#: themes/default/functions/fetch-list.php:112
+#: themes/tinyblog/functions/fetch-list.php:40
+#: themes/tinyblog/functions/fetch-list.php:55
+#: themes/tinyblog/functions/fetch-list.php:72
+#: themes/tinyblog/functions/fetch-list.php:89
+#: themes/tinyblog/functions/fetch-list.php:103
+#: themes/tinyblog/functions/fetch-list.php:116
+#: themes/tinyblog/functions/fetch-list.php:160
+#: themes/tinyblog/functions/fetch-list.php:177
+#@ obox-mobile
+msgid "Read more"
+msgstr ""
+
+#: themes/default/index.php:31
+#: themes/tinyblog/index.php:31
+#@ obox-mobile
+msgid "Load "
+msgstr ""
+
+#: themes/default/index.php:31
+#: themes/tinyblog/index.php:31
+#@ obox-mobile
+msgid " More Posts"
+msgstr ""
+

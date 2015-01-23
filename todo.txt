@@ -88,3 +88,5 @@ se commento add_image_size in woocommerce allora diminuisco di 3 sec 36 sec
 il tema si crea questa e io provo a commenatre
 set_post_thumbnail_size( 604, 270, true );
 allora arrivo a 34 sec.. cambiancazzo in termini di tempo, così però in effetti creo solo 40 immagini (20+1 preview)
+
+xxx

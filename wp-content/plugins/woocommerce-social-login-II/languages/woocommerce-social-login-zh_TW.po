@@ -1,0 +1,619 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Social Login v1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-03-23 11:35+0800\n"
+"Last-Translator: Vincent <vincent@webmart.tw>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ woocommerce-social-login
+#: helper.php:82 html.php:325
+msgid "Google"
+msgstr "Google"
+
+# @ woocommerce-social-login
+#: helper.php:83 html.php:393
+msgid "Facebook"
+msgstr "Facebook"
+
+# @ woocommerce-social-login
+#: helper.php:84 html.php:452
+msgid "Twitter"
+msgstr "Twitter"
+
+# @ woocommerce-social-login
+#: helper.php:85 html.php:511
+msgid "Yahoo"
+msgstr "Yahoo"
+
+# @ woocommerce-social-login
+#: helper.php:86
+msgid "Windows Live"
+msgstr "Windows Live"
+
+# @ woocommerce-social-login
+#: helper.php:87 html.php:629
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+# @ woocommerce-social-login
+#: helper.php:88 html.php:688
+msgid "Foursquare"
+msgstr "Foursquare"
+
+# @ woocommerce-social-login
+#: helper.php:89 html.php:756
+msgid "AOL"
+msgstr "AOL"
+
+# @ woocommerce-social-login
+#: helper.php:358
+msgid "<strong>Error</strong>: Enter your email address."
+msgstr "<strong>錯誤</strong> : 請輸入您的電子郵件地址"
+
+# @ woocommerce-social-login
+#: helper.php:360
+msgid "<strong>Error</strong>: The email address did not validate."
+msgstr "<strong>錯誤</strong> : 電子郵件地址未進行驗證"
+
+# @ woocommerce-social-login
+#: helper.php:370
+msgid "Registration Form"
+msgstr "註冊表單"
+
+# @ woocommerce-social-login
+#: helper.php:374
+msgid "E-mail"
+msgstr "Email"
+
+# @ woocommerce-social-login
+#: helper.php:377
+msgid "Username and Password will be sent to your email."
+msgstr "用戶名稱和密碼將被發送到您的信箱"
+
+# @ woocommerce-social-login
+#: helper.php:379
+msgid "Register"
+msgstr "註冊"
+
+# @ woocommerce-social-login
+#: html.php:63
+msgid "Upload Image"
+msgstr "上傳圖片"
+
+# @ woocommerce-social-login
+#: html.php:105
+msgid "HTML Element Type"
+msgstr "HTML元素類型"
+
+# @ woocommerce-social-login
+#: html.php:111
+msgid "SPAN"
+msgstr "SPAN"
+
+# @ woocommerce-social-login
+#: html.php:112
+msgid "DIV"
+msgstr "DIV"
+
+# @ woocommerce-social-login
+#: html.php:113
+msgid "List"
+msgstr "列表"
+
+# @ woocommerce-social-login
+#: html.php:114
+msgid "Label"
+msgstr "標籤"
+
+# @ woocommerce-social-login
+#: html.php:178
+msgid "Icon Size"
+msgstr "圖標尺寸"
+
+# @ woocommerce-social-login
+#: html.php:184
+msgid "Small"
+msgstr "小型"
+
+# @ woocommerce-social-login
+#: html.php:185
+msgid "Medium"
+msgstr "中型"
+
+# @ woocommerce-social-login
+#: options.php:21
+msgid "Social Networks"
+msgstr "社群網站"
+
+# @ woocommerce-social-login
+#: html.php:223
+msgid "Network"
+msgstr "社群網站"
+
+# @ woocommerce-social-login
+#: html.php:224
+msgid "Register Count"
+msgstr "註冊數"
+
+# @ woocommerce-social-login
+#: html.php:225
+msgid "Status"
+msgstr "狀態"
+
+# @ woocommerce-social-login
+#: html.php:339 html.php:407 html.php:466 html.php:525 html.php:584
+#: html.php:643 html.php:702 html.php:770
+msgid "Enabled"
+msgstr "啟用"
+
+# @ woocommerce-social-login
+#: html.php:346 html.php:414 html.php:473 html.php:532 html.php:591
+#: html.php:650 html.php:709 html.php:777
+msgid "Yes"
+msgstr "是"
+
+# @ woocommerce-social-login
+#: html.php:347 html.php:415 html.php:474 html.php:533 html.php:592
+#: html.php:651 html.php:710 html.php:778
+msgid "No"
+msgstr "否"
+
+# @ woocommerce-social-login
+#: html.php:570
+msgid "Microsoft Live"
+msgstr "Microsoft Live"
+
+# @ woocommerce-social-login
+#: html.php:836
+msgid "Prefer Social Login"
+msgstr "較喜歡社群登入"
+
+# @ woocommerce-social-login
+#: html.php:836
+msgid "Click here to login"
+msgstr "點選這裡登入"
+
+# @ woocommerce-social-login
+#: woocommerce-social-login.php:77
+msgid "Social Login"
+msgstr "社群登入"
+
+# @ woocommerce-social-login
+#: html.php:91
+msgid "Main Options"
+msgstr "主要選項"
+
+# @ woocommerce-social-login
+#: html.php:97
+msgid "Description about social login"
+msgstr "關於社群登入說明"
+
+# @ woocommerce-social-login
+#: html.php:118
+msgid "After Login Redirect User to"
+msgstr "登入後重新導向用戶到"
+
+# @ woocommerce-social-login
+#: html.php:124
+msgid "Shop"
+msgstr "商店"
+
+# @ woocommerce-social-login
+#: html.php:125
+msgid "Cart Page"
+msgstr "購物車頁面"
+
+# @ woocommerce-social-login
+#: html.php:126
+msgid "Checkout Page"
+msgstr "結帳頁面"
+
+# @ woocommerce-social-login
+#: html.php:127
+msgid "My Account Page"
+msgstr "我的帳號頁面"
+
+# @ woocommerce-social-login
+#: html.php:128
+msgid "Edit Address Page"
+msgstr "編輯地址頁面"
+
+# @ woocommerce-social-login
+#: html.php:133
+msgid "Custom URL Redirect"
+msgstr "自定義重新導向URL"
+
+# @ woocommerce-social-login
+#: html.php:141 html.php:149 html.php:157
+msgid "Display Social Login"
+msgstr "顯示社群登入"
+
+# @ woocommerce-social-login
+#: html.php:171
+msgid "At CheckOut After Login"
+msgstr "在結帳後登入"
+
+# @ woocommerce-social-login
+#: html.php:172
+msgid "At CheckOut Before Login"
+msgstr "在結帳前登入"
+
+# @ woocommerce-social-login
+#: html.php:173
+msgid "At CheckOut After Coupon"
+msgstr "在結帳後優惠券"
+
+# @ woocommerce-social-login
+#: html.php:174
+msgid "None"
+msgstr "無"
+
+# @ woocommerce-social-login
+#: html.php:186
+msgid "Large"
+msgstr "大型"
+
+# @ woocommerce-social-login
+#: html.php:353 html.php:598 html.php:716
+msgid "Client ID"
+msgstr "Client ID"
+
+# @ woocommerce-social-login
+#: html.php:362
+msgid "Client secret"
+msgstr "Client secret"
+
+# @ woocommerce-social-login
+#: html.php:371 html.php:734
+msgid "Callback URL"
+msgstr "Callback URL"
+
+# @ woocommerce-social-login
+#: html.php:421
+msgid "App ID"
+msgstr "App ID"
+
+# @ woocommerce-social-login
+#: html.php:430
+msgid "App Secret"
+msgstr "App Secret"
+
+# @ woocommerce-social-login
+#: html.php:480
+msgid "Consumer key"
+msgstr "Consumer key"
+
+# @ woocommerce-social-login
+#: html.php:489 html.php:548
+msgid "Consumer Secret"
+msgstr "Consumer Secret"
+
+# @ woocommerce-social-login
+#: html.php:539
+msgid "Consumer Key"
+msgstr "Consumer Key"
+
+# @ woocommerce-social-login
+#: html.php:607 html.php:725
+msgid "Client Secret"
+msgstr "Client Secret"
+
+# @ woocommerce-social-login
+#: html.php:657
+msgid "API Key"
+msgstr "API Key"
+
+# @ woocommerce-social-login
+#: html.php:666
+msgid "Secret Key"
+msgstr "Secret Key"
+
+# @ woocommerce-social-login
+#: details.php:29 table.php:38
+msgid "Name"
+msgstr "名稱"
+
+# @ woocommerce-social-login
+#: details.php:30
+msgid "website"
+msgstr "網站"
+
+# @ woocommerce-social-login
+#: details.php:37
+msgid "Email"
+msgstr "Email"
+
+# @ woocommerce-social-login
+#: details.php:38
+msgid "Phone"
+msgstr "電話"
+
+# @ woocommerce-social-login
+#: details.php:41
+msgid "Region"
+msgstr "地區"
+
+# @ woocommerce-social-login
+#: details.php:42
+msgid "City"
+msgstr "城市"
+
+# @ woocommerce-social-login
+#: details.php:43
+msgid "Zip"
+msgstr "郵遞區號"
+
+# @ woocommerce-social-login
+#: details.php:23
+msgid "Record ID"
+msgstr "記錄ID"
+
+# @ woocommerce-social-login
+#: details.php:24
+msgid "identifier"
+msgstr "識別碼"
+
+# @ woocommerce-social-login
+#: details.php:25
+msgid "WordPress User ID"
+msgstr "WordPress 用戶 ID"
+
+# @ woocommerce-social-login
+#: details.php:26 table.php:37
+msgid "Provider"
+msgstr "提供"
+
+# @ woocommerce-social-login
+#: details.php:27 table.php:39
+msgid "Profile URL"
+msgstr "個人檔案 URL"
+
+# @ woocommerce-social-login
+#: details.php:28
+msgid "Photo URL"
+msgstr "照片 URL"
+
+# @ woocommerce-social-login
+#: details.php:31
+msgid "Description"
+msgstr "描述"
+
+# @ woocommerce-social-login
+#: details.php:32
+msgid "First Name"
+msgstr "姓氏"
+
+# @ woocommerce-social-login
+#: details.php:33
+msgid "Last Name"
+msgstr "名字"
+
+# @ woocommerce-social-login
+#: details.php:34
+msgid "Gender"
+msgstr "性別"
+
+# @ woocommerce-social-login
+#: details.php:35
+msgid "Language"
+msgstr "語言"
+
+# @ woocommerce-social-login
+#: details.php:36
+msgid "Age"
+msgstr "年齡"
+
+# @ woocommerce-social-login
+#: details.php:39
+msgid "Address"
+msgstr "地址"
+
+# @ woocommerce-social-login
+#: details.php:40
+msgid "Country"
+msgstr "國家"
+
+# @ woocommerce-social-login
+#: details.php:44
+msgid "IP Address"
+msgstr "IP 地址"
+
+# @ woocommerce-social-login
+#: details.php:45
+msgid "User Agent"
+msgstr "用戶代理"
+
+# @ woocommerce-social-login
+#: details.php:46
+msgid "birthDay"
+msgstr "出生日期"
+
+# @ woocommerce-social-login
+#: details.php:47
+msgid "birthMonth"
+msgstr "出生月份"
+
+# @ woocommerce-social-login
+#: details.php:48
+msgid "birthYear"
+msgstr "出生年份"
+
+# @ woocommerce-social-login
+#: details.php:57 details.php:68
+msgid "Key"
+msgstr "Key"
+
+# @ woocommerce-social-login
+#: details.php:60 details.php:71
+msgid "Value"
+msgstr "值"
+
+# @ woocommerce-social-login
+#: helper.php:186
+msgid ""
+"<strong>Error</strong>: Unspecified error. Transaction my not be completed."
+msgstr "<strong>錯誤</strong> : 未指定的錯誤。交易可能無法完成"
+
+# @ woocommerce-social-login
+#: helper.php:189
+msgid ""
+"<strong>Error</strong>: WooCommerce Social Login configuration error. Please "
+"check again."
+msgstr "<strong>錯誤</strong> : WooCommerce 社群登入配置錯誤。請再檢查一次"
+
+# @ woocommerce-social-login
+#: helper.php:192
+msgid "<strong>Error</strong>: Provider not properly configured."
+msgstr "<strong>錯誤</strong> : 提供程式沒有正確配置"
+
+# @ woocommerce-social-login
+#: helper.php:195
+msgid "<strong>Error</strong>: Unknown or disabled provider."
+msgstr "<strong>錯誤</strong> : 未知或關閉提供程式"
+
+# @ woocommerce-social-login
+#: helper.php:198
+msgid "<strong>Error</strong>: Missing provider application credentials."
+msgstr "<strong>錯誤</strong> : 缺少提供應用程式的憑證"
+
+# @ woocommerce-social-login
+#: helper.php:201
+msgid ""
+"<strong>Error</strong>: Authentication failed. The user has canceled the "
+"authentication or the provider refused the connection."
+msgstr ""
+"<strong>錯誤</strong> : 驗證失敗。用戶已經取消了身份驗證或提供程式拒絕連接"
+
+# @ woocommerce-social-login
+#: helper.php:204
+msgid ""
+"<strong>Error</strong>: User profile request failed. Most likely the user is "
+"not connected to the provider and he should to authenticate again."
+msgstr ""
+"<strong>錯誤</strong>: 用戶配置文件請求失敗。有可能用戶沒有連接到提供程式，應"
+"該再次進行驗證"
+
+# @ woocommerce-social-login
+#: helper.php:207
+msgid "<strong>Error</strong>: User not connected to the provider."
+msgstr "<strong>錯誤</strong> : 用戶沒有連接到提供程式"
+
+# @ woocommerce-social-login
+#: helper.php:259
+msgid ""
+"<strong>Error</strong>: Your are not connected to the specified provider or "
+"your session has expired."
+msgstr "<strong>錯誤</strong> : 您沒有連接到指定提供程式或您的工作階段已逾時"
+
+# @ woocommerce-social-login
+#: helper.php:323 helper.php:363
+msgid ""
+"<strong>Error</strong>: Email already exists, If you have an account login "
+"first."
+msgstr ""
+"<strong>錯誤Error</strong> : 電子郵件已經存在，如果你已有一個帳號請先登錄"
+
+# @ woocommerce-social-login
+#: html.php:142
+msgid "At WordPress Profile Page"
+msgstr "在WordPress的個人主頁"
+
+# @ woocommerce-social-login
+#: html.php:849 html.php:871
+msgid "Link Your account"
+msgstr "連結您的帳號"
+
+# @ woocommerce-social-login
+#: table.php:42
+msgid "Full Details"
+msgstr "詳細介紹"
+
+# @ woocommerce-social-login
+#: table.php:133
+msgid "Click to View"
+msgstr "點選查看"
+
+# @ woocommerce-social-login
+#: helper.php:167
+msgid "<p>Click on any social network to connect.</p>"
+msgstr "<p>按一下任何社群網站進行連接</p>"
+
+# @ woocommerce-social-login
+#: helper.php:248
+msgid ""
+"<strong>Error</strong>: Specified provider is not available currently or "
+"misspelled."
+msgstr "<strong>錯誤</strong>: 指定的提供程式目前無法使用或拼字錯誤"
+
+# @ woocommerce-social-login
+#: helper.php:346
+msgid "WooCommerce Social Login"
+msgstr "WooCommerce 社群登入"
+
+# @ woocommerce-social-login
+#: html.php:199
+msgid "Message on Error Page"
+msgstr "錯誤頁面的訊息"
+
+# @ woocommerce-social-login
+#: html.php:129
+msgid "Custom URL(Enter Below)"
+msgstr "自定義URL (在下方輸入)"
+
+# @ woocommerce-social-login
+#: table.php:41
+msgid "IP"
+msgstr "IP"
+
+# @ woocommerce-social-login
+#: table.php:40
+msgid "WP User"
+msgstr "WP 用戶"
+
+# @ woocommerce-social-login
+#: html.php:187
+msgid "Custom Icons"
+msgstr "自定義圖標"
+
+# @ woocommerce-social-login
+#: html.php:305
+msgid "Social Networks Register Percentage "
+msgstr "社群網站註冊百分比"
+
+# @ woocommerce-social-login
+#: helper.php:370
+msgid "Please enter your email address to complete registration."
+msgstr "請輸入您的電子郵件地址即可完成註冊"
+
+# @ woocommerce-social-login
+#: html.php:150
+msgid "At WooCommerce My Account Page After Login Form"
+msgstr "在WooCommerce我的帳戶頁面之後的登入表單"
+
+# @ woocommerce-social-login
+#: html.php:158
+msgid "At WooCommerce My Account Page"
+msgstr "在WooCommerce我的帳戶頁面"
+
+# @ woocommerce-social-login
+#: html.php:215
+msgid "Drag to Change Order"
+msgstr "拖動以更改順序"
+
+# @ woocommerce-social-login
+#: html.php:222
+msgid "Change Order"
+msgstr "變更順序"

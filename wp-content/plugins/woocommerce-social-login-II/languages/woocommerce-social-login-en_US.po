@@ -1,0 +1,643 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Social Login v1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-07-09 07:26:23+0000\n"
+"Last-Translator: wpadmin <farhadegza@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: helper.php:82
+#: html.php:325
+#@ woocommerce-social-login
+msgid "Google"
+msgstr ""
+
+#: helper.php:83
+#: html.php:393
+#@ woocommerce-social-login
+msgid "Facebook"
+msgstr ""
+
+#: helper.php:84
+#: html.php:452
+#@ woocommerce-social-login
+msgid "Twitter"
+msgstr ""
+
+#: helper.php:85
+#: html.php:511
+#@ woocommerce-social-login
+msgid "Yahoo"
+msgstr ""
+
+#: helper.php:86
+#@ woocommerce-social-login
+msgid "Windows Live"
+msgstr ""
+
+#: helper.php:87
+#: html.php:629
+#@ woocommerce-social-login
+msgid "LinkedIn"
+msgstr ""
+
+#: helper.php:88
+#: html.php:688
+#@ woocommerce-social-login
+msgid "Foursquare"
+msgstr ""
+
+#: helper.php:89
+#: html.php:756
+#@ woocommerce-social-login
+msgid "AOL"
+msgstr ""
+
+#: helper.php:358
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: Enter your email address."
+msgstr ""
+
+#: helper.php:360
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: The email address did not validate."
+msgstr ""
+
+#: helper.php:370
+#@ woocommerce-social-login
+msgid "Registration Form"
+msgstr ""
+
+#: helper.php:374
+#@ woocommerce-social-login
+msgid "E-mail"
+msgstr ""
+
+#: helper.php:377
+#@ woocommerce-social-login
+msgid "Username and Password will be sent to your email."
+msgstr ""
+
+#: helper.php:379
+#@ woocommerce-social-login
+msgid "Register"
+msgstr ""
+
+#: html.php:63
+#@ woocommerce-social-login
+msgid "Upload Image"
+msgstr ""
+
+#: html.php:105
+#@ woocommerce-social-login
+msgid "HTML Element Type"
+msgstr ""
+
+#: html.php:111
+#@ woocommerce-social-login
+msgid "SPAN"
+msgstr ""
+
+#: html.php:112
+#@ woocommerce-social-login
+msgid "DIV"
+msgstr ""
+
+#: html.php:113
+#@ woocommerce-social-login
+msgid "List"
+msgstr ""
+
+#: html.php:114
+#@ woocommerce-social-login
+msgid "Label"
+msgstr ""
+
+#: html.php:178
+#@ woocommerce-social-login
+msgid "Icon Size"
+msgstr ""
+
+#: html.php:184
+#@ woocommerce-social-login
+msgid "Small"
+msgstr ""
+
+#: html.php:185
+#@ woocommerce-social-login
+msgid "Medium"
+msgstr ""
+
+#: options.php:21
+#@ woocommerce-social-login
+msgid "Social Networks"
+msgstr ""
+
+#: html.php:223
+#@ woocommerce-social-login
+msgid "Network"
+msgstr ""
+
+#: html.php:224
+#@ woocommerce-social-login
+msgid "Register Count"
+msgstr ""
+
+#: html.php:225
+#@ woocommerce-social-login
+msgid "Status"
+msgstr ""
+
+#: html.php:339
+#: html.php:407
+#: html.php:466
+#: html.php:525
+#: html.php:584
+#: html.php:643
+#: html.php:702
+#: html.php:770
+#@ woocommerce-social-login
+msgid "Enabled"
+msgstr ""
+
+#: html.php:346
+#: html.php:414
+#: html.php:473
+#: html.php:532
+#: html.php:591
+#: html.php:650
+#: html.php:709
+#: html.php:777
+#@ woocommerce-social-login
+msgid "Yes"
+msgstr ""
+
+#: html.php:347
+#: html.php:415
+#: html.php:474
+#: html.php:533
+#: html.php:592
+#: html.php:651
+#: html.php:710
+#: html.php:778
+#@ woocommerce-social-login
+msgid "No"
+msgstr ""
+
+#: html.php:570
+#@ woocommerce-social-login
+msgid "Microsoft Live"
+msgstr ""
+
+#: html.php:836
+#@ woocommerce-social-login
+msgid "Prefer Social Login"
+msgstr ""
+
+#: html.php:836
+#@ woocommerce-social-login
+msgid "Click here to login"
+msgstr ""
+
+#: woocommerce-social-login.php:77
+#@ woocommerce-social-login
+msgid "Social Login"
+msgstr ""
+
+#: html.php:91
+#@ woocommerce-social-login
+msgid "Main Options"
+msgstr ""
+
+#: html.php:97
+#@ woocommerce-social-login
+msgid "Description about social login"
+msgstr ""
+
+#: html.php:118
+#@ woocommerce-social-login
+msgid "After Login Redirect User to"
+msgstr ""
+
+#: html.php:124
+#@ woocommerce-social-login
+msgid "Shop"
+msgstr ""
+
+#: html.php:125
+#@ woocommerce-social-login
+msgid "Cart Page"
+msgstr ""
+
+#: html.php:126
+#@ woocommerce-social-login
+msgid "Checkout Page"
+msgstr ""
+
+#: html.php:127
+#@ woocommerce-social-login
+msgid "My Account Page"
+msgstr ""
+
+#: html.php:128
+#@ woocommerce-social-login
+msgid "Edit Address Page"
+msgstr ""
+
+#: html.php:133
+#@ woocommerce-social-login
+msgid "Custom URL Redirect"
+msgstr ""
+
+#: html.php:141
+#: html.php:149
+#: html.php:157
+#@ woocommerce-social-login
+msgid "Display Social Login"
+msgstr ""
+
+#: html.php:171
+#@ woocommerce-social-login
+msgid "At CheckOut After Login"
+msgstr ""
+
+#: html.php:172
+#@ woocommerce-social-login
+msgid "At CheckOut Before Login"
+msgstr ""
+
+#: html.php:173
+#@ woocommerce-social-login
+msgid "At CheckOut After Coupon"
+msgstr ""
+
+#: html.php:174
+#@ woocommerce-social-login
+msgid "None"
+msgstr ""
+
+#: html.php:186
+#@ woocommerce-social-login
+msgid "Large"
+msgstr ""
+
+#: html.php:353
+#: html.php:598
+#: html.php:716
+#@ woocommerce-social-login
+msgid "Client ID"
+msgstr ""
+
+#: html.php:362
+#@ woocommerce-social-login
+msgid "Client secret"
+msgstr ""
+
+#: html.php:371
+#: html.php:734
+#@ woocommerce-social-login
+msgid "Callback URL"
+msgstr ""
+
+#: html.php:421
+#@ woocommerce-social-login
+msgid "App ID"
+msgstr ""
+
+#: html.php:430
+#@ woocommerce-social-login
+msgid "App Secret"
+msgstr ""
+
+#: html.php:480
+#@ woocommerce-social-login
+msgid "Consumer key"
+msgstr ""
+
+#: html.php:489
+#: html.php:548
+#@ woocommerce-social-login
+msgid "Consumer Secret"
+msgstr ""
+
+#: html.php:539
+#@ woocommerce-social-login
+msgid "Consumer Key"
+msgstr ""
+
+#: html.php:607
+#: html.php:725
+#@ woocommerce-social-login
+msgid "Client Secret"
+msgstr ""
+
+#: html.php:657
+#@ woocommerce-social-login
+msgid "API Key"
+msgstr ""
+
+#: html.php:666
+#@ woocommerce-social-login
+msgid "Secret Key"
+msgstr ""
+
+#: details.php:29
+#: table.php:38
+#@ woocommerce-social-login
+msgid "Name"
+msgstr ""
+
+#: details.php:30
+#@ woocommerce-social-login
+msgid "website"
+msgstr ""
+
+#: details.php:37
+#@ woocommerce-social-login
+msgid "Email"
+msgstr ""
+
+#: details.php:38
+#@ woocommerce-social-login
+msgid "Phone"
+msgstr ""
+
+#: details.php:41
+#@ woocommerce-social-login
+msgid "Region"
+msgstr ""
+
+#: details.php:42
+#@ woocommerce-social-login
+msgid "City"
+msgstr ""
+
+#: details.php:43
+#@ woocommerce-social-login
+msgid "Zip"
+msgstr ""
+
+#: details.php:23
+#@ woocommerce-social-login
+msgid "Record ID"
+msgstr ""
+
+#: details.php:24
+#@ woocommerce-social-login
+msgid "identifier"
+msgstr ""
+
+#: details.php:25
+#@ woocommerce-social-login
+msgid "WordPress User ID"
+msgstr ""
+
+#: details.php:26
+#: table.php:37
+#@ woocommerce-social-login
+msgid "Provider"
+msgstr ""
+
+#: details.php:27
+#: table.php:39
+#@ woocommerce-social-login
+msgid "Profile URL"
+msgstr ""
+
+#: details.php:28
+#@ woocommerce-social-login
+msgid "Photo URL"
+msgstr ""
+
+#: details.php:31
+#@ woocommerce-social-login
+msgid "Description"
+msgstr ""
+
+#: details.php:32
+#@ woocommerce-social-login
+msgid "First Name"
+msgstr ""
+
+#: details.php:33
+#@ woocommerce-social-login
+msgid "Last Name"
+msgstr ""
+
+#: details.php:34
+#@ woocommerce-social-login
+msgid "Gender"
+msgstr ""
+
+#: details.php:35
+#@ woocommerce-social-login
+msgid "Language"
+msgstr ""
+
+#: details.php:36
+#@ woocommerce-social-login
+msgid "Age"
+msgstr ""
+
+#: details.php:39
+#@ woocommerce-social-login
+msgid "Address"
+msgstr ""
+
+#: details.php:40
+#@ woocommerce-social-login
+msgid "Country"
+msgstr ""
+
+#: details.php:44
+#@ woocommerce-social-login
+msgid "IP Address"
+msgstr ""
+
+#: details.php:45
+#@ woocommerce-social-login
+msgid "User Agent"
+msgstr ""
+
+#: details.php:46
+#@ woocommerce-social-login
+msgid "birthDay"
+msgstr ""
+
+#: details.php:47
+#@ woocommerce-social-login
+msgid "birthMonth"
+msgstr ""
+
+#: details.php:48
+#@ woocommerce-social-login
+msgid "birthYear"
+msgstr ""
+
+#: details.php:57
+#: details.php:68
+#@ woocommerce-social-login
+msgid "Key"
+msgstr ""
+
+#: details.php:60
+#: details.php:71
+#@ woocommerce-social-login
+msgid "Value"
+msgstr ""
+
+#: helper.php:186
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: Unspecified error. Transaction my not be completed."
+msgstr ""
+
+#: helper.php:189
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: WooCommerce Social Login configuration error. Please check again."
+msgstr ""
+
+#: helper.php:192
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: Provider not properly configured."
+msgstr ""
+
+#: helper.php:195
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: Unknown or disabled provider."
+msgstr ""
+
+#: helper.php:198
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: Missing provider application credentials."
+msgstr ""
+
+#: helper.php:201
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: Authentication failed. The user has canceled the authentication or the provider refused the connection."
+msgstr ""
+
+#: helper.php:204
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again."
+msgstr ""
+
+#: helper.php:207
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: User not connected to the provider."
+msgstr ""
+
+#: helper.php:259
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: Your are not connected to the specified provider or your session has expired."
+msgstr ""
+
+#: helper.php:323
+#: helper.php:363
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: Email already exists, If you have an account login first."
+msgstr ""
+
+#: html.php:142
+#@ woocommerce-social-login
+msgid "At WordPress Profile Page"
+msgstr ""
+
+#: html.php:849
+#: html.php:871
+#@ woocommerce-social-login
+msgid "Link Your account"
+msgstr ""
+
+#: table.php:42
+#@ woocommerce-social-login
+msgid "Full Details"
+msgstr ""
+
+#: table.php:133
+#@ woocommerce-social-login
+msgid "Click to View"
+msgstr ""
+
+#: helper.php:167
+#@ woocommerce-social-login
+msgid "<p>Click on any social network to connect.</p>"
+msgstr ""
+
+#: helper.php:248
+#@ woocommerce-social-login
+msgid "<strong>Error</strong>: Specified provider is not available currently or misspelled."
+msgstr ""
+
+#: helper.php:346
+#@ woocommerce-social-login
+msgid "WooCommerce Social Login"
+msgstr ""
+
+#: html.php:199
+#@ woocommerce-social-login
+msgid "Message on Error Page"
+msgstr ""
+
+#: html.php:129
+#@ woocommerce-social-login
+msgid "Custom URL(Enter Below)"
+msgstr ""
+
+#: table.php:41
+#@ woocommerce-social-login
+msgid "IP"
+msgstr ""
+
+#: table.php:40
+#@ woocommerce-social-login
+msgid "WP User"
+msgstr ""
+
+#: html.php:187
+#@ woocommerce-social-login
+msgid "Custom Icons"
+msgstr ""
+
+#: html.php:305
+#@ woocommerce-social-login
+msgid "Social Networks Register Percentage "
+msgstr ""
+
+#: helper.php:370
+#@ woocommerce-social-login
+msgid "Please enter your email address to complete registration."
+msgstr ""
+
+#: html.php:150
+#@ woocommerce-social-login
+msgid "At WooCommerce My Account Page After Login Form"
+msgstr ""
+
+#: html.php:158
+#@ woocommerce-social-login
+msgid "At WooCommerce My Account Page"
+msgstr ""
+
+#: html.php:215
+#@ woocommerce-social-login
+msgid "Drag to Change Order"
+msgstr ""
+
+#: html.php:222
+#@ woocommerce-social-login
+msgid "Change Order"
+msgstr ""
+

@@ -1,11 +1,57 @@
 /*
 Theme Name:     BTS theme Child of some theme
 Theme URI:      http://www.federicoporta.com
-Description:    Tema BTS Child di twentythirteen
+Description:    Tema BTS Child di quality
 Author:         Federico Porta
 Author URI:     http://www.federicoporta.com
-Template:       twentythirteen
+Template:       quality
 Version:        0.1.0
 */
+#icona-annuario{
+    margin:25px;
+}
+#icona-maglieria{
+    margin:25px;
+}
+#icona-servizi{
+    margin:25px;
+}
+/* aggiunta di padding al content dell'archivio shop */
 
-
+body.archive div#content{
+    padding: 20px;
+    margin-left:130px;
+}
+body.archive input.select-product,input.quick-order-launch{
+    display:none;
+}
+body.archive ul.products li.product tbody,span
+{
+    display:none;
+}
+body.tax-product_cat form.cart button{
+    display:none;
+}
+body.single-product div#content{
+    padding: 20px;
+    margin-left:130px;
+}
+div.summary span,tbody{
+    display:block;
+}
+div.summary form.cart button{
+    display:block;
+}
+div.summary tbody td.price,td.label{
+     display:none;
+ }
+div.summary table,tbody,tr,td{
+   border: none !important;
+}
+div.quantity{
+    width:115px !important;
+    height:28px !important;
+}
+div.related.products form.cart button{
+    display:none;
+}

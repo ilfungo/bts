@@ -1,0 +1,717 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: quality\n"
+"POT-Creation-Date: 2014-12-09 19:59+0530\n"
+"PO-Revision-Date: 2014-12-09 19:59+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: D:\\xampp\\htdocs\\wordpress_text\\wp-content\\themes"
+"\\quality-lite\n"
+"X-Poedit-SearchPath-0: D:\\xampp\\htdocs\\wordpress_text\\wp-content\\themes"
+"\\quality-lite\n"
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/404.php:8
+msgid "Error 404"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/404.php:9
+msgid "Oops! Page not found"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/404.php:10
+msgid "We`re sorry, but the page you are looking for doesn`t exist."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/404.php:11
+msgid "Go to Homepage"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/archive.php:11
+msgid "Daily Archives:"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/archive.php:13
+msgid "Monthly Archives:"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/archive.php:15
+msgid "Yearly Archives:"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/archive.php:17
+msgid "Blog Archives"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/archive.php:62
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/author.php:48
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/category.php:48
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/index.php:51
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/single.php:48
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/tag.php:50
+msgid "Read More"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:2
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:17
+msgid "Comment navigation"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:18
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:19
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:28
+msgid "You must be"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:28
+msgid "logged in"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:28
+msgid "to post a comment"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:33
+msgid "Name"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:34
+msgid "Email"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:42
+msgid "Comment"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:44
+msgid "Logged in as "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:44
+msgid " Log out?"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:46
+msgid "Post Comment"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/comments.php:49
+msgid "Leave a Reply"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions.php:30
+msgid "Page"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions.php:45
+msgid "Primary Menu"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/index-blog.php:25
+msgid "Posted By Admin"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/tag.php:8
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/theme_setup_data.php:16
+msgid "Theme Feature Goes Here!"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/theme_setup_data.php:17
+msgid "Wordpress Premium Theme"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/theme_setup_data.php:18
+msgid "Fully Responsive Theme Amazing Design."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/commentbox/comment-function.php:12
+msgid "Reply"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/commentbox/comment-function.php:21
+msgid "at"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/commentbox/comment-function.php:29
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/option_pannel.php:4
+msgid "theme"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/option_pannel.php:4
+msgid "Option Panel"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:4
+msgid "Quality By"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:6
+msgid "Upgrade to Quality Pro!"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:8
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:9
+msgid "Rate Quality"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:18
+msgid "Quality-Pro"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:23
+msgid "Features"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:24
+msgid "Free"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:25
+msgid "Premium"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:30
+msgid "Multiple Color Schemes"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:30
+msgid "Customize theme with intutive option panel."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:35
+msgid "Translation Ready"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:35
+msgid "Translate the theme into your own language."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:41
+msgid "Customizable Home Page"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:42
+msgid "Customize the Home Page by adding you own Images and Text."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:48
+msgid "Front Page Layout Manager"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:49
+msgid "Drag and Drop option for front page layout manager."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:55
+msgid "Responsive Home Page Slider"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:56
+msgid "Showcase your most important services with the Home Page Slider."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:62
+msgid "Page Templates"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:63
+msgid "Number of Page Templates which come with the Theme"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:69
+msgid "About Us Template"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:70
+msgid "Showcase the team behind your business with About Us Template."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:76
+msgid "Contact Form Template"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:77
+msgid "Premium version comes with a beautiful contact page template. "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:84
+msgid "Services Template"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:85
+msgid ""
+"Showcase different services which your business offers.It is available in "
+"single column and two column layout"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:91
+msgid "Portfolio Template"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:92
+msgid ""
+"Showcase your work with Postfolio Template. Available in 2, 3 & 4 Column "
+"Layout."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:98
+msgid "Custom Widgets"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:99
+msgid "Customize the sidebar with the included widgets"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:105
+msgid "Theme Support "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:106
+msgid "Get our fast and friendly support."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:107
+msgid "Via Wordpress Forums"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:108
+msgid "Private Forums with Email Support"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:112
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:114
+msgid "Get the Premium Version"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:130
+msgid "Quality"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:132
+msgid "Support Desk"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:133
+msgid "View Changelog"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:143
+msgid "Home Page"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:144
+msgid "Quick Start"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:145
+msgid "Home Feature"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:146
+msgid "Service Section Settings"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:147
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:64
+msgid "Projects Section Settings"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:148
+msgid "Blog On Home"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/webriti_option_pannel.php:152
+msgid "Footer Customization"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/blog_settings.php:37
+msgid "Blog  Settings"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/blog_settings.php:40
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/footer_customization_settings.php:31
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:36
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:45
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:64
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:67
+msgid "Options data successfully Saved"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/blog_settings.php:41
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/footer_customization_settings.php:32
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:37
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:46
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:65
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:68
+msgid "Options data successfully reset"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/blog_settings.php:53
+msgid "Enable Blog on HOME Section"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/blog_settings.php:54
+msgid "Enable Blog section in front page."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/blog_settings.php:55
+msgid "Blog Heading"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/blog_settings.php:57
+msgid "Blog Section Heading"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/footer_customization_settings.php:29
+msgid "Footer Customizations"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/footer_customization_settings.php:43
+msgid "footer customizations text"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/footer_customization_settings.php:45
+msgid "Enter the footer customizations text"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/footer_customization_settings.php:48
+msgid "Created By Webriti text"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/footer_customization_settings.php:50
+msgid "Enter the created by webriti text"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/footer_customization_settings.php:54
+msgid "Created By Link"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/footer_customization_settings.php:56
+msgid "Enter the Call Out Button Link"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:33
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:42
+msgid "Quick Start Settings"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:49
+msgid "Home Feature Image"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:50
+msgid "Add your Home Feaure Image here"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:60
+msgid "Banner Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:62
+msgid "Enter Banner title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:65
+msgid "Banner Sub Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:67
+msgid "Enter Banner Sub Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:70
+msgid "Banner Description"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_feature.php:72
+msgid "Enter Banner description text less then 150 character ."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:57
+msgid "Enable Home Page ?"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:57
+msgid "Check this box for enabling the Custom Home Page of the theme."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:58
+msgid "Enable Home on front page."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:62
+msgid "Custom Logo"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:63
+msgid "Add custom logo from here suggested size is 150X50 px"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:73
+msgid "Logo Height"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:74
+msgid ""
+"Default Logo Height : 50px, if you want to increase than specify your value"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:79
+msgid "Logo Width"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:80
+msgid ""
+"Default Logo Width : 150px, if you want to increase than specify your value"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:85
+msgid "Text Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:86
+msgid "Enable text-based Site Title.   Setup title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:86
+msgid "Click Here"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:89
+msgid "Custom Favicon"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:90
+msgid "Make sure you upload .icon image type which is not more then 25X25 px."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:99
+msgid "Custom css"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_page_settings.php:101
+msgid ""
+"This is a powerful feature provided here. No need to use custom css plugin, "
+"just paste your css code and see the magic."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:62
+msgid "Service Settings"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:76
+msgid "Enable Service Section On HOME Page Template"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:77
+msgid "Enable Service section on Home TEMPLATE ."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:80
+msgid "Service Section"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:82
+msgid "Service Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:84
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:94
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:109
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:124
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:139
+msgid "Enter the service title."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:87
+msgid "Service Description"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:89
+msgid "Enter the service description."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:92
+msgid "Service Title One "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:97
+msgid "Service Icon One "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:99
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:114
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:129
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:144
+msgid "Enter the service icon."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:102
+msgid "Service Text One "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:104
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:119
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:134
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:149
+msgid "Enter the service text."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:107
+msgid "Service Title Two "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:112
+msgid "Service Icon Two "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:117
+msgid "Service Text Two "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:122
+msgid "Service Title Three "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:127
+msgid "Service Icon Three "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:132
+msgid "Service Text Three "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:137
+msgid "Service Title Four "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:142
+msgid "Service Icon Four "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/home_service_settings.php:147
+msgid "Service Text Four "
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:80
+msgid "Enable Home Project Section"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:81
+msgid "Enable Projects section in fornt page."
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:84
+msgid "Home Project  Heading"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:86
+msgid "Project Section Heading"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:88
+msgid "Enter Project Section Heading"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:90
+msgid "Project Section Tagline"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:90
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:101
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:116
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:131
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:146
+msgid "Enter Project Thumbnail"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:92
+msgid "Enter Project Section Tagline"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:95
+msgid "Home Project One"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:97
+msgid "Project One Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:99
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:114
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:129
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:144
+msgid "Enter Project Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:101
+msgid "Project One Thumbnail"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:110
+msgid "Home Project Two"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:112
+msgid "Project Two Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:116
+msgid "Project Two Thumbnail"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:125
+msgid "Home Project Three"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:127
+msgid "Project Three Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:131
+msgid "Project Three Thumbnail"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:140
+msgid "Home Project Four"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:142
+msgid "Project Four Title"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/theme_options/pages/projects_settings.php:146
+msgid "Project Four Thumbnail"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/widget/custom-sidebar.php:6
+msgid "Sidebar"
+msgstr ""
+
+#: D:\xampp\htdocs\wordpress_text\wp-content\themes\quality-lite/functions/widget/custom-sidebar.php:8
+msgid "The primary widget area"
+msgstr ""

@@ -52,6 +52,8 @@ div.quantity{
     width:115px !important;
     height:28px !important;
 }
-div.related.products form.cart button{
+div.related.products form.cart{
     display:none;
+    margin-top: 100px;
 }
+

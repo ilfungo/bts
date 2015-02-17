@@ -20,7 +20,7 @@
           <a  href="<?php the_permalink(); ?>">
           <?php the_post_thumbnail('quality_blog_img', $defalt_arg); ?>
           </a>
-          <?php endif; ?>	
+          <?php endif; ?>
         </div>
         <div class="qua_post_date">
           <span class="date"><?php echo get_the_date('j'); ?></span>

@@ -18,6 +18,36 @@
 <?php } ?>	
 <!-- /Footer Widget Secton -->
 <?php wp_footer(); ?>
+<?php
+global $current_user;
+get_currentuserinfo();
+//print_r($current_user);
 
+$ruolo=$current_user->roles;
+$login=$current_user->user_login;
+//echo "ruolo -> ".$ruolo[0];
+// scrivo questa cosa
+
+/*scrivo un commenttino qui*/
+
+/*if($ruolo[0]=="administrator"){
+	echo $login;
+}*/
+if($ruolo[0]=="administrator"){
+    echo "<div>";
+    global $wp_query;
+    echo $wp_query->request;
+    echo "</div>";
+    echo '<div id="bottom_debug">';
+    $included_files = get_included_files();
+
+    foreach ($included_files as $filename) {
+        if (strpos($filename,'wootique') !== false OR strpos($filename,'woocommerce') !== false){
+            echo "<br />"."$filename\n";
+        }
+    }
+    echo '</div>';
+}
+?>
 </body>
 </html>

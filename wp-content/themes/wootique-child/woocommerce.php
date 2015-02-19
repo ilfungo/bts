@@ -1,5 +1,5 @@
-<?php 
-  get_header(); ?>
+<?php
+get_header(); ?>
 <div class="page-seperator"></div>
 <div class="container">
    <?php woocommerce_content(); ?>

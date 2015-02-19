@@ -1,8 +1,8 @@
 <?php
 /**
- * Grouped product add to cart
+ * Grouped product add to cart - Override
  *
- * @author 		WooThemes
+ * @author 		simone
  * @package 	WooCommerce/Templates
  * @version     2.1.7
  */
@@ -14,8 +14,10 @@ global $product, $post;
 $parent_product_post = $post;
 
 do_action( 'woocommerce_before_add_to_cart_form' ); ?>
+<?php if (is_product()){ ?>
 
 <form class="cart" method="post" enctype='multipart/form-data'>
+
 	<table cellspacing="0" class="group_table">
 		<tbody>
 			<?php
@@ -42,18 +44,9 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 							</label>
 						</td>
 
-						<?php do_action ( 'woocommerce_grouped_product_list_before_price', $product ); ?>
+						<?php  do_action ( 'woocommerce_grouped_product_list_before_price', $product ); ?>
 
-						<td class="price">
-							<?php
-								echo $product->get_price_html();
 
-								if ( $availability = $product->get_availability() ) {
-									$availability_html = empty( $availability['availability'] ) ? '' : '<p class="stock ' . esc_attr( $availability['class'] ) . '">' . esc_html( $availability['availability'] ) . '</p>';
-									echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product );
-								}
-							?>
-						</td>
 					</tr>
 					<?php
 				endforeach;
@@ -65,10 +58,15 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 			?>
 		</tbody>
 	</table>
+<?php } ?>
+
+    <!-- disabilito input type="hidden" per l'acquisto   -->
+<?php if (is_product()){ ?>
 
 	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
 
 	<?php if ( $quantites_required ) : ?>
+
 
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
@@ -77,6 +75,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 
 	<?php endif; ?>
+ <?php } ?>
 </form>
 
 <?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>

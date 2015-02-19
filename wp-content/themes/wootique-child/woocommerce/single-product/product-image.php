@@ -35,7 +35,6 @@ global $post, $woocommerce, $product;
 			//echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<a href="%s" itemprop="image" class="woocommerce-main-image zoom" title="%s" data-rel="prettyPhoto' . $gallery . '">%s</a>', $image_link, $image_title, $image ), $post->ID );
             echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '%s', $image ), $post->ID );
 ?>
-qui scrivo quello che voglio per creare i filtri
 <?php
 
 

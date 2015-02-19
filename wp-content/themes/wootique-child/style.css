@@ -7,6 +7,8 @@ Author URI:     http://www.federicoporta.com
 Template:       quality
 Version:        0.1.0
 */
+
+/*  icone homepage index-service  */
 #icona-annuario{
     margin:25px;
 }
@@ -16,44 +18,29 @@ Version:        0.1.0
 #icona-servizi{
     margin:25px;
 }
-/* aggiunta di padding al content dell'archivio shop */
+/*  archivio prodotti categoria  */
 
-body.archive div#content{
-    padding: 20px;
-    margin-left:130px;
-}
-body.archive input.select-product,input.quick-order-launch{
+/*  rimossa checkbox selezione prodotti  */
+
+body.archive.tax-product_cat input.select-product{
     display:none;
-}
-body.archive ul.products li.product tbody,span
-{
-    display:none;
-}
-body.tax-product_cat form.cart button{
-    display:none;
-}
-body.single-product div#content{
-    padding: 20px;
-    margin-left:130px;
-}
-div.summary span,tbody{
-    display:block;
-}
-div.summary form.cart button{
-    display:block;
-}
-div.summary tbody td.price,td.label{
-     display:none;
- }
-div.summary table,tbody,tr,td{
-   border: none !important;
-}
-div.quantity{
-    width:115px !important;
-    height:28px !important;
-}
-div.related.products form.cart{
-    display:none;
-    margin-top: 100px;
 }
 
+
+
+/*   scheda singolo prodotto  */
+
+
+body.single.single.product div.images{
+    margin-bottom: 0px;
+}
+/* prodotti correlati  */
+body.single.single.product div.related.products{
+    margin-top: 30px;
+}
+body.single.single.product table.group_table tbody,tr,td.label{
+    border:none;
+}
+.woocommerce div.product form.cart .group_table td{
+    border:none;
+}

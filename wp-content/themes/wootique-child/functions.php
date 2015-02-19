@@ -14,12 +14,6 @@ wp_enqueue_style( 'quality', get_template_directory_uri().'/style.css' );
     remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
 
-add_action( 'woocommerce_after_shop_loop_item', 'remove_add_to_cart_buttons', 1 );
-
-function remove_add_to_cart_buttons() {
-    remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
-}
-
 //mostro 100 prodotti per pagina
 add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 100;' ), 20 );
 
@@ -32,3 +26,8 @@ function jk_woocommerce_quantity_input_args( $args, $product ) {
     $args['step'] 		= 1;    // Quantity steps
     return $args;
 }
+
+function remove_loop_button(){
+    remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+}
+add_action('init','remove_loop_button');

@@ -44,3 +44,7 @@ body.single.single.product table.group_table tbody,tr,td.label{
 .woocommerce div.product form.cart .group_table td{
     border:none;
 }
+/*  nascosto button quick order  */
+input.quick-order-launch{
+    display:none;
+}

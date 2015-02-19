@@ -1,0 +1,60 @@
+/*.product canvas{ width: 100%}*/
+
+.woocommerce .product-addon .form-row,
+.woocommerce-page .product-addon .form-row{
+ display: inline-block;
+ margin: -0.1em 0;
+
+ padding:0;
+}
+
+.products .product-addon{
+    display: none;
+}
+
+
+/* Checkbox as buttons */
+
+
+.product-addon-filters label, .product-addon-vignette label {
+    position: relative;
+    overflow: hidden;
+    background-color:#294F6D;
+    border-radius:4px;
+    color: #ffF;
+    /*border:1px solid #D0D0D0;*/
+    padding:0 1em;
+    font-weight: normal;
+    margin: 0;
+}
+.product-addon-vignette label{
+	background-color:#6d2929;
+	margin-bottom: 1em;
+}
+.product-addon-filters label span, .product-addon-vignette label span {
+    text-align:center;
+    font-size: 32px;
+    display:block;
+}
+
+.product-addon-filters label input, .product-addon-vignette label input {
+    position:absolute;
+    top:-20px;
+}
+
+.product-addon-filters .checked, .product-addon-vignette .checked {
+    background-color:#404040;
+    color:#F7F7F7;
+}
+
+.product-addon-filters label:before, .product-addon-vignette label:before {
+    content:'';
+}
+
+.product-addon-filters .checked:before, .product-addon-vignette .checked:before {
+    content:'√';
+}
+
+.addon-name,.addon-description{
+	display:none;
+}

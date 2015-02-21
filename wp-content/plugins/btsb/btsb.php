@@ -4,7 +4,7 @@ Plugin Name: BTSB plugin
 Description: Who cares
 Author: Bruno Bionaz
 Author URI: http://bnj.xyz
-Version: 0.0.1
+Version: 1.0.0
 */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
@@ -53,36 +53,48 @@ function btsb_frontend_scripts() {
 
 function btsb_init(){
 
-
+echo "<div class=\"btsb-plugin\">";
 
 echo "<h1>BTSB Order Management</h1>";
 
 
 
 $workList = getWorkList();
-
-echo "<h3>worklist</h3>";
-
-foreach($workList as $scuolaKey => $scuola){
-
-  $numberImages=0;
-  $numberImagesDone=0;
-
-  foreach($scuola as $classe)
-    foreach ($classe as $img) {
-      $numberImages++;
-      if($img['done']) $numberImagesDone++;
-
-    }
+// echo"<pre>";
+// print_r($workList);
+// echo"</pre>";
+// echo "<h3>worklist</h3>";
 
 
-  echo "<span>$scuolaKey &rarr; </span> <span>$numberImagesDone</span>/<span>$numberImages</span> <button class=\"startBatch\" data-input=\"$scuolaKey\">Start Batch</button>";
-  echo "<pre>";
-  print_r($scuola);
+ echo getWorkListAsHTML($workList);
 
-  echo "</pre>";
-  }
+// foreach($workList as $scuolaKey => $scuola){
+//
+//   $numberImages=0;
+//   $numberImagesDone=0;
+//
+//   foreach($scuola as $classe)
+//     foreach ($classe as $img) {
+//       $numberImages++;
+//       if($img['done']) $numberImagesDone++;
+//
+//     }
+//
+//
+//   echo "<span>$scuolaKey &rarr; </span> <span>$numberImagesDone</span>/<span>$numberImages</span> <button class=\"startBatch\" data-input=\"$scuolaKey\">Start Batch</button>";
+//   echo "<pre>";
+//   print_r($scuola);
+//
+//   echo "</pre>";
+//   }
+
+
+echo '<div class="wrapper-log"><div class="log"></div></div>';
+
+echo "</div>";
+
 }
+
 
 
 
@@ -117,7 +129,6 @@ function array_depth(array $arr)
     array_map($depth($max), explode(PHP_EOL, print_r($arr, true)));
     return ceil(($max - 1) / 2) + 1;
 }
-
 
 
 

@@ -138,43 +138,29 @@ class Product_Addon_Cart {
 
 		global $woocommerce;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		$product_addons = get_product_addons( $product_id );
-
-
-
-
 
 		if ( empty( $cart_item_meta['addons'] ) )
 			$cart_item_meta['addons'] = array();
 
 		if ( ! empty( $product_addons ) && is_array( $product_addons ) && sizeof( $product_addons ) > 0 ) {
+
+			//Cerco anche il parent poiché se ho prodotti grouped i campi aggiuntivi non vengono passati correttamente
+			$prod=new WC_Product($product_id); $product_parent_id=$prod->post->post_parent;
+			//
+
 			foreach ( $product_addons as $addon ) {
 
 				if ( empty( $addon['field-name'] ) )
 					continue;
 
-				/*Bio mod */
-				$prod=new WC_Product($product_id); $product_parent_id=$prod->post->post_parent;
+				//Applico sul prodotto child (quello effettivamente vendibile) i filtri che avevo impostato sul prodotto grouped
 				if($product_parent_id) {
 					$fname = substr( $addon['field-name'], strrpos( $addon['field-name'], '-' ) );
 					$addon['field-name']=$product_parent_id.$fname;
 				}
-				/*Fine mod */
+				//
+
 
 
 

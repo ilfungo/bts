@@ -123,9 +123,28 @@ class Product_Addon_Display {
 			$post_id = $post->ID;
 		}
 
+
+
+
 		$this->addon_scripts();
 
 		$product_addons = get_product_addons( $post_id, $prefix );
+
+		//Se il prodotto è grouped controllo il single product collegato
+		if($product->product_type=='grouped'){
+			$prod=new WC_Product_Grouped($product);
+			$prod=$prod->get_children();
+		} else {
+			$prod=new WC_Product($product);
+		}
+
+
+		if(count($prod)==1){
+
+			$variation=new WC_Product($prod[0]);
+			if(!($variation->post->post_title == "foto focus"))  $product_addons=null; ;
+
+		}
 
 		if ( is_array( $product_addons ) && sizeof( $product_addons ) > 0 ) {
 

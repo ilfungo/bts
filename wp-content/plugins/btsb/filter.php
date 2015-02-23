@@ -239,6 +239,21 @@ public function willow($vignette=false)
         $this->output();
     }
 
+public function originale($vignette=false)
+    {
+        $this->tempfile();
+
+        $command =  "convert -units PixelsPerInch {$this->_tmp} -density 300 ".
+
+        $this->_tmp;
+
+        if($vignette)
+            $this->vignette($this->_tmp, 'none', 'black',1.8);
+
+        $this->execute($command);
+
+        $this->output();
+    }
 
 
 

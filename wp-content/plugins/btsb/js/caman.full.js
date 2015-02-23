@@ -3883,6 +3883,10 @@ jQuery(function(){
 
   var vignette=false;
 
+  jQuery('.product .summary .price').parent().insertBefore('.product .cart .single_add_to_cart_button');
+  jQuery('.product .cart .group_table').not('.related .product .cart .group_table').insertBefore('.product .cart .single_add_to_cart_button');
+
+
   jQuery('.single-product .product').not('.related .product').each(function(){
 
     var $this=jQuery(this);

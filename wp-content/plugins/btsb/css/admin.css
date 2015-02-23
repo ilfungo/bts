@@ -1,3 +1,73 @@
-ul{
-    padding-left: 2em;
+
+.btsb-plugin h2,
+.btsb-plugin h3 {
+   display: inline-block;
+   color: #444;
+   margin-top: 1em;
 }
+
+.btsb-plugin table, .btsb-plugin .wrapper-log{
+    border-collapse: collapse;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    margin-bottom:1em;
+    padding: 1px 12px;
+
+    background: #fff;
+
+}
+
+.btsb-plugin .classe .label{
+    margin: 0;
+}
+
+.btsb-plugin .classe h3{
+    margin:0;
+}
+
+
+.btsb-plugin .wrapper-log{
+    padding: 12px 0 12px 12px;
+
+    width: 600px;
+}
+
+.btsb-plugin .log{
+    max-height: 300px;
+    overflow: auto;
+
+
+}
+
+.btsb-plugin tr{
+    border-left: 4px solid #fff;
+
+
+}
+
+
+.btsb-plugin tr.error{
+    border-color: #dd3d36;
+}
+
+
+.btsb-plugin tr.done{
+    border-color: #7ad03a;
+}
+
+
+.btsb-plugin tr.not-done{
+    border-color: #ffba00;
+}
+
+
+.btsb-plugin td, .btsb-plugin th{
+    padding: 0.5em 1em;
+    border-right:1px solid #eee;
+}
+
+.btsb-plugin table .vignette {
+    text-align: center;
+}
+
+

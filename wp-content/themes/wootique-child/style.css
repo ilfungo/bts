@@ -18,7 +18,6 @@ Version:        0.1.0
 #icona-servizi{
     margin:25px;
 }
-/*  archivio prodotti categoria  */
 
 /*  rimossa checkbox selezione prodotti  */
 
@@ -26,25 +25,117 @@ body.archive.tax-product_cat input.select-product{
     display:none;
 }
 
-
-
 /*   scheda singolo prodotto  */
-
 
 body.single.single.product div.images{
     margin-bottom: 0px;
 }
-/* prodotti correlati  */
-body.single.single.product div.related.products{
-    margin-top: 30px;
-}
-body.single.single.product table.group_table tbody,tr,td.label{
-    border:none;
-}
+/* rimuove bordi celle tabella form.cart  */
+
 .woocommerce div.product form.cart .group_table td{
     border:none;
 }
-/*  nascosto button quick order  */
+
+/* prodotti correlati  */
+
+body.single.single-product div.related.products ul.products li.product form.cart{
+    display:none;
+}
+
+/*  nascosto button quick order  elenco prodotti*/
+
 input.quick-order-launch{
     display:none;
+}
+
+/*  personalizzata size immagine prodotti  */
+
+.woocommerce ul.products li.product a img, .woocommerce-page ul.products li.product a img{
+    width: auto !important;
+    min-width: 0 !important;
+}
+.container .related, .container .product {
+    display:block;
+}
+/*
+.woocommerce .related ul li.product, .woocommerce .related ul.products li.product, .woocommerce .upsells.products ul li.product, .woocommerce .upsells.products ul.products li.product, .woocommerce-page .related ul li.product, .woocommerce-page .related ul.products li.product, .woocommerce-page .upsells.products ul li.product, .woocommerce-page .upsells.products ul.products li.product{
+    width: auto !important;
+    min-width: 0 !important;
+}*/
+.attachment-shop_single{
+    width:100%;
+    max-width:547px;
+    height:auto;
+}
+
+/*.woocommerce .related ul li.product, .woocommerce .related ul.products li.product, .woocommerce .upsells.products ul li.product, .woocommerce .upsells.products ul.products li.product, .woocommerce-page .related ul li.product, .woocommerce-page .related ul.products li.product, .woocommerce-page .upsells.products ul li.product, .woocommerce-page .upsells.products ul.products li.product {
+    width: 22%;
+}*/
+.cart .div_price{
+    width:200px;
+    float:left;
+}
+.cart .div_price p {
+    margin: 3px 0 0 0 ;
+}
+.cart .group_table{
+    width:130px;
+    float:left;
+    border-width: 0 0;
+}
+.cart .group_table td{
+    margin:0;
+    padding:0;
+    width:60px;
+}
+.cart .group_table td.label{
+    display:none;
+}
+
+#content div.product p.price span{
+    color: #ad74a2;
+    font-size: 1.25em;
+}
+#content div.product p.price {
+    color: #000;
+    font-size: 1em;
+}
+form.cart{
+    margin-bottom:0;
+}
+
+.pull-right{
+    float:right;
+    border: 1px solid #dfdbdf;
+    padding: 20px;
+    margin: 2em 0 2em 0px;
+    margin: 0;
+    text-align: left;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#footer-text{
+    float: left;
+}
+#credits{
+    float:right;
+    text-transform: uppercase;
+    display:block;
+    margin-left: 2em;
+    font-size: 0.7em;
+}
+
+/*media all*/
+.login{
+    border: 1px solid #dfdbdf;
+    padding: 20px;
+    margin: 2em 0 2em 0px;
+    text-align: left;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.warning{
+    color:red;
 }

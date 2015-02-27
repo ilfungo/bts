@@ -39,8 +39,8 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 						</td>
 
 						<td class="label">
-							<label for="product-<?php echo $product_id; ?>">
-								<?php echo $product->is_visible() ? '<a href="' . get_permalink() . '">' . get_the_title() . '</a>' : get_the_title(); ?>
+							<label for="product-r<?php echo $product_id; ?>">
+								<?php echo $product->is_visible() ? '<a href="' . get_permalink() . '">123' . get_the_title() . '</a>' : get_the_title(); ?>
 							</label>
 						</td>
 

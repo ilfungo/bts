@@ -387,7 +387,6 @@ class Dokan_Template_reviews {
     }
 
     function render_row( $comment, $post_type ) {
-        // var_dump( $comment );
 
         $comment_date = get_comment_date( 'Y/m/d \a\t g:i a', $comment->comment_ID );
         $comment_author_img = get_avatar( $comment->comment_author_email, 32 );

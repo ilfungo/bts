@@ -1,0 +1,453 @@
+.woocommerce, .woocommerce-page {
+
+/* =General Layout Styles
+-------------------------------------------------------------- */
+
+img {
+    height:auto;
+    max-width:100%;
+}
+
+/* =Product Page
+-------------------------------------------------------------- */
+
+div.product, #content div.product {
+div.thumbnails {
+.clearfix;
+a {
+    float:left;
+    width: 30.75%;
+    margin-right: 3.8%;
+}
+a.last {
+    margin-right: 0;
+}
+a.first {
+    clear:both;
+}
+}
+/* Tabs on the product page */
+.woocommerce-tabs {
+    clear:both;
+ul.tabs {
+.menu;
+}
+}
+#reviews {
+.comment {
+.mediaright;
+}
+}
+}
+#quantity, #content .quantity {
+/* Disable input[type=number] buttons until the world is ready */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    display:none;
+}
+}
+
+/* =Product Loops
+-------------------------------------------------------------- */
+
+/*.related, .upsells.products {
+.clearfix();
+ul.products, ul {
+float:none;
+li.product {
+width: 48%;
+img {
+width: 100%;
+height:auto;
+}
+}
+}
+}*/
+
+ul.products {
+    clear:both;
+.clearfix;
+li.product {
+    margin: 0 0 2.992em 0;
+    padding: 0;
+    position: relative;
+    margin-left: 0;
+}
+}
+
+.woocommerce-result-count {
+    float: left;
+}
+.woocommerce-ordering {
+    float: right;
+}
+
+.woocommerce-pagination {
+ul.page-numbers {
+.menu;
+}
+}
+
+/* =Cart Page
+-------------------------------------------------------------- */
+
+table.cart, #content table.cart {
+.product-thumbnail {
+    display: none;
+}
+img {
+    height:auto;
+}
+td.actions {
+.coupon {
+    padding-bottom:.5em;
+}
+input, .button, .input-text {
+    width:48%;
+.borderbox;
+}
+.input-text + .button, .button.alt {
+    float: right;
+}
+}
+}
+
+.cart-collaterals {
+.clearfix;
+width: 100%;
+.related {
+    width: 30.75%;
+    float:left;
+}
+
+.cross-sells {
+ul.products {
+    float:none;
+
+li {
+    width: 48%;
+}
+}
+}
+.shipping_calculator {
+.col2-set {
+.col-1, .col-2 {
+    width: 47%;
+}
+}
+}
+}
+
+/* =Cart Sidebar
+-------------------------------------------------------------- */
+
+ul.cart_list, ul.product_list_widget {
+li {
+.mediaright;
+}
+}
+
+/* =Forms
+-------------------------------------------------------------- */
+
+form {
+.form-row {
+.clearfix;
+label {
+    display:block;
+&.checkbox {
+    display: inline;
+}
+}
+select {
+    width: 100%;
+}
+.input-text {
+.borderbox;
+width:100%;
+}
+}
+.form-row-first, .form-row-last {
+    float:left;
+    width: 47%;
+    overflow: visible;
+}
+.form-row-last {
+    float: right;
+}
+.form-row-wide {
+    clear: both;
+}
+}
+
+&.woocommerce-checkout {
+form.login {
+.form-row {
+    width: 100%;
+    float: none;
+}
+}
+}
+
+#payment {
+.form-row {
+select {
+    width:auto;
+}
+}
+#place_order {
+    width:100%;
+.borderbox;
+margin-bottom:1em;
+}
+}
+
+}
+
+
+@media only screen and (min-width: 30em) { //480px
+.woocommerce, .woocommerce-page {
+
+    /* =Product Loops
+    -------------------------------------------------------------- */
+// 2 products/row
+              ul.products {
+    li.product {
+        width:48%;
+        float: left;
+    &:nth-child(2n) { // last element of the line
+    float: right;
+    }
+    &:nth-child(2n+1) { // first element of the line
+    clear: both;
+    }
+}
+}
+}
+}
+
+@media only screen and (min-width: 37.5em) { //600px
+.woocommerce, .woocommerce-page {
+    /* =General Layout Styles
+    -------------------------------------------------------------- */
+    .col2-set {
+    .clearfix;
+    width: 100%;
+    .col-1 {
+        float:left;
+        width: 48%;
+    }
+    .col-2 {
+        float: right;
+        width: 48%;
+    }
+}
+
+/* =Product Page
+-------------------------------------------------------------- */
+div.product, #content div.product {
+div.images {
+    float:left;
+    width: 48%;
+}
+div.summary {
+    float: right;
+    width: 48%;
+}
+}
+
+/* =Product Loops
+-------------------------------------------------------------- */
+// 3 products/row
+              ul.products {
+li.product {
+    margin-right: 1.8%;
+    width: 32.05%;
+&:nth-child(2n) { // reset float
+float: left;
+}
+&:nth-child(2n+1) { //reset clear
+clear: none;
+}
+&:nth-child(3n) { // last element of the line
+margin-right: 0;
+}
+&:nth-child(3n+1) { // first element of the line
+clear: both;
+}
+}
+}
+
+/* =Cart Page
+-------------------------------------------------------------- */
+table.cart, #content table.cart {
+.product-thumbnail {
+    display: block; // TODO: or inline block?
+}
+td.actions {
+    text-align: right;
+input, .button{
+    width:auto;
+}
+.input-text {
+    width:80px;
+}
+.input-text + .button, .button.alt {
+    float: none;
+}
+.coupon {
+    padding-bottom:0;
+    float:left;
+label {
+    display:none;
+}
+}
+}
+}
+
+.cart-collaterals {
+.cross-sells {
+    width:48%;
+    float: left;
+.clearfix;
+clear: right;
+}
+.shipping_calculator {
+    width:48%;
+    float: right;
+.clearfix;
+clear: right;
+}
+.cart_totals {
+    width:48%;
+    float: right;
+    text-align: right;
+}
+}
+
+/* =Forms
+-------------------------------------------------------------- */
+&.woocommerce-checkout {
+form.login {
+.form-row-first, .form-row-last {
+    float:left;
+    width: 47%;
+    overflow: visible;
+}
+.form-row-last {
+    float: right;
+}
+}
+}
+
+#payment {
+.terms {
+    text-align: right;
+    padding: 0 1em 0;
+}
+#place_order {
+    float: right;
+    width:auto;
+    margin-bottom: 0;
+}
+}
+}
+}
+
+@media only screen and (min-width: 60em) { //960px
+.woocommerce, .woocommerce-page {
+
+    /* =Product Loops
+    -------------------------------------------------------------- */
+// 4 products/row
+              ul.products {
+    li.product {
+        margin-right: 3.8%;
+        width: 22.05%;
+    &:nth-child(3n) { // reset margin
+    margin-right: 3.8%;
+    }
+    &:nth-child(3n+1) { // reset clear
+    clear: none;
+    }
+    &.first {
+        clear: both;
+    }
+    &.last {
+        margin-right:0;
+    }
+}
+}
+
+/*&.columns-1 {
+ul.products {
+li.product {
+width:100%;
+margin-right:0;
+}
+}
+}
+&.columns-2 {
+ul.products {
+li.product {
+width:48%;
+}
+}
+}
+&.columns-3 {
+ul.products {
+li.product {
+width:30.75%;
+}
+}
+}
+&.columns-5 {
+ul.products {
+li.product {
+width:16.95%;
+}
+}
+}
+&.columns-6 {
+ul.products {
+li.product {
+width:13.5%;
+}
+}
+}*/
+}
+}
+
+/* =Mixins
+-------------------------------------------------------------- */
+.clearfix() {
+&:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+}
+.menu() {
+.clearfix;
+li {
+    display:inline;
+}
+}
+.mediaright() {
+.clearfix;
+img {
+    float:right;
+    height:auto;
+}
+}
+.medialeft() {
+.clearfix;
+img {
+    float:right;
+    height:auto;
+}
+}
+.borderbox() {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+}

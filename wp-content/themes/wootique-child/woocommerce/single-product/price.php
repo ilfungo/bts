@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 ?>
-<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="div_price">
 
-	<p class="price"><?php echo $product->get_price_html(); ?></p>
+	<p class="price">Prezzo per foto: <span><?php echo $product->get_price_html(); ?></span></p>
 
 	<meta itemprop="price" content="<?php echo $product->get_price(); ?>" />
 	<meta itemprop="priceCurrency" content="<?php echo get_woocommerce_currency(); ?>" />

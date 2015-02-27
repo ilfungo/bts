@@ -30,7 +30,7 @@ function dokan_variable_product_type_options() {
         }
     }
 
-    // var_dump( $attributes, $tax_classes, $tax_class_options );
+
     ?>
     <div id="variable_product_options" class="wc-metaboxes-wrapper">
         <div id="variable_product_options_inner">
@@ -1322,7 +1322,7 @@ add_filter( 'registration_errors', 'dokan_seller_registration_errors' );
  * @param array $data
  * @return array
  */
-function dokan_new_customer_data( $data ) {
+function dokan_new_dokan_seller_registration_errors_data( $data ) {
     $allowed_roles = array( 'customer', 'seller' );
     $role = ( isset( $_POST['role'] ) && in_array( $_POST['role'], $allowed_roles ) ) ? $_POST['role'] : 'customer';
 

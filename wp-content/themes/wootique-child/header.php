@@ -46,6 +46,19 @@
               <?php } ?>			
             </div>
           </div>
+            <?php
+            global $current_user;
+            if(is_user_logged_in()){
+            ?>
+            <div class="login pull-right" >
+                <?php
+                //var_dump($current_user);
+                $billing_last_name = get_user_meta($current_user->ID, "billing_last_name",true);
+                $billing_first_name = get_user_meta($current_user->ID, "billing_first_name",true);
+                echo '<a href="/?page_id=9">'.$billing_first_name." ".$billing_last_name."</a>";
+                ?>
+            </div>
+            <?php } ?>
           <!-- Collect the nav links, forms, and other content for toggling -->
           
             <?php /*	wp_nav_menu( array(  

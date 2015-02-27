@@ -13,7 +13,6 @@ global $post, $woocommerce, $product;
 
 ?>
 <div class="images">
-
 	<?php
 		if ( has_post_thumbnail() ) {// ha il post thumbnail
 

@@ -224,6 +224,14 @@ if ( is_woocommerce_activated() ) {
 					'view_woocommerce_reports'  => $can_view_reports,
 				);
 
+                /*
+                    "read_shop_order",
+                    "edit_shop_order",
+                    "delete_shop_order",
+                    "delete_shop_orders",
+                    "edit_shop_orders",
+                */
+
 				remove_role( 'vendor' );
 				add_role( 'vendor', 'Vendor', $args );
 			} // Update permalinks

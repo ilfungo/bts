@@ -28,7 +28,34 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
 	 * Embeds a form for password submission into a post via a shortcode.
 	 */
      function catprotector_shortcode( $atts ) {
-		global $post;
+		global $post,$current_user;
+
+         get_currentuserinfo();
+         $ruolo=$current_user->roles;
+         $user_id = $current_user->ID;
+         $the_slug = $current_user->user_url;
+
+         //var_dump($current_user);
+         /* questo è un pezzo di codice superato!!!
+         if($the_slug!=""){
+             $to_remove = array( 'http://', 'https://' );
+             foreach ( $to_remove as $item ) {
+                 $the_slug = str_replace($item, '', $the_slug);
+             }
+             //echo "the_slug -> ".$the_slug;
+
+             $product_cat = get_term_by('slug', $the_slug, 'product_cat');
+
+             //var_dump($product_cat);
+             $user_url = get_term_link( $product_cat);
+             //exit();
+
+             if($ruolo[0]=='customer' and $user_url != ''){
+                 print_r($user_url);echo "123";exit();
+                 wp_safe_redirect( $user_url );
+             }
+         }*/
+
 		extract( shortcode_atts( array(
 			'label' => __( 'Vai alla tua scuola', 'catprotector' ),
 			'ID' => 'smartPWLogin',
@@ -72,7 +99,6 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
 		// Store password for the length in the constant
 		setcookie( 'wp-postpass_' . COOKIEHASH, $cookiePW, time() + SECONDS_TO_STORE_PW, COOKIEPATH );
 		wp_safe_redirect( $perma );
-		exit();
 	}
 	
 	/**
@@ -135,9 +161,13 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
             //var_dump($option_name);
             if ($option_name!="") {//todo migliorare il controllo qui!
                 $term = get_term( $option_name, "product_cat" );
-                $term_link = get_term_link( $term);
+                $term_link = get_term_link($term);
+                //var_dump($term);
+                $_SESSION["scuola_id"] = $term->term_id;
+                $_SESSION["scuola_slug"] = $term->slug;
+                $_SESSION["scuola_name"] = $term->name;
                 $this->pw_redirect( $term_link, $postPassword );
-            }
+			}
 
 
 			// Nothing more to do here. If we reached here, we've submitted a pw but no match was found. 

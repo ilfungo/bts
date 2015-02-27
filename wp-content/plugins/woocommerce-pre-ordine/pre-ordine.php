@@ -1,4 +1,4 @@
-﻿<?php
+﻿﻿<?php
 /*
 Plugin Name: WooCommerce Pre Ordine Gateway
 Plugin URI: http://woothemes.com/woocommerce

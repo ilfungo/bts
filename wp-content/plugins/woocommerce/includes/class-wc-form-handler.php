@@ -868,6 +868,7 @@ class WC_Form_Handler {
 
 				$validation_error = new WP_Error();
 				$validation_error = apply_filters( 'woocommerce_process_registration_errors', $validation_error, $_username, $_password, $_POST['email'] );
+                //print_r($validation_error);
 
 				if ( $validation_error->get_error_code() ) {
 					throw new Exception( '<strong>' . __( 'Error', 'woocommerce' ) . ':</strong> ' . $validation_error->get_error_message() );

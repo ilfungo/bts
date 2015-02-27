@@ -58,7 +58,6 @@ function dokan_product_seller_tab( $val ) {
 
     $author = get_user_by( 'id', $product->post->post_author );
     $store_info = dokan_get_store_info( $author->ID );
-//    var_dump( $store_info );
     ?>
     <ul class="list-unstyled">
 

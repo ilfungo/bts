@@ -56,11 +56,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		</form>
 
-<?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
+
 
 	</div>
 
 	<div class="col-2">
+
+        <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' && $_SESSION["scuola_id"] != 0) : ?>
 
 		<h2><?php _e( 'Register', 'woocommerce' ); ?></h2>
 
@@ -105,10 +107,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php do_action( 'woocommerce_register_form_end' ); ?>
 
 		</form>
+        <?php else : ?>
+            <div <?php post_class(); ?>>
 
+                <h1 class="title"><?php the_title(); ?></h1>
+
+                <div class="entry login">
+                    <p class="form-row form-row-wide">
+                        <label for="istruzioni">Se non sei già in possesso di un account devi prima inserire la parola d'ordine della scuola
+                            e nella schermata successiva la tua classe.<br>
+                            Una volta inserita la scuola e la classe potranno essere effettuati ordini solo dalla classe e dalla scuola specificata.
+                            <br>Non sarà possibile modificare la scuola e la classe in nessun modo.
+                        </label>
+                        <?php echo do_shortcode('[catprotector]');?>
+                    </p>
+                </div><!-- /.entry -->
+
+            </div><!-- /.post -->
+        <?php endif; ?>
 	</div>
 
 </div>
-<?php endif; ?>
+
 
 <?php do_action( 'woocommerce_after_customer_login_form' ); ?>

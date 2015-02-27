@@ -38,7 +38,7 @@ class WCV_Vendor_Shop
 		add_action( 'woocommerce_add_order_item_meta', array('WCV_Vendor_Shop', 'add_vendor_to_order_item_meta'), 10, 2 );
 
 		// Add a vendor header 
-		if (WC_Vendors::$pv_options->get_option( 'shop_headers_enabled' ) ) { 
+		if (WC_Vendors::$pv_options->get_option( 'shop_headers_enabled' ) ) {
 			add_action( 'woocommerce_before_main_content', array('WCV_Vendor_Shop', 'vendor_main_header'), 20 ); 
 			add_action( 'woocommerce_before_single_product', array('WCV_Vendor_Shop', 'vendor_mini_header')); 
 		}
@@ -175,7 +175,7 @@ class WCV_Vendor_Shop
 		$sold_by = WCV_Vendors::is_vendor( $author )
 			? sprintf( '<a href="%s">%s</a>', WCV_Vendors::get_vendor_shop_page( $author), WCV_Vendors::get_vendor_shop_name( $author ) )
 			: get_bloginfo( 'name' );
-		echo '<small>' . apply_filters('wcvendors_sold_by_in_loop', __( 'Sold by: ', 'wcvendors' )). $sold_by . '</small> <br />';
+		echo '<small>' . apply_filters('wcvendors_sold_by_in_loop', __( 'Scuola: ', 'wcvendors' )). $sold_by . '</small> <br />';
 	}
 
 

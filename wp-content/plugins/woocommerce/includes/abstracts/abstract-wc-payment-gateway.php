@@ -200,7 +200,7 @@ abstract class WC_Payment_Gateway extends WC_Settings_API {
 	 * @param int $order_id
 	 * @return array
 	 */
-	public function process_payment( $order_id ) {
+	public function process_payment( $order_id ) { 
 		return array();
 	}
 

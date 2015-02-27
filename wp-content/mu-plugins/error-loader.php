@@ -23,5 +23,5 @@ function fp_debug_mode() {
 }
 fp_debug_mode();
 */
-define('WP_DEBUG', true);
+//define('WP_DEBUG', true);
 ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_WARNING & ~E_STRICT);

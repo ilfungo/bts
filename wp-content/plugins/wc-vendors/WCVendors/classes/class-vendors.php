@@ -49,7 +49,7 @@ class WCV_Vendors
 	public static function get_vendors_from_order( $order, $items = false )
 	{
 		if ( !$order ) return;
-		if ( !$items ) $items = $order->get_items();
+		if ( !$items ) $items = $order->get_items();//ciao
 
 		$vendors = array();
 		foreach ( $items as $key => $product ) {
@@ -63,7 +63,7 @@ class WCV_Vendors
 		}
 
 		return apply_filters( 'pv_vendors_from_order', $vendors, $order );
-	}
+	}//
 
 
 	/**

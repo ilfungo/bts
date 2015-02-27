@@ -30,7 +30,6 @@ function dokan_variable_product_type_options() {
         }
     }
 
-    // var_dump( $attributes, $tax_classes, $tax_class_options );
     ?>
     <div id="variable_product_options" class="wc-metaboxes-wrapper">
         <div id="variable_product_options_inner">
@@ -85,8 +84,6 @@ function dokan_variable_product_type_options() {
                 );
                 $variations = get_posts( $args );
                 $loop = 0;
-
-                // var_dump( $variations );
 
                 if ( $variations ) foreach ( $variations as $variation ) {
 

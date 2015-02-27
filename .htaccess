@@ -1,4 +1,7 @@
-
+#AuthUserFile /home/federico/public_html/btsb.bnj.xyz/.htpasswd
+#AuthType Basic
+#AuthName "ospite"
+#Require valid-user
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On

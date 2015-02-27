@@ -736,13 +736,14 @@ function wp_get_attachment_image($attachment_id, $size = 'thumbnail', $icon = fa
 		 */
 		$attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment, $size );
 		$attr = array_map( 'esc_attr', $attr );
+        //var_dump($attr);
 		$html = rtrim("<img $hwstring");
 		foreach ( $attr as $name => $value ) {
 			$html .= " $name=" . '"' . $value . '"';
 		}
 		$html .= ' />';
 	}
-
+    //echo "si".$html."si";
 	return $html;
 }
 

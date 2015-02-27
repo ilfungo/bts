@@ -2,11 +2,14 @@
 <div class="qua_footer_area">
   <div class="container">
     <div class="col-md-12">
-      <p><?php if($current_options['footer_customizations']!='') { echo $current_options['footer_customizations']; } ?>
-	  <?php if($current_options['created_by_webriti_text']!=''){?>
-        <a target="_blank" rel="nofollow" href="<?php if($current_options['created_by_link']!='') { echo esc_url($current_options['created_by_link']); } ?>"><?php echo $current_options['created_by_webriti_text']; ?></a>
-		<?php } else { echo $current_options['created_by_webriti_text']; }?>
-      </p>
+      <div id="footer-text"><p>
+          <?php if($current_options['footer_customizations']!='') { echo $current_options['footer_customizations']; } ?></p>
+      </div>
+          <?php if($current_options['created_by_webriti_text']!=''){?>
+        <div id="credits">
+              <a target="_blank" rel="nofollow" href="<?php if($current_options['created_by_link']!='') { echo esc_url($current_options['created_by_link']); } ?>"><?php echo $current_options['created_by_webriti_text']; ?></a>
+        </div>
+          <?php } else { echo $current_options['created_by_webriti_text']; }?>
     </div>
   </div>
 </div>
@@ -25,15 +28,15 @@ get_currentuserinfo();
 
 $ruolo=$current_user->roles;
 $login=$current_user->user_login;
+$role = array_shift($ruolo);
 //echo "ruolo -> ".$ruolo[0];
-// scrivo questa cosa
 
 /*scrivo un commenttino qui*/
 
 /*if($ruolo[0]=="administrator"){
 	echo $login;
 }*/
-if($ruolo[0]=="administrator"){
+//if($role=="administrator"){
     echo "<div>";
     global $wp_query;
     echo $wp_query->request;
@@ -47,7 +50,7 @@ if($ruolo[0]=="administrator"){
         }
     }
     echo '</div>';
-}
+//}
 ?>
 </body>
 </html>

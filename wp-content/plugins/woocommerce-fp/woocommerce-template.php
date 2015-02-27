@@ -13,28 +13,28 @@ function fp_woocommerce_remove_reviews_tab($tabs) {
 }
 
 
-
+//ciao ciao
 
 // Add term page
 // == Aggiungo un campo password in chiaro alla pagina (HALF) categoria
 // cioè http://localhost/bts/wp-admin/edit-tags.php?taxonomy=product_cat&post_type=product
-function tutorialshares_taxonomy_add_new_meta_field() {
+function vpwd_taxonomy_add_new_meta_field() {
 	// this will add the custom meta field to the add new term page
 	?>
 	<div class="form-field">
-		<label for="term_meta[custom_term_meta]"><?php _e( 'Password in chiaro', 'tutorialshares' ); ?></label>
-		<input type="text" name="term_meta[custom_term_meta]" id="term_meta[custom_term_meta]" value="">
+		<label for="term_meta[visible_password]"><?php _e( 'Password in chiaro', 'tutorialshares' ); ?></label>
+		<input type="text" name="term_meta[visible_password]" id="term_meta[visible_password]" value="">
 		<p class="description"><?php _e( 'Attribuisci una password alla categoria per renderla accessibile solo attraverso una password specifica, non inserire spazi o caratteri speciali, solo numeri e lettere','tutorialshares' ); ?></p>
 	</div>
 <?php
 }
-add_action( 'product_cat_add_form_fields', 'tutorialshares_taxonomy_add_new_meta_field', 10, 2 );
+add_action( 'product_cat_add_form_fields', 'vpwd_taxonomy_add_new_meta_field', 10, 2 );
 // == Aggiungo un campo password in chiaro alla pagina (HALF) categoria
 
 // == Aggiungo un campo password in chiaro alla pagina (FULL) categoria
 // esempio http://localhost/bts/wp-admin/edit-tags.php?action=edit&taxonomy=product_cat&tag_ID=14&post_type=product
 // Edit term page
-function tutorialshares_taxonomy_edit_meta_field($term) {
+function vpwd_taxonomy_edit_meta_field($term) {
  
 	// put the term ID into a variable
 	$t_id = $term->term_id;
@@ -42,15 +42,15 @@ function tutorialshares_taxonomy_edit_meta_field($term) {
 	// retrieve the existing value(s) for this meta field. This returns an array
 	$term_meta = get_option( "taxonomy_$t_id" ); ?>
 	<tr class="form-field">
-	<th scope="row" valign="top"><label for="term_meta[custom_term_meta]"><?php _e( 'Password in chiaro', 'tutorialshares' ); ?></label></th>
+	<th scope="row" valign="top"><label for="term_meta[visible_password]"><?php _e( 'Password in chiaro', 'tutorialshares' ); ?></label></th>
 		<td>
-			<input type="text" name="term_meta[custom_term_meta]" id="term_meta[custom_term_meta]" value="<?php echo esc_attr( $term_meta['custom_term_meta'] ) ? esc_attr( $term_meta['custom_term_meta'] ) : ''; ?>">
+			<input type="text" name="term_meta[visible_password]" id="term_meta[visible_password]" value="<?php echo esc_attr( $term_meta['visible_password'] ) ? esc_attr( $term_meta['visible_password'] ) : ''; ?>">
 			<p class="description"><?php _e( 'Attribuisci una password alla categoria per renderla accessibile solo attraverso una password specifica, non inserire spazi o caratteri speciali, solo numeri e lettere','tutorialshares' ); ?></p>
 		</td>
 	</tr>
 <?php
 }
-add_action( 'product_cat_edit_form_fields', 'tutorialshares_taxonomy_edit_meta_field', 10, 2 );
+add_action( 'product_cat_edit_form_fields', 'vpwd_taxonomy_edit_meta_field', 10, 2 );
 // == Aggiungo un campo password in chiaro alla pagina (FULL) categoria
 
 // Save extra taxonomy fields callback function.
@@ -74,7 +74,7 @@ add_action( 'create_product_cat', 'save_taxonomy_custom_meta', 10, 2 );
 /*====to display data====*/
 
 //$metafieldArray = get_option('taxonomy_'. $term->term_id);
-//$metafieldoutput = $metafieldArray['custom_term_meta'];
+//$metafieldoutput = $metafieldArray['visible_password'];
 
 //echo $metafieldoutput;
 
@@ -116,7 +116,7 @@ if ( !function_exists('fp_category_unlock_form') ) :
             $term_id = get_queried_object_id();
         }
 
-        print_r($term_id );
+        //print_r($term_id );
         /*
         print_r($ptp_importer);
         print_r($bptpi_premium);
@@ -127,10 +127,12 @@ if ( !function_exists('fp_category_unlock_form') ) :
         // qui gli devo dire che if(is_tax()){ allora deve prendere la
         //perchè ritora un hash??? com'è salvata la password??
 
-        if(is_tax("product_cat")){echo " è una taxonomy product_cat";}
+        //if(is_tax("product_cat")){echo " è una taxonomy product_cat";}
+
+        //ciao
 
         $password_hash = ptp_get_term_meta( $term_id, $bptpi_premium->term_password_meta_key, true );
-        echo $password_hash ;
+        //echo $password_hash ;
 
         if ( !$password_hash )
             return;
@@ -198,3 +200,118 @@ $role_object->add_cap( 'edit_theme_options' );
 */
 
 //remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9, 2);
+
+// Hook in
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+// Our hooked in function - $fields is passed via the filter!
+//documentaion page: http://docs.woothemes.com/document/tutorial-customising-checkout-fields-using-actions-and-filters/
+function custom_override_checkout_fields( $fields ) {
+    unset($fields['order']['order_comments']);
+    unset($fields['billing']['billing_address_1']);
+    unset($fields['billing']['billing_address_2']);
+    unset($fields['billing']['billing_postcode']);
+    unset($fields['billing']['billing_city']);
+    unset($fields['billing']['billing_company']);
+    unset($fields['billing']['billing_state']);
+    //unset($fields['billing']['billing_country_field']);
+    unset($fields['billing']['billing_country']);
+    //unset($fields['billing']['billing_address_1']);
+    unset($fields['shipping']['woocommerce-shipping-fields']);
+
+    //print_r($fields);
+
+    return $fields;
+}
+
+/**
+
+ * Redirect non-logged-in users to the registration page
+
+ */
+
+
+//se non ho fatto login non posso vedere nè i prodotti nè le categorie prodotto!!
+add_action( 'template_redirect', function(){
+    global $current_user;
+    $billing_scuola_taxonomy_slug = get_user_meta($current_user->ID, "billing_scuola_taxonomy_slug",true);
+
+    //se vado alla pagina del login ma non ho un valore che soddisfi l'id taxonomy faccio redirect alla pag smistamento!!
+    //cambio logica, faccio vedere solo il login e non la registrazione
+    /*if( ! is_user_logged_in() && is_page( array(9)) && $_SESSION["scuola_id"] == 0  && (empty( $_POST['billing_first_name'] ) || ! empty( $_POST['billing_first_name'] ) && trim( $_POST['billing_first_name'] ) == '')){
+        wp_redirect( '/?page_id=2' );
+        exit;
+    }*/
+    if( ! is_user_logged_in() && (is_product_category() || is_product())){
+        wp_redirect( '/?page_id=9&caso=caso3' );
+        exit;
+    }elseif( is_page( array(2)) && get_user_role()=="customer"){
+    //se sono nella pagina 2 (vai alla scuola) e sono logato allora effettuo redirect esattamente alla mia scuola
+        if($billing_scuola_taxonomy_slug!=""){
+            wp_redirect( '/?product_cat='.$billing_scuola_taxonomy_slug."&caso=caso2" );
+            exit;
+        }
+    }elseif( get_user_role()=="customer" && (is_tax("product_cat") || is_product())){
+        //se sono logato (implicito) e il mio ruolo è di customer e sono in una product category o in un prodotto
+        //devo verificare che io sia nella mia specifica procut category!!!
+        //echo wc_origin_trail_ancestor();
+        if($billing_scuola_taxonomy_slug!=wc_origin_trail_ancestor()){
+            wp_redirect( '/?product_cat='.$billing_scuola_taxonomy_slug."&caso=caso3" );
+            exit;
+        }
+    }
+    //echo $current_user->user_login;
+});
+
+    function get_user_role(){
+        global $current_user;
+        $roles = $current_user->roles;
+        $role = array_shift($roles);
+        return $role;
+    }
+
+
+function wc_origin_trail_ancestor( $link = false, $trail = false ) {
+//http://wordpress.stackexchange.com/questions/56784/get-main-parent-categories-for-a-product
+
+    if (is_tax("product_cat")) {
+        global $wp_query;
+        $q_obj = $wp_query->get_queried_object();
+        $cat_id = $q_obj->term_id;//12
+
+        $descendant = get_term_by("id", $cat_id, "product_cat");
+        $descendant_id = $descendant->term_id;//12
+
+        $ancestors = get_ancestors($cat_id, 'product_cat');
+        $ancestors = array_reverse($ancestors);
+
+        $origin_ancestor = get_term_by("id", $ancestors[0], "product_cat");
+        $origin_ancestor_id = $origin_ancestor->term_id;
+
+        $ac = count($ancestors);
+        if($ac==0){$ancestors[0]=$descendant_id;}
+
+    } else if ( is_product() ) {
+
+        $descendant = get_the_terms( $post->ID, 'product_cat' );
+        $descendant = array_reverse($descendant);
+        $descendant = $descendant[0];
+        $descendant_id = $descendant->term_id;
+
+        $ancestors = array_reverse(get_ancestors($descendant_id, 'product_cat'));
+        $ac = count($ancestors);
+
+    }else{
+        return "no_product-no_cat";
+    }
+    //echo "si lo sono!!!123";
+    //exit();
+    //$c = 1;
+    //exit();
+
+
+        $origin_ancestor_term = get_term_by("id", $ancestors[0], "product_cat");
+        return $origin_ancestor_term->slug;
+
+
+}

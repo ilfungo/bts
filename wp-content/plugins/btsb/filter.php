@@ -270,6 +270,7 @@ $vignette = (bool)$argv[4];
 
 
     if (!file_exists($outputdir)) {
+    umask(0777);
     mkdir($outputdir, 0777, true);
 }
 

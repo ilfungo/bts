@@ -4,7 +4,8 @@ define('_WP_DIR','/home/federico/public_html/btsb.bnj.xyz/');
 define('_BTSB_DIR','/home/federico/public_html/btsb.bnj.xyz/wp-content/plugins/btsb/');
 define('_ORDERS_DIR','/home/federico/ordini/');
 define( '_SCHEDULE_FILE', _BTSB_DIR."batch.schedule" );
-define('WP_USE_THEMES', false);
+if(!defined('WP_USE_THEMES'))
+  define('WP_USE_THEMES', false);
 
 date_default_timezone_set('Europe/Rome');
 
@@ -16,7 +17,7 @@ function getWorkList(){
 
   $args = array(
     'post_type' => 'shop_order',
-    'post_status' => 'publish',
+    'post_status' => array( 'wc-pending', 'wc-processing', 'wc-on-hold' ),
     'posts_per_page' => '-1'
     );
   $my_query = new WP_Query($args);
@@ -37,7 +38,7 @@ function getWorkList(){
    $user=$order->get_user();
    $status=$order->get_status();
 
-   if($status=='completed') continue;
+   //if($status=='completed') continue;
 
    foreach ($items as $item) {
     //echo "<pre>";
@@ -168,7 +169,7 @@ function getWorkListAsHTML($worklist){
             $str.='<td class="vignette">'.$vignetteStr.'</td>';
             /*ORDER CELL*/
             $str.='<td class="qty">'.$img['qty'].'</td>';
-            if(!$done && $img['type']!='annuario') $buttonStr = "<button class=\"startBatch\" data-input=\"$imgKey\">Start Single</button>"; else $buttonStr = "Yes!";
+            if(!$done && $img['type']!='annuario') $buttonStr = "<button class=\"startSingle\" data-input=\"$imgKey\">Start Single</button>"; else $buttonStr = "Yes!";
             $str.='<td class="done">'.$buttonStr.'</td>';
 
 

@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: BTSB plugin
+Plugin Name: BTS plugin
 Description: Who cares
 Author: Bruno Bionaz
 Author URI: http://bnj.xyz
-Version: 1.0.0
+Version: 1.0.1
 */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
@@ -12,12 +12,22 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 if ( ! function_exists( 'getWorkList' ) )
       require_once( 'btsb-functions.php' );
 
-
+add_action('init', 'bts_localization');
 
 add_action('admin_init', 'btsb_scripts_basic' );
 add_action('admin_menu', 'btsb_setup_menu');
 
 add_action( 'wp_enqueue_scripts', 'btsb_frontend_scripts' );
+
+
+function bts_localization()
+{
+// Localization
+load_plugin_textdomain('bts', false, dirname(plugin_basename(__FILE__)));
+}
+
+// Add actions
+
 
 
 function btsb_scripts_basic()
@@ -31,7 +41,7 @@ function btsb_scripts_basic()
 
 
 function btsb_setup_menu(){
-        $page_hook_suffix = add_menu_page( __('BTSB'), __('BTSB Orders'), 'manage_options', 'btsb', 'btsb_init', 'dashicons-images-alt2' );
+        $page_hook_suffix = add_menu_page( __('BTS'), __('BTS Orders'), 'manage_options', 'bts', 'btsb_init', 'dashicons-images-alt2' );
 
         add_action('admin_print_scripts-' . $page_hook_suffix, 'btsb_admin_scripts');
 }
@@ -51,49 +61,22 @@ function btsb_frontend_scripts() {
 
 
 
-function btsb_init(){
+function btsb_init(){ ?>
 
-echo "<div class=\"btsb-plugin\">";
-
-echo "<h1>BTSB Order Management</h1>";
-
-
-
-$workList = getWorkList();
-// echo"<pre>";
-// print_r($workList);
-// echo"</pre>";
-// echo "<h3>worklist</h3>";
-
-
- echo getWorkListAsHTML($workList);
-
-// foreach($workList as $scuolaKey => $scuola){
-//
-//   $numberImages=0;
-//   $numberImagesDone=0;
-//
-//   foreach($scuola as $classe)
-//     foreach ($classe as $img) {
-//       $numberImages++;
-//       if($img['done']) $numberImagesDone++;
-//
-//     }
-//
-//
-//   echo "<span>$scuolaKey &rarr; </span> <span>$numberImagesDone</span>/<span>$numberImages</span> <button class=\"startBatch\" data-input=\"$scuolaKey\">Start Batch</button>";
-//   echo "<pre>";
-//   print_r($scuola);
-//
-//   echo "</pre>";
-//   }
+    <div class="btsb-plugin">
+    <h1>BTS Order Management</h1>
+    <?php
+        $workList = getWorkList();
+        if(count($workList) >0)
+            echo getWorkListAsHTML($workList);
+        else
+            echo "<table><tr><td>No ununfinished orders found.</td></tr></table>";
+    ?>
+    <div class="wrapper-log"><div class="log"></div></div>
+    </div>
 
 
-echo '<div class="wrapper-log"><div class="log"></div></div>';
-
-echo "</div>";
-
-}
+<?php }
 
 
 

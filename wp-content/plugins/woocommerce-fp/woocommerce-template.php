@@ -242,7 +242,18 @@ add_action( 'template_redirect', function(){
         wp_redirect( '/?page_id=2' );
         exit;
     }*/
-    if( ! is_user_logged_in() && (is_product_category() || is_product())){
+    //session_unset();
+    //session_destroy();
+
+    global $wp;
+    $current_url = $wp->query_string;
+    if(!is_user_logged_in() && $_SESSION["scuola_slug"] &&  is_page( array(2))){
+        wp_redirect( '/?page_id=9&caso=caso5' );
+        exit;
+    }elseif($current_url=="post_type=product" && get_user_role()!="administrator"){
+        wp_redirect( '/?caso=caso6' );
+        exit;
+    }elseif( ! is_user_logged_in() && (is_product_category() || is_product())){
         wp_redirect( '/?page_id=9&caso=caso3' );
         exit;
     }elseif( is_page( array(2)) && get_user_role()=="customer"){
@@ -315,3 +326,19 @@ function wc_origin_trail_ancestor( $link = false, $trail = false ) {
 
 
 }
+
+function template_loop_sold_by_cat($product_id) {
+    //$author     = WCV_Vendors::get_vendor_from_product( $product_id );
+    //$sold_by = WCV_Vendors::is_vendor( $author )
+    //  ? sprintf( '<a href="%s">%s</a>', WCV_Vendors::get_vendor_shop_page( $author), WCV_Vendors::get_vendor_shop_name( $author ) )
+    //    : get_bloginfo( 'name' );
+    $scuola = wc_origin_trail_ancestor();
+    $term = get_term_by('slug', $scuola, 'product_cat');
+    $scuola_name = $term->name;
+    $link_scuola = "/?product_cat=".$scuola;
+    echo '<small>Scuola: <a href="'.$link_scuola.'">'.$scuola_name.'</a></small> <br />';
+}
+
+// Add sold by to product loop before add to cart
+remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9 );
+//add_action( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat', 9 );

@@ -36,7 +36,7 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
          $the_slug = $current_user->user_url;
 
          //var_dump($current_user);
-         /* questo è un pezzo di codice superato!!!
+         // questo è un pezzo di codice superato!!!
          if($the_slug!=""){
              $to_remove = array( 'http://', 'https://' );
              foreach ( $to_remove as $item ) {
@@ -54,7 +54,7 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
                  print_r($user_url);echo "123";exit();
                  wp_safe_redirect( $user_url );
              }
-         }*/
+         }
 
 		extract( shortcode_atts( array(
 			'label' => __( 'Vai alla tua scuola', 'catprotector' ),
@@ -131,7 +131,11 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
 				'post_status' => 'publish'
 			);
 
-
+            /*echo $wpdb->prepare(
+                "SELECT option_name FROM $wpdb->options WHERE option_value LIKE %s",
+                '%:"'.$postPassword.'";%'
+            );
+            exit();*/
             $results = $wpdb->get_row($wpdb->prepare(
                 "SELECT option_name FROM $wpdb->options WHERE option_value LIKE %s",
                 '%:"'.$postPassword.'";%'
@@ -162,7 +166,7 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
             if ($option_name!="") {//todo migliorare il controllo qui!
                 $term = get_term( $option_name, "product_cat" );
                 $term_link = get_term_link($term);
-                //var_dump($term);
+                //echo $term_link ;var_dump($term);exit();
                 $_SESSION["scuola_id"] = $term->term_id;
                 $_SESSION["scuola_slug"] = $term->slug;
                 $_SESSION["scuola_name"] = $term->name;

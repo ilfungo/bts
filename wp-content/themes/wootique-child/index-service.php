@@ -7,7 +7,7 @@
 			<?php if($current_options['service_one_icon']) { ?>
 			<div class="hexagon-box">
                 <?php $image_attributes = wp_get_attachment_image_src('976','full'); ?>
-              <a href=""><img id="icona-annuario" src="<?php echo $image_attributes[0]; ?>"width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>"></a>
+              <a href="/?page_id=1421"><img id="icona-annuario" src="<?php echo $image_attributes[0]; ?>"width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>"></a>
 			</div>
 			<?php } ?>
 			<?php if($current_options['service_one_title']) { ?>
@@ -21,7 +21,7 @@
 			<?php if($current_options['service_two_icon']) { ?>
 			<div class="hexagon-box">
                 <?php $image_attributes = wp_get_attachment_image_src('977','full'); ?>
-                <a href=""><img id="icona-maglieria" src="<?php echo $image_attributes[0]; ?>"width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>"></a>
+                <a href="/?page_id=1423"><img id="icona-maglieria" src="<?php echo $image_attributes[0]; ?>"width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>"></a>
             </div>
 			<?php } ?>
 			<?php if($current_options['service_two_title']) { ?>
@@ -35,7 +35,7 @@
 			<?php if($current_options['service_three_icon']) { ?>
 			<div class="hexagon-box">
                 <?php $image_attributes = wp_get_attachment_image_src('978','full'); ?>
-                <a href=""><img id="icona-servizi" src="<?php echo $image_attributes[0]; ?>"width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>"></a>
+                <a href="/?page_id=1417"><img id="icona-servizi" src="<?php echo $image_attributes[0]; ?>"width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>"></a>
             </div>
 			<?php } ?>
 			<?php if($current_options['service_three_title']) { ?>

@@ -139,3 +139,11 @@ form.cart{
 .warning{
     color:red;
 }
+
+.qua_page_heading {
+    margin: 0 auto;
+}
+
+.qua-separator {
+    margin: 20px auto 0;
+}

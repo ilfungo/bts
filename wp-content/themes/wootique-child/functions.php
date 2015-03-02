@@ -78,7 +78,7 @@ function wooc_extra_register_fields() {
     <p class="form-row form-row-wide validate-required" id="billing_classe_field">
         <label for="billing_scuola" class="">Classe <abbr class="required" title="obbligatorio">*</abbr>
         </label>
-        <span class="warning"><strong>Attenzione</strong> la classe inserita è vincolante per l'ordine! Scegliendo la classe sbagliata non potrai acquistare le foto!</span>
+        <span class="warning"><strong>Attenzione</strong> la classe inserita è vincolante per l'ordine! Scegliendo la classe sbagliata non potrai acquistare e vedere le tue foto!</span>
         <br><br>
         <?php
         function woocommerce_subcats_from_parentcat_by_ID($parent_cat_ID,$isArray=true) {
@@ -205,3 +205,4 @@ function wooc_save_extra_register_fields( $customer_id ) {
 }
 
 add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
+

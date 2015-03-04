@@ -1,29 +1,37 @@
 <?php
 
 
+
 if ( ! function_exists( 'getWorkList' ) )
     require_once( 'btsb-functions.php' );
 
 require_once(_WP_DIR.'wp-load.php');
 
+if(isset( $_REQUEST['arg'] ) )
+    
+    $arg = $_REQUEST['arg'];
+
+elseif(isset($argv[1]))
+
+    $arg = $argv[1];
+
+else
+
+    $arg = trim(file_get_contents(_SCHEDULE_FILE));
+
+if(empty($arg)) die("Nothing to do");
 
 
-
-
-
-
-
-$arg=file_get_contents(_SCHEDULE_FILE);
 
 define( '_LOCK_FILE', _BTSB_DIR.'batch'."-".$arg.".lock" );
 
 //echo  _SCHEDULE_FILE;
-if(empty($arg) ) die("Nothing scheduled");
+
 
 $worklist=getWorkList();
 
 
-print_r($worklist);
+
 
 foreach ($worklist as $scuolaKey => $scuola) {
     foreach ($scuola as $classeKey => $classe) {
@@ -59,18 +67,18 @@ if(!empty($worklist[$arg])) {
 
             $logStr= $keyClasse . ' ' . $img['title'] . ' ' .$img['filter'] . ' ' .$img['vignette'];
 
-            echo "php "._BTSB_DIR."filter.php {$img['input']} {$img['output']} {$img['filter']} {$img['vignette']}\n";
-            echo $img['type']."\n";
+            //echo "php "._BTSB_DIR."filter.php {$img['input']} {$img['output']} {$img['filter']} {$img['vignette']}\n";
+            //echo $img['type']."\n";
             if( !(is_WorkListItemDone($img['output'])) && !($img['type']=='annuario')){
 
                 $a=$img['type']=='annuario';
-                var_dump( $a ) ;
+
 
                 if(file_exists($img['input'])){
 
                     fwrite($fdLog, date('c') .' '. $logStr . ' Filtering started' . "\n");
-
-                    exec("php "._BTSB_DIR."filter.php {$img['input']} {$img['output']} {$img['filter']} {$img['vignette']}" );
+                
+                    exec("php "._BTSB_DIR."filter.php " . escapeshellcmd( $img['input'] . " " . $img['output'] . " " . $img['filter'] . " " . $img['vignette'] ) . "" );
                     fwrite($fdLog, date('c') .' '. $logStr . ' Filtering done' . "\n");
 
                 } else { fwrite($fdLog, date('c') .' '. $logStr . ' Input file not found' . "\n"); }
@@ -91,17 +99,21 @@ if(!empty($worklist[$arg])) {
 } elseif(!empty($singleBatch)){
 
     $img = $singleBatch;
+
+            print_r($img);
+            
             if(!is_WorkListItemDone($img['output']) && $img['type']!='annuario'){
                 echo "doing img\n";
-                $start = microtime();
+                
+                echo "php "._BTSB_DIR."filter.php " . escapeshellcmd( $img['input'] . " " . $img['output'] . " " . $img['filter'] . " " . $img['vignette'] ) . " &";
+                //exec("php "._BTSB_DIR."filter.php {$img['input']} {$img['output']} {$img['filter']} {$img['vignette']}" );
+                exec("php "._BTSB_DIR."filter.php " . escapeshellcmd( $img['input'] . " " . $img['output'] . " " . $img['filter'] . " " . $img['vignette'] ) . " &" );
 
-                exec("php "._BTSB_DIR."filter.php {$img['input']} {$img['output']} {$img['filter']} {$img['vignette']}" );
-                $end =microtime();
-                $timeElapsed= $end-$start;
+
                 fwrite($fdLog, date('c') .' '. $keyClasse . ' ' .$img['filter'].' '.$timeElapsed."\n");
 
             } else {
-                //TODO
+                fwrite($fdLog, date('c') .' '. $logStr . ' Skipping' . "\n");
             }
 
 }

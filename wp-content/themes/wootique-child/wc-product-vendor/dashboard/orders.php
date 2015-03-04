@@ -40,6 +40,9 @@ jQuery(function () {
 <?php global $woocommerce; ?>
 
 
+
+
+
 <?php
 
 /* ESECUZIONE COMANDI */
@@ -122,7 +125,13 @@ if( isset($_GET['wc_pv_change_qty']) ){
 ?>
 
 
+
 <?php if ( function_exists( 'wc_print_notices' ) ) { wc_print_notices(); } ?>
+
+
+
+
+
 
 
 <?php
@@ -290,6 +299,9 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 						<?php /* if (!empty( $item_meta ) && $item_meta != '<dl class="variation"></dl>') : ?>
 							<?php echo $item_meta; ?>
 						<?php endif; */ ?>
+						<?php if (!empty( $item_meta ) && $item_meta != '<dl class="variation"></dl>') : ?>
+							<?php echo $item_meta; ?>
+						<?php endif; ?>
 
 				</tr>
 

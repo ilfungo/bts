@@ -27,7 +27,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 					setup_postdata( $post );
 					?>
 					<tr>
-						<td>
+						<td class="qt-selector">
 							<?php if ( $product->is_sold_individually() || ! $product->is_purchasable() ) : ?>
 								<?php woocommerce_template_loop_add_to_cart(); ?>
 							<?php else : ?>
@@ -37,12 +37,13 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 								?>
 							<?php endif; ?>
 						</td>
-
+                        <?php if(1==2){?>
 						<td class="labeld">
 							<label for="product-r<?php echo $product_id; ?>">
 								<?php echo $product->is_visible() ? '<a href="' . get_permalink() . '">' . get_the_title() . '</a>' : get_the_title(); ?>
 							</label>
 						</td>
+                        <?php }?>
 
 						<?php  do_action ( 'woocommerce_grouped_product_list_before_price', $product ); ?>
 

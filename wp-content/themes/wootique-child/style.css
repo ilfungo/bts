@@ -147,3 +147,20 @@ form.cart{
 .qua-separator {
     margin: 20px auto 0;
 }
+/*
+.woocommerce div.product form.cart .group_table td.qt-selector {
+    width: 60px;
+}
+.cart .group_table td.labeld {
+    width: 119px;
+}
+.woocommerce div.product form.cart .group_table td.labeld {
+    width: 119px;
+}
+.woocommerce .quantity, .woocommerce #content .quantity, .woocommerce-page .quantity, .woocommerce-page #content .quantity {
+    width: 119px;
+}
+*/
+.woocommerce div.product form.cart .group_table td, .woocommerce #content div.product form.cart .group_table td, .woocommerce-page div.product form.cart .group_table td, .woocommerce-page #content div.product form.cart .group_table td {
+    padding-bottom: 0em;
+}

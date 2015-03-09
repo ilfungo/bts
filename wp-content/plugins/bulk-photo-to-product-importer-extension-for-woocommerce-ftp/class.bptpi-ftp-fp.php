@@ -290,6 +290,39 @@ class bptpi_ftp_fp {
                 //effettua l'import del file senza creare il watermark e usa delle dimensioni che non so...
                 $response = $this->upload_file($cwd,$file);
                 echo "<br>response --> ";print_r($response);
+                //echo "<br>".print_r($ini_array);
+                //echo "<br>";
+                $dati_foto=explode("-",$file);
+                //print_r($dati_foto);
+                //echo "<br>";
+                $scuola = get_term_by('id', $ini_array[scuolaID], 'product_cat');
+                //echo "<br>";
+                $slug_classe = strtolower($dati_foto[1]."-".$scuola->slug);
+                $classe_scuola = get_term_by('slug', $slug_classe, 'product_cat');
+                if(!$classe_scuola){
+                    $args = array(
+                            'slug' => $slug_classe,
+                            'parent'=> $ini_array[scuolaID]
+                    );
+                    $inserted_term = wp_insert_term( $dati_foto[1], "product_cat", $args );
+                    $classe_scuola = get_term_by('id', $inserted_term[term_id], 'product_cat');
+                }
+                switch($dati_foto[2]){
+                    case "FF":
+                        $variation_group = "8";//foto focus
+                        break;
+                    case "CL":
+                        $variation_group = "34";//foto di classe
+                        break;
+                    case "AN":
+                        $variation_group = "35";//foto focus
+                        break;
+                }
+                //echo "<br>scuolaclasse";
+                //print_r($classe_scuola);
+                //echo "<br>";
+                //print_r($scuola);
+
 
                 //forse questo fa solo l'importazione base... che è quello che avviene alla riga dopo???
                 //ad esclusione delle variations
@@ -297,15 +330,44 @@ class bptpi_ftp_fp {
                 //$file = $photos_obj->get_file( $response['file_id'] );
                 $photos_obj->get_file( $response['file_id'] );
                 //$html = ptp_uploaded_item_html($file);
-                $output = $this->product_import();
+
+                /*$val_to_post = array (  'ptp_nonce' => $nonce,
+                    '_wp_http_referer' => '/wp-admin/admin.php?page=ptp_bulk_import',
+                    'term_id' => '13',
+                    'variation_group' => '8',
+                    'password_protect' => 'No',
+                    'action' => 'ptp_product_import',
+                    'attachments' => array('0' => $response[file_id]),
+                    'titles' => array($response[file_id] => '')
+                );*/
+
+
+
+                $nonce  = wp_create_nonce( 'ptp_nonce' );
+                $val_for_creation = array (
+                    'ptp_nonce' => $nonce,
+                    '_wp_http_referer' => '/wp-admin/admin.php?page=ptp_bulk_import',
+                    'term_id' => $classe_scuola->term_id,
+                    'variation_group' => $variation_group,
+                    'password_protect' => 'No',
+                    'action' => 'ptp_product_import',
+                    'attachments' => array('0' => $response[file_id]),
+                    'titles' => array($response[file_id] => ''),
+                    'userID' => $ini_array[scuolaID]
+                );
+
+                $output = $this->product_import($val_for_creation);
                 //mkdir("./fatto", 0755);
 
-                $done_dir = $cwd."/fatto";
+
+                $done_dir = $cwd."file_importati";
                 echo "done_dir".$done_dir;
+
                 if ( !file_exists( $done_dir ) ) {
                     @mkdir( $done_dir, 0755, true );
+                    //qui l'errore andrebbe gestito (tipo directory non scrivibile)
                 }
-
+                //exit();
                 // Rename original file by prepending downloadable_
                 echo "<br>filename".$filename;echo "<br>{$done_dir}/done_{$file}";
                 rename( $filename , "{$done_dir}/done_{$file}" );
@@ -332,23 +394,26 @@ class bptpi_ftp_fp {
         }
     }
 
-    public function product_import() {
+    public function product_import($val_for_creation) {
         //check_ajax_referer( 'ptp_product_import', 'ptp_nonce' );//torna meno uno poverino...
 
         $photos_obj = PTPImporter_Product::getInstance();
-        $val_to_post = array (  'ptp_nonce' => "d102f4569a",
+        /*
+        $val_to_post = array (  'ptp_nonce' => $nonce,
                                 '_wp_http_referer' => '/wp-admin/admin.php?page=ptp_bulk_import',
                                 'term_id' => '13',
                                 'variation_group' => '8',
                                 'password_protect' => 'No',
                                 'action' => 'ptp_product_import',
-                                'attachments' => array('0' => '1531'),
-                                'titles' => array('1531' => '')
-                            );
+                                'attachments' => array('0' => $response[file_id]),
+                                'titles' => array($response[file_id] => '')
+                            );*/
+        //response --> Array ( [success] => 1 [variations] => [file_id] => 1658 )
         //print_r($val_to_post);
         //exit();
         //sostituisco $_POST con $val_to_post
-        $post_ids = $photos_obj->create($val_to_post);//devo solo scoprire quali sono i valori da passare
+        $post_ids = $this->create($val_for_creation);//riscrivo la funzione perchè così posso mettere lo user che voglio io (da ini)!!!
+        //$post_ids = $photos_obj->create($val_for_creation);//devo solo scoprire quali sono i valori da passare
 /*
 Array
 (
@@ -472,6 +537,80 @@ Array
         //}
 
         //return array( 'success' => false, 'error' => $_FILES['ptp_attachment']['name'] );
+    }
+
+    /**
+     * Insert a new post
+     *
+     * @param array $posted
+     * @return array $post_ids
+     */
+    //creazione foto
+    public function create( $posted ) {
+        global $ptp_importer;
+        $photos_obj = PTPImporter_Product::getInstance();
+
+        $settings_obj = PTPImporter_Settings::getInstance();
+        $settings = $settings_obj->get();
+        $post_ids = array();
+
+        foreach ( $posted['attachments'] as $file_id ) {
+            $file_data = $photos_obj->get_file( $file_id );
+
+            $post = array(
+                'post_title' => $posted['titles'][$file_id] ? $posted['titles'][$file_id] : $file_data['name'],
+                'post_content' => '',
+                'post_type' => 'product',
+                'post_status' => 'publish',
+                'post_author' => $posted['userID'],
+                'tax_input' => array(
+                    'product_type' => array( ptp_product_type_term_id() ),
+                    'product_cat' => array( $posted['term_id'] )
+                )
+            );
+//print_r($post);
+            //exit();
+            // Create product
+            $post_id = wp_insert_post( $post );
+            $post_ids[] = $post_id;
+
+            // Form product metadata
+            $metadata = ptp_product_metadata_defaults();
+
+            // Attach event date to this product
+            $metadata[ $ptp_importer->event_date_meta_key ] = date( 'Y-m-d H:i:s', strtotime( $posted['date'] ) );
+
+            // Add meta that determines if this product is imported by this plugin
+            $metadata['_ptp_product'] = 'yes';
+            // Record attachment id for later use
+            $metadata['_ptp_attchement_id'] = $file_id;
+            // Record the variation group id
+            $metadata['_ptp_variation_group_id'] = $posted['variation_group'];
+
+            // Update metadata
+            foreach ( $metadata as $key => $value ) {
+                update_post_meta( $post_id, $key, $value );
+            }
+
+            // Set file as the post thumbnail for the product
+            set_post_thumbnail( $post_id, $file_id );
+
+            // Create variations(child products) for this grouped product
+            $photos_obj->create_variations( $posted['variation_group'], $post_id, $file_data );
+
+            if(isset($posted['assoc'][$file_id]))
+            {
+                unset($posted['users']);
+                $posted['users'] = $posted['assoc'][$file_id];
+                unset($posted['assoc']);
+            }
+
+            do_action( 'ptp_create_products_complete', $post_id, $posted['term_id'], $posted['users']);
+
+            sleep(intval($settings['interval']));
+        }
+
+        return $post_ids;
     }
 
     function write_ini_file($assoc_arr, $path, $has_sections=FALSE) {

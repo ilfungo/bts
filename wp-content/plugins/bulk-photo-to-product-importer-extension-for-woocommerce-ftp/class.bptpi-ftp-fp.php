@@ -228,6 +228,47 @@ class bptpi_ftp_fp {
 		return true;
 	}
 
+    function admin_error($string) {
+        ?>
+        <div id="message" class="error below-h2">
+            <p><?php _e( $string, 'my-text-domain' ); ?></p>
+        </div>
+    <?php
+    }
+    //add_action( 'admin_notices', 'my_admin_notice' );
+
+
+    function check_ini_integrity($ini_array){
+        $error = "";
+        //print_r($ini_array);
+        $term = get_term( $ini_array[scuolaID] , "product_cat" );
+        $user = get_userdata( $ini_array[userID] );
+        if(($term->slug != $ini_array[scuolaSlug]) || ($ini_array[scuolaSlug]=='')){
+            $error = "Il file ini non è configurato correttamente: parametri della scuola";
+            return $error;
+        }
+        if(($user->user_login != $ini_array[userName]) || ($ini_array[userID]=='')){
+            $error = "Il file ini non è configurato correttamente: parametri dell'utente";
+            return $error;
+        }
+        return $error;
+    }
+    function check_file_integrity($file){
+        $dati_foto=explode("-",$file);
+        //print_r($dati_foto);
+        $error = "";
+        if(count($dati_foto)<3){
+            $error = "Il file $file ha un nome non conforme ai parametri standard";
+            return $error;
+        }
+        $pt = array("FF","CL","AN");
+        if(!in_array($dati_foto[2],$pt)){
+            $error = "Il file $file ha un nome non conforme ai parametri standard";
+            return $error;
+        }
+        return $error;
+    }
+
 	//Handle the imports
     function handle_fp_imports() {
         //global $ptp_importer;
@@ -237,35 +278,23 @@ class bptpi_ftp_fp {
 
             $files = array_map('stripslashes', $_POST['files']);
             $cwd = trailingslashit(stripslashes($_POST['cwd']));
-            $ini_files="";
 
+
+            $ini_files="";
             foreach (glob($cwd."*.ini") as $file) {
                 $ini_file = $file;
             }
-            if($ini_file==""){$err="File ini non presente";}
+            if($ini_file==""){
+                $err="Attenzione file conf.ini mancante o non ha nome conf.ini";
+                $this->admin_error($err);
+                return;
+            }
             $ini_array = parse_ini_file($ini_file, true);
-
-            /*$sampleData = array(
-                'first' => array(
-                    'first-1' => 1,
-                    'first-2' => 2,
-                    'first-3' => 3,
-                    'first-4' => 4,
-                    'first-5' => 5,
-                ),
-                'forth' => array(
-                    'second-1' => 1,
-                    'second-2' => 2,
-                    'second-3' => 3,
-                    'second-4' => 4,
-                    'second-5' => 5,
-                ));
-
-            $success = $this->write_ini_file($sampleData, $ini_file, true);
-            if(!$success){$err="Qualche problema forse il file non ha i permessi di scrittura";}*/
-
-            //print_r($ini_array);
-            //exit;
+            $risultato = $this->check_ini_integrity($ini_array);
+            if($risultato!=""){
+                $this->admin_error($risultato);
+                return;
+            }
 
             $post_id = isset($_REQUEST['post_id']) ? intval($_REQUEST['post_id']) : 0;
             $import_date = isset($_REQUEST['import-date']) ? $_REQUEST['import-date'] : 'file';
@@ -282,19 +311,16 @@ class bptpi_ftp_fp {
 
             foreach ( (array)$files as $file ) {
                 $filename = $cwd . $file;
-                //print_r($file);exit();
-
+                $dati_foto=explode("-",$file);
+                $risultato = $this->check_file_integrity($file);
+                if($risultato!=""){
+                    $this->admin_error($risultato);
+                    return;
+                }
+                //echo $file;exit;
                 //qui devo aggiungere il codice per fare l'upload secondo le modalità di btpti
-                    //$id = $this->handle_import_file($filename, $post_id, $import_date);
-                    //echo "<br>id di handle import file --> ".$id."<br>";
                 //effettua l'import del file senza creare il watermark e usa delle dimensioni che non so...
                 $response = $this->upload_file($cwd,$file);
-                echo "<br>response --> ";print_r($response);
-                //echo "<br>".print_r($ini_array);
-                //echo "<br>";
-                $dati_foto=explode("-",$file);
-                //print_r($dati_foto);
-                //echo "<br>";
                 $scuola = get_term_by('id', $ini_array[scuolaID], 'product_cat');
                 //echo "<br>";
                 $slug_classe = strtolower($dati_foto[1]."-".$scuola->slug);
@@ -315,33 +341,15 @@ class bptpi_ftp_fp {
                         $variation_group = "34";//foto di classe
                         break;
                     case "AN":
-                        $variation_group = "35";//foto focus
+                        $variation_group = "35";//annuario
                         break;
                 }
-                //echo "<br>scuolaclasse";
-                //print_r($classe_scuola);
-                //echo "<br>";
-                //print_r($scuola);
 
 
                 //forse questo fa solo l'importazione base... che è quello che avviene alla riga dopo???
                 //ad esclusione delle variations
                 //qui devo aggiungere il codice per fare l'upload secondo le modalità di btpti
-                //$file = $photos_obj->get_file( $response['file_id'] );
                 $photos_obj->get_file( $response['file_id'] );
-                //$html = ptp_uploaded_item_html($file);
-
-                /*$val_to_post = array (  'ptp_nonce' => $nonce,
-                    '_wp_http_referer' => '/wp-admin/admin.php?page=ptp_bulk_import',
-                    'term_id' => '13',
-                    'variation_group' => '8',
-                    'password_protect' => 'No',
-                    'action' => 'ptp_product_import',
-                    'attachments' => array('0' => $response[file_id]),
-                    'titles' => array($response[file_id] => '')
-                );*/
-
-
 
                 $nonce  = wp_create_nonce( 'ptp_nonce' );
                 $val_for_creation = array (
@@ -353,32 +361,21 @@ class bptpi_ftp_fp {
                     'action' => 'ptp_product_import',
                     'attachments' => array('0' => $response[file_id]),
                     'titles' => array($response[file_id] => ''),
-                    'userID' => $ini_array[scuolaID]
+                    'userID' => $ini_array[userID]
                 );
 
                 $output = $this->product_import($val_for_creation);
-                //mkdir("./fatto", 0755);
-
 
                 $done_dir = $cwd."file_importati";
-                echo "done_dir".$done_dir;
 
                 if ( !file_exists( $done_dir ) ) {
                     @mkdir( $done_dir, 0755, true );
                     //qui l'errore andrebbe gestito (tipo directory non scrivibile)
                 }
-                //exit();
-                // Rename original file by prepending downloadable_
-                echo "<br>filename".$filename;echo "<br>{$done_dir}/done_{$file}";
-                rename( $filename , "{$done_dir}/done_{$file}" );
 
-
+                // Rename original file
+                rename( $filename , "{$done_dir}/{$file}" );
                 //se non mi da errore rinomino e sposto il mio file
-
-                //exit();
-                //qui codice originale, devo usare questo
-                //$id = $this->handle_import_file($filename, $post_id, $import_date);
-                //product_import
 
                 if ( is_wp_error($id) ) {
                     echo '<div class="updated error"><p>' . sprintf(__('<em>%s</em> was <strong>not</strong> imported due to an error: %s', 'bptpi-ftp-fp'), esc_html($file), $id->get_error_message() ) . '</p></div>';
@@ -398,53 +395,17 @@ class bptpi_ftp_fp {
         //check_ajax_referer( 'ptp_product_import', 'ptp_nonce' );//torna meno uno poverino...
 
         $photos_obj = PTPImporter_Product::getInstance();
-        /*
-        $val_to_post = array (  'ptp_nonce' => $nonce,
-                                '_wp_http_referer' => '/wp-admin/admin.php?page=ptp_bulk_import',
-                                'term_id' => '13',
-                                'variation_group' => '8',
-                                'password_protect' => 'No',
-                                'action' => 'ptp_product_import',
-                                'attachments' => array('0' => $response[file_id]),
-                                'titles' => array($response[file_id] => '')
-                            );*/
-        //response --> Array ( [success] => 1 [variations] => [file_id] => 1658 )
-        //print_r($val_to_post);
-        //exit();
+
         //sostituisco $_POST con $val_to_post
         $post_ids = $this->create($val_for_creation);//riscrivo la funzione perchè così posso mettere lo user che voglio io (da ini)!!!
         //$post_ids = $photos_obj->create($val_for_creation);//devo solo scoprire quali sono i valori da passare
-/*
-Array
-(
-    [ptp_nonce] => d102f4569a
-    [_wp_http_referer] => /wp-admin/admin.php?page=ptp_bulk_import
-    [term_id] => 13
-    [variation_group] => 8
-    [password_protect] => Yes
-    [action] => ptp_product_import
-    [attachments] => Array
-        (
-            [0] => 1531
-        )
-
-    [titles] => Array
-        (
-            [1531] =>
-        )
-
-)
- */
-
-        //echo $_POST['id'];
-        //FirePHP($_POST['id'],"upload delle foto");
-        //exit;
 
         if ( !$post_ids ) {
+            /*si ma questo non è più un file ajax
             echo json_encode( array(
                 'success' => false,
                 'error' => $post_ids
-            ) );
+            ) );*/
 
             exit;
         }
@@ -461,9 +422,10 @@ Array
 
         do_action( 'ptp_product_import_complete', $val_to_post );
 
-        echo json_encode( array(
+        /*si ma questo non è più un file ajax
+         * echo json_encode( array(
             'success' => true
-        ) );
+        ) );*/
 
         //da dove chiamo dovrei ritornare qualcosa...
         //exit;
@@ -477,27 +439,10 @@ Array
      */
     //invento alcuni parametri da rivedere con calma inserendo i parametri reali!!!
     public function upload_file($cwd, $file) {
-        /*$stat = stat($cwd.$file);
-        $upload = array(
-            'name' => $file,
-            'type' => 'image/jpeg',
-            'tmp_name' => $file,
-            'error' => 0,
-            'size' => $stat['size']
-        );
-        //print_r($stat);
-        print_r($upload);*/
-        print_r($file);
 
         $uploaded_file = $this->handle_fp_import_file( $cwd.$file, array('test_form' => false) );
-        //deve ritornare
-        //[file] => /home/federico/public_html/btsb.bnj.xyz/wp-content/uploads/2015/03/stigliz.jpg
-        //[url] => http://btsb.bnj.xyz/wp-content/uploads/2015/03/stigliz.jpg
-        //[type] => image/jpeg
-        //var_dump($uploaded_file);exit();
-        //qui
 
-        //if ( isset( $uploaded_file['file'] ) ) {
+
             $file_loc = $uploaded_file[file];
             $file_name = basename($uploaded_file[file]);
             $file_type = wp_check_filetype( $uploaded_file[file] );
@@ -508,9 +453,7 @@ Array
                 'post_content' => '',
                 'post_status' => 'inherit'
             );
-//$this_filename=$cwd.$file;
-//echo $this_filename;
-//exit();
+
             global $ptp_importer;
 
 
@@ -523,16 +466,11 @@ Array
 
             //nonostante wp_insert_attachment ritorini $attach_id questo non ritorna tutto quello che ci aspettiamo!!! (array valorizzato)
             $attach_id = wp_insert_attachment( $attachment, $uploaded_file[file] );
-        echo "<br>attach_id";print_r($attach_id);
             update_post_meta( $attach_id, $ptp_importer->attachment_meta_key, 'yes' );
-        //echo "<br>attach_id";print_r($attach_id);
             $attach_data = wp_generate_attachment_metadata( $attach_id, $file_loc );
             //provo a sostituire deirettamente con il nome del mio add action
             //$attach_data = ptp_generate_watermaked_images( $attach_id, $file_loc );
-            //echo "<br>attach_id";print_r($attach_id);
-            echo "<br>attach_data --> ";print_r($attach_data);
             wp_update_attachment_metadata( $attach_id, $attach_data );
-        //print_r(array( 'success' => true, 'variations' => $variations, 'file_id' => $attach_id ));exit();
             return array( 'success' => true, 'variations' => $variations, 'file_id' => $attach_id );
         //}
 
@@ -568,8 +506,7 @@ Array
                     'product_cat' => array( $posted['term_id'] )
                 )
             );
-//print_r($post);
-            //exit();
+
             // Create product
             $post_id = wp_insert_post( $post );
             $post_ids[] = $post_id;
@@ -596,7 +533,7 @@ Array
             set_post_thumbnail( $post_id, $file_id );
 
             // Create variations(child products) for this grouped product
-            $photos_obj->create_variations( $posted['variation_group'], $post_id, $file_data );
+            $this->create_variations( $posted['variation_group'], $post_id, $posted['userID'], $file_data );
 
             if(isset($posted['assoc'][$file_id]))
             {
@@ -608,6 +545,75 @@ Array
             do_action( 'ptp_create_products_complete', $post_id, $posted['term_id'], $posted['users']);
 
             sleep(intval($settings['interval']));
+        }
+
+        return $post_ids;
+    }
+
+
+
+    /**
+     * Create variations
+     *
+     * @param int $term_id
+     * @param int $parent_id
+     * @param array $file_data
+     * @return array $post_ids
+     */
+    public function create_variations( $term_id, $parent_id, $current_user, $file_data ) {
+        $post_ids = array();
+
+        $variation_obj = PTPImporter_Variation_Group::getInstance();
+        $group = $variation_obj->group( $term_id );
+
+        foreach ( $group->variations as $variation ) {
+            $post = array(
+                'post_title' => $variation['name'],
+                'post_content' => '',
+                'post_type' => 'product',
+                'post_status' => 'publish',
+                'post_author' => $current_user,
+                'post_parent' => $parent_id,
+            );
+
+            // Create product
+            $post_id = wp_insert_post( $post );
+            $post_ids[] = $post_id;
+
+            // Form product metadata
+            $metadata = ptp_product_metadata_defaults();
+            // Set price
+            $metadata['_price'] = $variation['price'];
+            // Set regular price
+            $metadata['_regular_price'] = $variation['price'];
+            // Set visibility to blank so it won't be displayed
+            $metadata['_visibility'] = '';
+            // Add meta that determines if this product is used as variation for a grouped data
+            $metadata['_ptp_as_variation'] = 'yes';
+            // Add SKU
+            $metadata['_sku'] = uniqid();
+
+            if ( $variation['name'] == 'Downloadable' || $variation['name'] == 'downloadable' ) {
+                $uploads_dir = wp_upload_dir();
+                $file_path = $uploads_dir['baseurl'] . '/woocommerce_uploads'  . $uploads_dir['subdir'] . '/downloadable_' . basename( $file_data['url'] );
+
+                // Set as downloadable
+                $metadata['_downloadable'] = 'yes';
+                // Set as virtual'
+                $metadata['_virtual'] = 'yes';
+
+                // Set download path
+                $metadata['_downloadable_files'] = array( md5($file_path) => array( "name" => basename( $file_data['url'] ), "file" => $file_path ));
+                // Set download limit
+                $metadata['_download_limit'] = '';
+                // Set download expiry
+                $metadata['_download_expiry'] = '';
+            }
+
+            // Update metadata
+            foreach ( $metadata as $key => $value ) {
+                update_post_meta( $post_id, $key, $value );
+            }
         }
 
         return $post_ids;
@@ -654,47 +660,6 @@ Array
 
         return $success;
     }
-
-    //Handle the imports
-    /*
-    function handle_original_imports() {
-
-        if ( !empty($_POST['files']) && !empty($_POST['cwd']) ) {
-
-            $files = array_map('stripslashes', $_POST['files']);
-
-            $cwd = trailingslashit(stripslashes($_POST['cwd']));
-            $post_id = isset($_REQUEST['post_id']) ? intval($_REQUEST['post_id']) : 0;
-            $import_date = isset($_REQUEST['import-date']) ? $_REQUEST['import-date'] : 'file';
-
-            $import_to_gallery = isset($_POST['gallery']) && 'on' == $_POST['gallery'];
-            if ( ! $import_to_gallery && !isset($_REQUEST['cwd']) )
-                $import_to_gallery = true; // cwd should always be set, if it's not, and neither is gallery, this must be the first page load.
-
-            if ( ! $import_to_gallery )
-                $post_id = 0;
-
-            flush();
-            wp_ob_end_flush_all();
-
-            foreach ( (array)$files as $file ) {
-                $filename = $cwd . $file;
-
-                $id = $this->handle_import_file($filename, $post_id, $import_date);
-                //handle_original_imports
-                if ( is_wp_error($id) ) {
-                    echo '<div class="updated error"><p>' . sprintf(__('<em>%s</em> was <strong>not</strong> imported due to an error: %s', 'bptpi-ftp-fp'), esc_html($file), $id->get_error_message() ) . '</p></div>';
-                } else {
-                    //increment the gallery count
-                    if ( $import_to_gallery )
-                        echo "<script type='text/javascript'>jQuery('#attachments-count').text(1 * jQuery('#attachments-count').text() + 1);</script>";
-                    echo '<div class="updated"><p>' . sprintf(__('<em>%s</em> has been added to Media library', 'bptpi-ftp-fp'), esc_html($file)) . '</p></div>';
-                }
-                flush();
-                wp_ob_end_flush_all();
-            }
-        }
-    }*/
 
 
     //il mio import (non genera nessun post!)
@@ -804,34 +769,7 @@ Array
         }
 
         // Construct the attachment array
-        /* NON MI SERVE NON è QUI CHE CREO IL MIO POST?? DAVVERO??*/
-        /*
-        $attachment = array(
-            'post_mime_type' => $type,
-            'guid' => $url,
-            'post_parent' => $post_id,
-            'post_title' => $title,
-            'post_name' => $title,
-            'post_content' => $content,
-            'post_date' => $post_date,
-            'post_date_gmt' => $post_date_gmt
-        );
 
-        $attachment = apply_filters('afs-import_details', $attachment, $file, $post_id, $import_date);
-
-        //Win32 fix:
-        $new_file = str_replace( strtolower(str_replace('\\', '/', $uploads['basedir'])), $uploads['basedir'], $new_file);
-
-        // Save the data
-        $id = wp_insert_attachment($attachment, $new_file, $post_id);
-        if ( !is_wp_error($id) ) {
-            $data = wp_generate_attachment_metadata( $id, $new_file );
-            wp_update_attachment_metadata( $id, $data );
-        }
-        //update_post_meta( $id, '_wp_attached_file', $uploads['subdir'] . '/' . $filename );
-
-        return $id;
-        */
         $uploaded_file = array(
             'file' => $new_file,
             'url' => $url,
@@ -1047,7 +985,7 @@ Array
 				$names[] = $sanname;
 		?>
 			<tr class="<?php echo esc_attr(implode(' ', $classes)); ?>" title="<?php if ( ! $file_meets_guidelines ) { _e('Sorry, this file type is not permitted for security reasons. Please see the FAQ.', 'bptpi-ftp-fp'); } elseif ($unreadable) { _e('Sorry, but this file is unreadable by your Webserver. Perhaps check your File Permissions?', 'bptpi-ftp-fp'); } ?>">
-				<th class='check-column'><input type='checkbox' id='file-<?php echo $sanname; ?>' name='files[]' value='<?php echo esc_attr($filename) ?>' <?php //disabled(!$file_meets_guidelines || $unreadable); //@todo commento brutalmente perchè non trovo le guidelines ?> /></th>
+				<th class='check-column'><input type='checkbox' id='file-<?php echo $sanname; ?>' name='files[]' value='<?php echo esc_attr($filename) ?>' <?php disabled(!$file_meets_guidelines || $unreadable); //@todo commento brutalmente perchè non trovo le guidelines ?> /></th>
 				<td><label for='file-<?php echo $sanname; ?>'><?php echo esc_html($filename) ?></label></td>
 			</tr>
 			<?php endforeach; endforeach;?>

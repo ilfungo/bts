@@ -254,6 +254,12 @@ class bptpi_ftp_fp {
         return $error;
     }
     function check_file_integrity($file){
+        //wp_check_filetype( $file, $mimes )
+        $filetype = wp_check_filetype( $file);
+        if($filetype[type] != "image/jpeg"){
+            $error = "Il file $file ha un estensione non conforme a quella richiesta";
+            return $error;
+        }
         $dati_foto=explode("-",$file);
         //print_r($dati_foto);
         $error = "";
@@ -270,16 +276,30 @@ class bptpi_ftp_fp {
     }
 
 	//Handle the imports
+    //questa è la funzione principale controlla tutto l'import
     function handle_fp_imports() {
+        set_time_limit(12000);//due ore prima di andare in timeout
         //global $ptp_importer;
         $photos_obj = PTPImporter_Product::getInstance();
 
+        //se esistono dei file
         if ( !empty($_POST['files']) && !empty($_POST['cwd']) ) {
 
             $files = array_map('stripslashes', $_POST['files']);
             $cwd = trailingslashit(stripslashes($_POST['cwd']));
 
+            //se non mi da errore rinomino e sposto il mio file nella cartella dei file importati
+            $done_dir = $cwd."file_importati";
+            if ( !file_exists( $done_dir ) ) {
+                chmod($cwd, 777);
+                if (!mkdir( $done_dir, 0755, true )) {
+                    $risultato = "Non sono in grado di creare la directory!";
+                    $this->admin_error($risultato);
+                    return;
+                }
+            }
 
+            //leggo e verifico il file di ini
             $ini_files="";
             foreach (glob($cwd."*.ini") as $file) {
                 $ini_file = $file;
@@ -295,7 +315,8 @@ class bptpi_ftp_fp {
                 $this->admin_error($risultato);
                 return;
             }
-
+            //se il file di ini non è buono a questo punto sono giù fuori
+            //parametri di configurazione del plugi originale
             $post_id = isset($_REQUEST['post_id']) ? intval($_REQUEST['post_id']) : 0;
             $import_date = isset($_REQUEST['import-date']) ? $_REQUEST['import-date'] : 'file';
 
@@ -309,20 +330,30 @@ class bptpi_ftp_fp {
             flush();
             wp_ob_end_flush_all();
 
+            //ciclo sui file ed eseguo tutte le operazioni del caso
             foreach ( (array)$files as $file ) {
+                sleep(0.1);//ad ogni ciclo do un decimo di secondo di pace al server
+                //effettuo un check della correttezza del nome del file se il file non va bene per essere caricato allora passo al file successivo
                 $filename = $cwd . $file;
-                $dati_foto=explode("-",$file);
+                $dati_foto = explode("-",$file);
                 $risultato = $this->check_file_integrity($file);
                 if($risultato!=""){
                     $this->admin_error($risultato);
                     return;
                 }
-                //echo $file;exit;
-                //qui devo aggiungere il codice per fare l'upload secondo le modalità di btpti
+                //se è l'annuario...
+                if($dati_foto[2]=='AN'){
+                    //per ora faccio tutto mano!
+                }
+
                 //effettua l'import del file senza creare il watermark e usa delle dimensioni che non so...
+                //effettua upload...
+                //chiama handle_fp_import_file che si occupa di sanitize il file, crea le thumb utili (credo) e sposta il file nella cartella di upload
+                //crea il post, genera i meta
                 $response = $this->upload_file($cwd,$file);
+
+                //prendo la scuola come da configurazione ini e creo una classe se non esiste, se esiste prendo solo l'id
                 $scuola = get_term_by('id', $ini_array[scuolaID], 'product_cat');
-                //echo "<br>";
                 $slug_classe = strtolower($dati_foto[1]."-".$scuola->slug);
                 $classe_scuola = get_term_by('slug', $slug_classe, 'product_cat');
                 if(!$classe_scuola){
@@ -333,6 +364,7 @@ class bptpi_ftp_fp {
                     $inserted_term = wp_insert_term( $dati_foto[1], "product_cat", $args );
                     $classe_scuola = get_term_by('id', $inserted_term[term_id], 'product_cat');
                 }
+                //creo variation group (che determina il prezzo)
                 switch($dati_foto[2]){
                     case "FF":
                         $variation_group = "8";//foto focus
@@ -345,9 +377,6 @@ class bptpi_ftp_fp {
                         break;
                 }
 
-
-                //forse questo fa solo l'importazione base... che è quello che avviene alla riga dopo???
-                //ad esclusione delle variations
                 //qui devo aggiungere il codice per fare l'upload secondo le modalità di btpti
                 $photos_obj->get_file( $response['file_id'] );
 
@@ -366,16 +395,9 @@ class bptpi_ftp_fp {
 
                 $output = $this->product_import($val_for_creation);
 
-                $done_dir = $cwd."file_importati";
-
-                if ( !file_exists( $done_dir ) ) {
-                    @mkdir( $done_dir, 0755, true );
-                    //qui l'errore andrebbe gestito (tipo directory non scrivibile)
-                }
-
                 // Rename original file
                 rename( $filename , "{$done_dir}/{$file}" );
-                //se non mi da errore rinomino e sposto il mio file
+
 
                 if ( is_wp_error($id) ) {
                     echo '<div class="updated error"><p>' . sprintf(__('<em>%s</em> was <strong>not</strong> imported due to an error: %s', 'bptpi-ftp-fp'), esc_html($file), $id->get_error_message() ) . '</p></div>';
@@ -442,7 +464,6 @@ class bptpi_ftp_fp {
 
         $uploaded_file = $this->handle_fp_import_file( $cwd.$file, array('test_form' => false) );
 
-
             $file_loc = $uploaded_file[file];
             $file_name = basename($uploaded_file[file]);
             $file_type = wp_check_filetype( $uploaded_file[file] );
@@ -463,8 +484,6 @@ class bptpi_ftp_fp {
 //(array) (required) Array post_title, post_content (empty string), post_status and post_mime_type
 //wp_generate_attachment_metadata qui abbiamo un'add_action che mi fagenerare il file con il watermark!
 
-
-            //nonostante wp_insert_attachment ritorini $attach_id questo non ritorna tutto quello che ci aspettiamo!!! (array valorizzato)
             $attach_id = wp_insert_attachment( $attachment, $uploaded_file[file] );
             update_post_meta( $attach_id, $ptp_importer->attachment_meta_key, 'yes' );
             $attach_data = wp_generate_attachment_metadata( $attach_id, $file_loc );
@@ -896,6 +915,27 @@ class bptpi_ftp_fp {
 				}
 			}
 		 ?>
+
+        <style type="text/css">
+            .widefat td, .widefat th {
+                padding: 0;
+            }
+            .widefat td, .widefat td ol, .widefat td p, .widefat td ul {
+                font-size: 10px;
+                line-height: 1em;
+            }
+            th.check-column input, th.check-column, .check-column{
+                margin:1px 1px 1px 1px ;
+                padding:0;
+            }
+            .widefat td a{
+                font-size: 13px;
+                line-height: 1.5em;
+            }
+            .widefat tbody th.check-column, .widefat tfoot th.check-column, .widefat thead th.check-column {
+                padding: 0px 0px 0px 15px ;
+            }
+        </style>
 		<form method="post" action="<?php echo $url ?>">
          <?php if ( 'media-upload.php' == $GLOBALS['pagenow'] && $post_id > 0 ) : ?>
 		<p><?php printf(__('Once you have selected files to be imported, Head over to the <a href="%s">Media Library tab</a> to add them to your post.', 'bptpi-ftp-fp'), esc_url(admin_url('media-upload.php?type=image&tab=library&post_id=' . $post_id)) ); ?></p>

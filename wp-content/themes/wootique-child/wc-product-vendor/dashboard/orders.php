@@ -1,51 +1,6 @@
-<script type="text/javascript">
-jQuery(function () {
-	jQuery('a.view-items').on('click', function (e) {
-		e.preventDefault();
-		var id = jQuery(this).attr('id');
-
-		if ( jQuery(this).text() == "<?php _e('Hide items', 'wcvendors'); ?>" ) {
-			jQuery(this).text("<?php _e('View items', 'wcvendors'); ?>");
-		} else {
-			jQuery(this).text("<?php _e('Hide items', 'wcvendors'); ?>");
-		}
-
-		jQuery("#view-items-" + id).fadeToggle();
-	});
-
-
-
-
-	jQuery('.table').on('change', '.details input.qty', function(){
-
-		var $val=jQuery(this).val();
-		console.log($val);
-		var $a =jQuery(this).closest('tr').find('a');
-
-		var $attr= $a.attr('href');
-
-
-		$a.attr('href', $attr.substring(0,$attr.lastIndexOf("+")+1) +$val) ;
-
-	});
-	jQuery('.details input.qty').trigger('change'); //Fix per salvataggio campo vuoto se non modificato
-
-});
-</script>
-
-<h2><?php _e( 'Orders', 'wcvendors' ); ?></h2>
-
-
-
-<?php global $woocommerce; ?>
-
-
-
-
-
 <?php
 
-/* ESECUZIONE COMANDI */
+/* ESECUZIONE COMANDI, DA LASCIARE PRIMA DI TUTTO */
 
 
 /* Cambio stato dell'ordine */
@@ -77,6 +32,8 @@ if( isset($_GET['wc_pv_change_qty']) ){
 
 		if(!empty($product)) :
 			$price=$product->price;
+			var_dump(intval($args[3]*$price));
+				echo "<br>";
 
 			global $wpdb;
 
@@ -115,7 +72,9 @@ if( isset($_GET['wc_pv_change_qty']) ){
 			$p=get_post($args[0]);
 			$order=new WC_Order();
 			$order->populate($p);
+			var_dump($order);
 			$order->calculate_totals();
+			var_dump($order);
 		endif;
 
 	endif;
@@ -126,12 +85,168 @@ if( isset($_GET['wc_pv_change_qty']) ){
 
 
 
+<script type="text/javascript">
+
+	function downloadFile(fileName, urlData) {
+		var aLink = document.createElement('a');
+		var evt = document.createEvent("HTMLEvents");
+		evt.initEvent("click");
+		aLink.download = fileName;
+		aLink.href = urlData;
+		aLink.dispatchEvent(evt);
+	}
+
+
+
+	<?php
+		// Cerco tutti gli ordini
+
+	$args = array(
+		'post_type' => 'shop_order',
+		'post_status' => array( 'wc-on-hold', 'wc-processing' ),
+		'posts_per_page' => '-1'
+		);
+
+	$my_query = new WP_Query($args);
+
+	$order_summary = $my_query->posts;
+
+
+	if ( !empty( $order_summary ) ) : $totals = 0;
+
+		$user_id = get_current_user_id();
+
+		foreach ( $order_summary as $order_post ) :
+
+			$order = new WC_Order( );
+			$order->populate($order_post);
+			$valid_items = $order->get_items();//WCV_Queries::get_products_for_order( $order->id );
+			$itemsForOrder[$order->id]=$valid_items;
+			$classe = '';
+			foreach ($valid_items as $valid_item) {
+				if($valid_item['Sold by'] != get_user_meta( $user_id, 'nickname', true) ){
+					continue 2; //
+				}
+				$p_id=$valid_item['product_id'];
+				$valid_item=new WC_Product($p_id);
+
+				//$classe=$valid_item->get_categories(' ','','');
+				$cat=get_the_terms( $p_id, 'product_cat' );
+
+				if(empty($cat)){
+
+					$cat=get_the_terms( $valid_item->get_parent(), 'product_cat' );
+					$classe=$cat[0];
+
+				} else {
+					$classe=$cat;
+				}
+			}
+		//$valid = array();
+		//$items = $order->get_items();
+		//foreach ($items as $key => $value) {
+		//	if ( in_array($value['variation_id'], $valid_items) || in_array($value['product_id'], $valid_items)) {
+		//		$valid[] = $value;
+		//	}
+		//}
+		//var_dump(get_post_meta( $order->id ));
+		//$shippers = (array) get_post_meta( $order->id, 'wc_pv_shipped', true );
+		//$shipped = in_array($user_id, $shippers);
+			//Preparo la hasmap che userò in visualizzazione
+		if(isset($_GET['c']) && $_GET['c']>0){
+			if($_GET['c'] == $classe->slug)
+			$allOrders[$classe->slug][$order->get_user()->data->display_name][$order->get_order_number( )]=array('total'=>$order->get_total() , 'date'=>$order->order_date, 'status'=>$order->get_status() );
+		} else {
+			$allOrders[$classe->slug][$order->get_user()->data->display_name][$order->get_order_number( )]=array('total'=>$order->get_total() , 'date'=>$order->order_date, 'status'=>$order->get_status() );
+		}
+
+	endforeach;
+	foreach($allOrders as $orderedClassKey => $orderedClass ){
+		$idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
+	}
+	$className = $idObj-> name;
+	?>
+
+	var csvTable = "<?php echo 'Classe : ' . $className . "\\n".
+		         'Cliente;'. 'ID ordine;' . 'Totale;' . 'Nome file;' . 'Quantita;' . 'Costo;' . "\\n"
+   				 ;
+		        ?>";
+	<?php
+
+	//prendo l'id ordine
+	$idOrdine = '';
+	foreach($allOrders as $orderedClassKey => $orderedClass ):
+		$idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
+		foreach($orderedClass as $orderedCustomerKey => $orderedCustomer ):
+			foreach($orderedCustomer as $orderedOrderKey => $orderedOrder ):
+				foreach ($itemsForOrder[substr($orderedOrderKey,1)] as $key => $item):
+					if(empty ($item['Filters'])) $item['Filters']='Originale';
+					if(empty ($item['Vignette'])) $item['Vignette']='No Vignette';
+
+				$wrongText = array("foto di classe","foto focus","annuario","&rarr;","_new");
+				$goodText   = array("","","","","annuario_new");
+				$name = str_replace($wrongText,$goodText,$item['name']);
+				$fmt = numfmt_create( 'de_DE', NumberFormatter::CURRENCY );
+
+		?>
+	    if(csvTable.indexOf("<?php echo $orderedOrderKey ?>") == -1){
+			csvTable += "<?php echo $orderedCustomerKey .';' . $orderedOrderKey .';'. $orderedOrder['total'].  ' euro ' . ';' . $name . ';' . $item['qty'] .';'. $fmt->formatCurrency($item['line_total'],"EUR") . ';'. "\\n";  ?>";
+		}else{
+			csvTable += "<?php echo $orderedCustomerKey . ';' . $orderedOrderKey . ';' . ' ' . ';' . $name . ';' . $item['qty'] .';'. $item['line_total'] . ' euro' . ';'. "\\n";  ?>";
+		}
+		//csvTable = csvTable.trim();
+	<?php
+				endforeach;
+			endforeach;
+		endforeach;
+	endforeach;
+	endif; ?>
+
+	jQuery(function () {
+	jQuery('a.view-items').on('click', function (e) {
+		e.preventDefault();
+		var id = jQuery(this).attr('id');
+
+		if ( jQuery(this).text() == "<?php _e('Hide items', 'wcvendors'); ?>" ) {
+			jQuery(this).text("<?php _e('View items', 'wcvendors'); ?>");
+		} else {
+			jQuery(this).text("<?php _e('Hide items', 'wcvendors'); ?>");
+		}
+
+		jQuery("#view-items-" + id).fadeToggle();
+	});
+
+
+
+	jQuery('.table').on('change', '.details input.qty', function(){
+
+		var $val=jQuery(this).val();
+		console.log($val);
+		var $a =jQuery(this).closest('tr').find('a');
+
+		var $attr= $a.attr('href');
+
+
+		$a.attr('href', $attr.substring(0,$attr.lastIndexOf("+")+1) +$val) ;
+
+	});
+	jQuery('.details input.qty').trigger('change'); //Fix per salvataggio campo vuoto se non modificato
+	//rimuovo href da bottone
+	jQuery('.export').removeAttr('href');
+});
+</script>
+
+<h2><?php _e( 'Orders', 'wcvendors' ); ?></h2>
+
+
+
+<?php global $woocommerce; ?>
+
+
+
+
+
 <?php if ( function_exists( 'wc_print_notices' ) ) { wc_print_notices(); } ?>
-
-
-
-
-
 
 
 <?php
@@ -172,7 +287,7 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 		$itemsForOrder[$order->id]=$valid_items;
 		$classe = '';
 		foreach ($valid_items as $valid_item) {
-			if($valid_item['Sold by'] == get_user_meta( $user_id, 'nickname') ){
+			if($valid_item['Sold by'] != get_user_meta( $user_id, 'nickname', true) ){
 				continue 2; //
 			}
 			$p_id=$valid_item['product_id'];
@@ -200,8 +315,7 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 		//var_dump(get_post_meta( $order->id ));
 		//$shippers = (array) get_post_meta( $order->id, 'wc_pv_shipped', true );
 		//$shipped = in_array($user_id, $shippers);
-
-		//Preparo la hasmap che userò in visualizzazione
+			//Preparo la hasmap che userò in visualizzazione
 		if(isset($_GET['c']) && $_GET['c']>0){
 			if($_GET['c'] == $classe->slug)
 			$allOrders[$classe->slug][$order->get_user()->data->display_name][$order->get_order_number( )]=array('total'=>$order->get_total() , 'date'=>$order->order_date, 'status'=>$order->get_status() );
@@ -211,18 +325,20 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 
 	endforeach;
 
-
 			ksort($allOrders);
+
+			//script csv Simone
 
 			//echo "<pre>"; var_dump($allOrders); echo "</pre>";
 
 			foreach($allOrders as $orderedClassKey => $orderedClass ) :
                     if(isset($_GET['c'])&& $_GET['c']>0){?>
 			<h2><a href="<?php echo $page_link; ?>&c=<?php echo $orderedClassKey; ?>"><?php $idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
-  echo $idObj->name; ?></a></h2>
+ 				 echo $idObj->name; ?></a></h2>
                     <?php }?>
 
 			<table class="table table-condensed table-vendor-sales-report">
+
 				<?php if(isset($_GET['c'])) : ?>
 				<thead>
 					<tr>
@@ -260,8 +376,6 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 						<tr>
 							<td><?php echo $orderedCustomerKey; ?></td>
 							<td><?php echo $orderedOrderKey ?></td>
-
-
 							<!-- <td><?php $sum = WCV_Queries::sum_for_orders( array( $order->id ), array('vendor_id'=>get_current_user_id()) ); $total = $sum[0]->line_total; $totals += $total; echo woocommerce_price( $total ); ?></td> -->
 							<td><?php echo woocommerce_price($orderedOrder['total']); ?></td>
 							<td><?php echo $orderedOrder['date']; ?></td>
@@ -286,10 +400,11 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 												$item_meta = $item_meta->display( false, true ); ?>
 
 												<?php
+												//var_dump($item);
 												if(empty ($item['Filters'])) $item['Filters']='Originale';
 												if(empty ($item['Vignette'])) $item['Vignette']='No Vignette';
 												//echo '<td><input style="width:2.2em; margin-right:0.3em" value="'.$item['qty'] . '"></td><td>' . 'x ' . $item['name'].' | ' . $item['Filters'] .' | ' . $item['Vignette'] .'</td>';
-												echo	'<td><div class="quantity buttons_added"><input class="minus" type="button" value="-"><input name="change-qty" class="input-text qty text" type="number" size="4" min="1" max="80" step="1" value="'.$item['qty'] . '"><input class="plus" type="button" value="+"></div></td>'.
+												echo	'<td><div class="quantity buttons_added"><input class="minus" type="button" value="-"><input name="change-qty" class="input-text qty text" type="number" size="4" min="0" max="80" step="1" value="'.$item['qty'] . '"><input class="plus" type="button" value="+"></div></td>'.
 														'<td>' . 'x ' . $item['name'].' | ' . $item['Filters'] .' | ' . $item['Vignette'] .'</td>';
 
 												?>
@@ -299,9 +414,6 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 						<?php /* if (!empty( $item_meta ) && $item_meta != '<dl class="variation"></dl>') : ?>
 							<?php echo $item_meta; ?>
 						<?php endif; */ ?>
-						<?php if (!empty( $item_meta ) && $item_meta != '<dl class="variation"></dl>') : ?>
-							<?php echo $item_meta; ?>
-						<?php endif; ?>
 
 				</tr>
 
@@ -331,6 +443,11 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 	<td colspan="4"><?php echo  $processing ; ?>/<?php echo  $ordercount ; ?></td>
 
 </tr>
+<?php if(isset($_GET['c'])) : ?>
+<tr>
+	<td width="10%" rowspan="2"><a href = "#" onclick="downloadFile('ordine_<?php echo $idObj->name;?>.csv', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(csvTable));" class="export">Esporta dettaglio ordini in un file csv</a></td>
+</tr>
+<?php endif;  ?>
 
 </tbody></table>
 <?php endforeach; //foreach AllOrderAsClass ?>

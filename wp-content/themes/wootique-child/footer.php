@@ -1,5 +1,7 @@
+<div class="push"></div>
+</div>
 <?php $current_options=get_option('quality_options'); ?>
-<div class="qua_footer_area">
+<div id="footer" class="qua_footer_area">
   <div class="container">
     <div class="col-md-12">
       <div id="footer-text"><p>
@@ -36,7 +38,7 @@ $role = array_shift($ruolo);
 /*if($ruolo[0]=="administrator"){
 	echo $login;
 }*/
-//if($role=="administrator"){
+if($role=="administrator" || $role=="vendor" ){
     echo "<div>";
     global $wp_query;
     echo $wp_query->request;
@@ -50,7 +52,7 @@ $role = array_shift($ruolo);
         }
     }
     echo '</div>';
-//}
+}
 ?>
 </body>
 </html>

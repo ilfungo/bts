@@ -34,6 +34,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 								<?php
 									$quantites_required = true;
 									woocommerce_quantity_input( array( 'input_name' => 'quantity[' . $product_id . ']', 'input_value' => '0' ) );
+                                    $GLOBALS['main_foto_type'] = get_the_title();
 								?>
 							<?php endif; ?>
 						</td>

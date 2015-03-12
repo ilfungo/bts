@@ -4,6 +4,34 @@
  *
  */
 
+
+
+//funzione aggiunta per il debug!!
+function FirePHP($message, $label = null, $type = 'LOG')
+{
+    static $i = 0;
+
+    if (headers_sent() === false)
+    {
+        $type = (in_array($type, array('LOG', 'INFO', 'WARN', 'ERROR')) === false) ? 'LOG' : $type;
+
+        if (($_SERVER['HTTP_HOST'] == 'localhost') && (strpos($_SERVER['HTTP_USER_AGENT'], 'FirePHP') !== false))
+        {
+            $message = json_encode(array(array('Type' => $type, 'Label' => $label), $message));
+
+            if ($i == 0)
+            {
+                header('X-Wf-Protocol-1: http://meta.wildfirehq.org/Protocol/JsonStream/0.2');
+                header('X-Wf-1-Plugin-1: http://meta.firephp.org/Wildfire/Plugin/FirePHP/Library-FirePHPCore/0.3');
+                header('X-Wf-1-Structure-1: http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1');
+            }
+
+            header('X-Wf-1-1-1-' . ++$i . ': ' . strlen($message) . '|' . $message . '|');
+        }
+    }
+}
+
+
 add_filter( 'woocommerce_product_tabs', 'fp_woocommerce_remove_reviews_tab', 98);
 function fp_woocommerce_remove_reviews_tab($tabs) {
 
@@ -247,7 +275,11 @@ add_action( 'template_redirect', function(){
 
     global $wp;
     $current_url = $wp->query_string;
-    if(!is_user_logged_in() && $_SESSION["scuola_slug"] &&  is_page( array(2))){
+    if(is_user_logged_in() && $_SESSION["scuola_redirect"]=="redirect" &&  is_page( array(9))){
+        unset($_SESSION["scuola_redirect"]);
+        wp_redirect( '/?product_cat='.$billing_scuola_taxonomy_slug."&caso=caso7" );
+        exit;
+    }elseif(!is_user_logged_in() && $_SESSION["scuola_slug"] &&  is_page( array(2))){
         wp_redirect( '/?page_id=9&caso=caso5' );
         exit;
     }elseif($current_url=="post_type=product" && get_user_role()!="administrator"){
@@ -342,3 +374,15 @@ function template_loop_sold_by_cat($product_id) {
 // Add sold by to product loop before add to cart
 remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9 );
 //add_action( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat', 9 );
+
+
+add_filter( 'manage_edit-product_columns', 'show_product_order' );
+function show_product_order($columns){
+
+    unset( $columns['tags'] );
+    //unset( $columns['price'] );
+    unset( $columns['sku'] );
+    unset( $columns['product_tag'] );
+
+    return $columns;
+}

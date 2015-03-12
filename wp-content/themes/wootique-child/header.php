@@ -19,6 +19,7 @@
   </head>
   <body <?php body_class(); ?>>
     <!--Header Logo & Menus-->
+    <div id="container">
     <div class="container">
       <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -59,6 +60,12 @@
                 ?>
             </div>
             <?php } ?>
+          <?php
+          //se l'utente è loggato mostro il pulsante di logout
+          if ( is_user_logged_in() ) { ?>
+            <div id="logoutDiv"><a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ) );?>" class ="export" title="Logout">Logout</a></div>
+          <?php } ?>
+
           <!-- Collect the nav links, forms, and other content for toggling -->
           
             <?php /*	wp_nav_menu( array(  

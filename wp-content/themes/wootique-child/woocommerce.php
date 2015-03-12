@@ -15,8 +15,13 @@ get_header(); ?>
        global $current_user;
        $ruolo=$current_user->roles;
        $role = array_shift($ruolo);
-
-    //if($role=="administrator"){
+       $product_cat = wp_get_object_terms($post->ID, 'product_cat');
+       //print_r($product_cat);
+       $rekeyed_array = array_values($product_cat);
+       $product_cat = $rekeyed_array[0];
+       $_SESSION['class_slug']=$product_cat->slug;
+       $_SESSION['class_name']=$product_cat->name;
+       //if($role=="administrator"){
 
        ?>
        <div class="container">

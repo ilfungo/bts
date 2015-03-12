@@ -278,7 +278,7 @@ class bptpi_ftp_fp {
 	//Handle the imports
     //questa è la funzione principale controlla tutto l'import
     function handle_fp_imports() {
-        set_time_limit(12000);//due ore prima di andare in timeout
+        set_time_limit(600);//due ore prima di andare in timeout
         //global $ptp_importer;
         $photos_obj = PTPImporter_Product::getInstance();
 
@@ -915,6 +915,23 @@ class bptpi_ftp_fp {
 				}
 			}
 		 ?>
+         <?php
+         $file = $cwd.'/bptpi_import_log.log';
+
+         // the following line prevents the browser from parsing this as HTML.
+         header('Content-Type: text/plain');
+
+         // get the file contents, assuming the file to be readable (and exist)
+         $contents = file_get_contents($file);
+
+         ?>
+            <div class="wrapper-log">
+                <div class="log">
+                    <pre>
+                        <?php echo $contents;?>
+                    </pre>
+                </div>
+            </div>
 
         <style type="text/css">
             .widefat td, .widefat th {

@@ -25,7 +25,14 @@ if ( empty( $woocommerce_loop['columns'] ) )
 if ( ! $product || ! $product->is_visible() )
 	return;
 
-//var_dump($product);
+//$GLOBALS['main_foto_type']."<br>";
+$args = array('post_parent' => $product->id,);
+$child = get_children( $args );
+$rekeyed_array = array_values($child);
+$child = $rekeyed_array[0];
+
+if($child->post_title!=$GLOBALS['main_foto_type'])
+    return;
 
 // Increase loop count
 $woocommerce_loop['loop']++;

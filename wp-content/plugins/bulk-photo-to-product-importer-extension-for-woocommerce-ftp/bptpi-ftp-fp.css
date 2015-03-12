@@ -20,3 +20,30 @@
 .widefat td, .widefat th {
     padding: 0;
 }
+
+
+.media_page_bptpi-ftp-fp .wrapper-log {
+    padding: 12px 0 12px 12px;
+    width: 100%;
+}
+.media_page_bptpi-ftp-fp table, .media_page_bptpi-ftp-fp .wrapper-log {
+    background: none repeat scroll 0 0 #fff;
+    border-collapse: collapse;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 1em;
+    padding: 1px 12px;
+}
+a, div {
+    outline: 0 none;
+}
+.media_page_bptpi-ftp-fp .log {
+    max-height: 300px;
+    overflow: auto;
+}
+a, div {
+    outline: 0 none;
+}
+.media_page_bptpi-ftp-fp table, .media_page_bptpi-ftp-fp .wrapper-log {
+    border-collapse: collapse;
+}
+

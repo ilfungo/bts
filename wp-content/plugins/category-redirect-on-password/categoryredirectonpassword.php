@@ -170,6 +170,7 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
                 $_SESSION["scuola_id"] = $term->term_id;
                 $_SESSION["scuola_slug"] = $term->slug;
                 $_SESSION["scuola_name"] = $term->name;
+                $_SESSION["scuola_redirect"] = "redirect";
                 $this->pw_redirect( $term_link, $postPassword );
 			}
 

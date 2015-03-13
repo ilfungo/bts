@@ -30,17 +30,30 @@
     margin:0;
 }
 
-.btsb-plugin .classe .table{
+.btsb-plugin .table{
     min-width: 800px;
+}
+
+.btsb-plugin .classe .table{
+
     display: none;
+}
+
+.btsb-plugin .startSingle{
+    width: 10em;
 }
 
 .btsb-plugin .wrapper-log{
     padding: 12px 0 12px 12px;
-    width: 800px;
+    display: none;
+    width: 786px;
 }
 
 .btsb-plugin .log{
+    display: none;
+}
+
+.btsb-plugin .log pre{
     max-height: 300px;
     overflow: auto;
 

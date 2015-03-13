@@ -14,7 +14,8 @@ $cat_count = sizeof( get_the_terms( $post->ID, 'product_cat' ) );
 $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 ?>
 <div class="product_meta">
-    <?php do_action( 'woocommerce_product_meta_start' ); ?>
+    <?php //do_action( 'woocommerce_product_meta_start' ); ?>
+    <?php template_loop_sold_by_cat()?>
 
 	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
 
@@ -27,6 +28,7 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
         echo $product->get_categories( ', ', '<span class="posted_in">' . _n( 'Classe : ', 'Classi : ', $cat_count, 'woocommerce' ) . ' ', '</span>' );
     else
         echo 'Classe: <a href="/?product_cat='.$_SESSION['class_slug'].'">'.$_SESSION['class_name']."</a>";
+    //perchè unset?
     unset($_SESSION['class_slug']);unset($_SESSION['class_name']);
     ?>
 

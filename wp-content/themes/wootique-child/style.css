@@ -8,6 +8,9 @@ Template:       quality
 Version:        0.1.0
 */
 
+/* import montserrat font */
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
 /*  icone homepage index-service  */
 #icona-annuario{
     margin:25px;
@@ -114,12 +117,7 @@ form.cart{
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
-
-#footer-text{
-    float: left;
-}
 #credits{
-    float:right;
     text-transform: uppercase;
     display:block;
     margin-left: 2em;
@@ -162,13 +160,6 @@ a.export, a.export:visited {
 .col-md-4{
     margin-bottom: 0px;
 }
-
-#logoutDiv{
-    float:right;
-    padding-right: 10px;
-    margin-top: 43px;
-}
-
 html, body {
     height: 100%;
 }
@@ -178,7 +169,44 @@ html, body {
     height: 100%;
     margin: 0 auto -50px;
 }
-#footer, #push {
-    height: 50px;
+.push {
+    height: 65px;
     clear: both;
+}
+#logoutDiv{
+    float:right;
+    padding-right: 10px;
+    margin-top: 43px;
+}
+.imageName{
+    width:100%;
+    text-align:left;
+    margin-bottom: 5px;
+}
+.imagePreview{
+    float:left;
+    margin-bottom: 5px;
+}
+dl.variation dt.variation-Filters,dt.variation-Soldby,dd.variation-Filters,dd.variation-Soldby{
+    font-size:14px;
+}
+/* cambio font menu in montserrat */
+#menu-primary a{
+    font-family:'Montserrat';
+    font-weight: 100;
+    font-size: 16px;
+}
+.qua_footer_area p {
+    font-size: 13px;
+    padding-bottom: 5px;
+    text-align: left;
+}
+#credits{
+    margin-left: 0px;
+}
+.product_title{
+    margin-bottom:28px;
+}
+.intro-text{
+    margin:0 0 28px 0;
 }

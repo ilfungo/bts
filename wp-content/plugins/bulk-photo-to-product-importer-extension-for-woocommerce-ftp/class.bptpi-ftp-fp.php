@@ -403,10 +403,17 @@ class bptpi_ftp_fp {
                     echo '<div class="updated error"><p>' . sprintf(__('<em>%s</em> was <strong>not</strong> imported due to an error: %s', 'bptpi-ftp-fp'), esc_html($file), $id->get_error_message() ) . '</p></div>';
                 } else {
                     //increment the gallery count
-                    if ( $import_to_gallery )
+                    if ( $import_to_gallery ){
                         echo "<script type='text/javascript'>jQuery('#attachments-count').text(1 * jQuery('#attachments-count').text() + 1);</script>";
-                    echo '<div class="updated"><p>' . sprintf(__('<em>%s</em> has been added to Media library', 'bptpi-ftp-fp'), esc_html($file)) . '</p></div>';
-                }
+                        echo '<div class="updated"><p>' . sprintf(__('<em>%s</em> has been added to Media library', 'bptpi-ftp-fp'), esc_html($file)) . '</p></div>';
+                    }
+                    //function write_txt_file($content, $path, $has_sections=FALSE)
+                    $content = esc_html($file). " è stato aggiunto ai tuoi prodotti!"."\r\n";
+                    $path = $cwd.'bptpi_import_log.log';
+                    if(!attach_txt_file($content, $path)){
+                        echo '<div class="updated error"><p>Non posso scrivere il mio log</p></div>';
+                    }
+                    }
                 flush();
                 wp_ob_end_flush_all();
             }
@@ -927,9 +934,7 @@ class bptpi_ftp_fp {
          ?>
             <div class="wrapper-log">
                 <div class="log">
-                    <pre>
-                        <?php echo $contents;?>
-                    </pre>
+                    <pre><?php echo $contents;?></pre>
                 </div>
             </div>
 

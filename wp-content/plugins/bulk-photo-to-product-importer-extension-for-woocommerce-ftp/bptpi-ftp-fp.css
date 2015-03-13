@@ -46,4 +46,6 @@ a, div {
 .media_page_bptpi-ftp-fp table, .media_page_bptpi-ftp-fp .wrapper-log {
     border-collapse: collapse;
 }
-
+pre{
+    text-align:left;
+}

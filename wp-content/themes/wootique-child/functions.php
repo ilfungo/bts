@@ -205,3 +205,157 @@ function wooc_save_extra_register_fields( $customer_id ) {
 }
 
 add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
+
+
+// Add sold by to product loop before add to cart
+//remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9 );
+//add_action( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat', 9 );
+add_filter( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat',1);
+
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 80 );
+
+
+function woocommerce_template_main_title(){ ?>
+    <div class="intro-text">
+    Acquista la tua foto, puoi acquistarla "liscia" o applicando filtri colore.<br>
+    La procedura di acquisto è facile, leggi bene in ogni pagina le istruzioni, non è un gioco,
+    quello che acquisti andrà pagato!
+    </div>
+<?php }
+
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_main_title', 5 );
+
+// Remove the default Thematic blogtitle function
+function change_BTPI_product_categories() {
+    global $woocommerce_loop;
+    global $wpdb, $bptpi_premium;
+
+
+    $current_user = wp_get_current_user();
+    $thisUser     = $current_user->ID;
+
+    $sql          = "SELECT meta_value,taxonomy_id";
+    $sql         .= " FROM {$wpdb->taxonomymeta}";
+    $sql         .= " WHERE {$wpdb->taxonomymeta}.meta_key = '%s'";
+
+    $users = $wpdb->get_results( $wpdb->prepare( $sql, $bptpi_premium->users_meta_key ) );
+    $ids = array();
+    //add cat ids if the current user is in the meta_value from taxonomymeta
+    if($users){
+        foreach($users as $row){
+            if($row->meta_value) {
+                $tempIds = unserialize($row->meta_value);
+                if(in_array($thisUser,$tempIds))
+                    array_push($ids,trim($row->taxonomy_id));
+            }
+        }
+    }
+
+    if($ids){
+        // get terms and workaround WP bug with parents/pad counts
+        $args = array(
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+            'hide_empty' => 0,
+            'include'    => $ids,
+            'pad_counts' => true
+        );
+
+        $product_categories = get_terms( 'product_cat', $args );
+        $product_categories = array_slice( $product_categories, 0, 4 );
+    }
+    $woocommerce_loop['columns'] = 4;
+
+    ob_start();
+
+    // Reset loop/columns globals when starting a new loop
+    $woocommerce_loop['loop'] = $woocommerce_loop['column'] = '';
+
+    if ( $product_categories ) {
+        woocommerce_product_loop_start();
+        foreach ( $product_categories as $category ) {
+            woocommerce_get_template( 'content-product_cat.php', array(
+                'category' => $category
+            ) );
+        }
+
+        woocommerce_product_loop_end();
+        woocommerce_reset_loop();
+    }
+    remove_action('woocommerce_after_my_account','BPTI_product_categories');
+    remove_action('show_user_profile','BPTI_product_categories');
+}
+add_action( 'woocommerce_after_my_account','change_BTPI_product_categories',3);
+add_action( 'show_user_profile','change_BTPI_product_categories',3 );
+
+
+/**
+ * Redirect users to custom URL based on their role after login
+ *
+ * @param string $redirect
+ * @param object $user
+ * @return string
+ */
+function wc_custom_user_redirect( $redirect, $user ) {
+// Get the first of all the roles assigned to the user
+    //print_r($user);
+    $billing_scuola_taxonomy_slug = get_user_meta($user->ID, "billing_scuola_taxonomy_slug",true);
+    if($billing_scuola_taxonomy_slug!=""){//customer & vendor?? no il vendor no
+        $redirect = "/?product_cat=".$billing_scuola_taxonomy_slug;
+    }else{
+        $redirect = true;
+    }
+    /*
+    $role = $user->roles[0];
+    $dashboard = admin_url();
+    $myaccount = get_permalink( wc_get_page_id( 'myaccount' ) );
+    if( $role == 'administrator' ) {
+//Redirect administrators to the dashboard
+        $redirect = $dashboard;
+    } elseif ( $role == 'shop-manager' ) {
+//Redirect shop managers to the dashboard
+        $redirect = $dashboard;
+    } elseif ( $role == 'editor' ) {
+//Redirect editors to the dashboard
+        $redirect = $dashboard;
+    } elseif ( $role == 'author' ) {
+//Redirect authors to the dashboard
+        $redirect = $dashboard;
+    } elseif ( $role == 'customer' || $role == 'subscriber' ) {
+//Redirect customers and subscribers to the "My Account" page
+        $redirect = $myaccount;
+    } else {
+//Redirect any other role to the previous visited page or, if not available, to the home
+        $redirect = wp_get_referer() ? wp_get_referer() : home_url();
+    }
+    */
+    return $redirect;
+}
+add_filter( 'woocommerce_login_redirect', 'wc_custom_user_redirect', 10, 2 );
+
+
+function write_txt_file($content, $path, $has_sections=FALSE) {
+
+    if (!$handle = fopen($path, 'w+')) {
+        return false;
+    }
+
+    $success = fwrite($handle, $content);
+    fclose($handle);
+
+    return $success;
+}
+
+
+function attach_txt_file($content, $path, $has_sections=FALSE) {
+
+    if (!$handle = fopen($path, 'a+')) {
+        return false;
+    }
+
+    $success = fwrite($handle, $content);
+    fclose($handle);
+
+    return $success;
+} 

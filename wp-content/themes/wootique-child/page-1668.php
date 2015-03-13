@@ -78,43 +78,68 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 
     endforeach;
 
-
-
     $className = "";
     foreach($allOrders as $orderedClassKey => $orderedClass ):
+        $totals =0;
         $idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
         $className = $idObj->name;
         $csvTableClass = "\r\n\r\n".$idObj->name. "\r\n";
+        $csvTableClass .= "Studente" . ';' . "ID ordine" . ";" . "Nome foto" . ";" . "Quantita" . ";" ."Costo singolo" . ";" ."Totale ordine" . "\r\n" ;
         foreach($orderedClass as $orderedCustomerKey => $orderedCustomer ):
             foreach($orderedCustomer as $orderedOrderKey => $orderedOrder ):
+                $totals+=$orderedOrder['total'];
                 foreach ($itemsForOrder[substr($orderedOrderKey,1)] as $key => $item):
                     if(empty ($item['Filters'])) $item['Filters']='Originale';
                     if(empty ($item['Vignette'])) $item['Vignette']='No Vignette';
-
                     $wrongText = array("foto di classe","foto focus","annuario","&rarr;","_new");
                     $goodText   = array("","","","","annuario_new");
                     $name = str_replace($wrongText,$goodText,$item['name']);
                     $fmt = numfmt_create( 'de_DE', NumberFormatter::CURRENCY );
-
-                    if($orderedOrderKey==-1){
-                        $csvTableClass .= $orderedCustomerKey .';' . $orderedOrderKey .';'. $orderedOrder['total'].  ' euro ' . ';' . $name . ';' . $item['qty'] .';'. numfmt_format_currency($fmt, $item['line_total'], "EUR") . ';'. "\r\n";
-                    }else{
-                        $csvTableClass .= $orderedCustomerKey . ';' . $orderedOrderKey . ';' . ' ' . ';' . $name . ';' . $item['qty'] .';'. $item['line_total'] . ' euro' . ';'. "\r\n";
+                    //echo $orderedOrderKey;
+                    if($orderedOrderKey==-1){// non si avvera mai cosa vuol dire????
+                        //echo "orderedOrderKey -1 ".$orderedOrderKey."<br>";
+                        if (strpos($csvTableClass, $orderedOrderKey) == true) {
+                            $csvTableClass .= ';' . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' .$orderedOrder['total'].';'. "\r\n";
+                        }
+                        /*elseif(strpos($csvTableClass, $orderedOrderKey) == true){
+                            $csvTableClass .= $orderedCustomerKey . ';' . $orderedOrderKey . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' . "\r\n";
+                            //$csvTableClass .= ';'. ';' .';'.';'.';'. $orderedOrder['total'];
+                        }*/
+                        else {
+                            $csvTableClass .= $orderedCustomerKey . ';' . $orderedOrderKey . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' . "\r\n";
+                        }
+                    }
+                    else {
+                        //echo "orderedOrderKey non è  -1 ".$orderedOrderKey."<br>";
+                        if (strpos($csvTableClass, $orderedOrderKey) == true) {
+                            $csvTableClass .= ';' . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' . $orderedOrder['total'] . ' euro;'. "\r\n";
+                        }/*
+                        elseif(strpos($csvTableClass, $orderedOrderKey) == true){
+                            $csvTableClass .= $orderedCustomerKey . ';' . $orderedOrderKey . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' . "\r\n" ."\r\n";
+                        }*/
+                        else {
+                            $csvTableClass .= $orderedCustomerKey . ';' . $orderedOrderKey . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' .$orderedOrder['total'].' euro;' . "\r\n";
+                        }
                     }
                     ?>
                     <?php //comments_template(); ?>
                 <?php endforeach; ?>
             <?php endforeach; ?>
+            <!-- aggiungo il totale per ordine -->
         <?php endforeach; ?>
+        <?php
+        $csvTableClass .= "\r\n".'Totale :;' . ';' . ';' . ';' . ';'. $totals . ' euro' ."\r\n"; ?>
         <?php
         $csvTable .= $csvTableClass;
         $report_name = $dir."/report_".$scuola->slug."_".$className.".csv";
         $file_url = $report_url ."/report_".$scuola->slug."_".$className.".csv";
         chmod($report_name, 0775);
+        $csvTableClass = mb_convert_encoding($csvTableClass, "ISO-8859-2");//"ISO-8859-2"  UTF-8);
+        //echo $csvTableClass = iconv('', 'UTF-8', $csvTableClass);
         if(!write_txt_file($csvTableClass,$report_name)){
             echo "Qualche problema nella scrittura del report per favore contattare l'amministratore del sito!<br>";
         }else{ ?>
-            <a href="<?php echo $file_url;?>">Scaricare il repot della <b>classe <?php echo $className?></b></a><br>
+            <a href="<?php echo $file_url;?>">Scaricare il report della <b>classe <?php echo $className?></b></a><br>
         <?php }
         ?>
     <?php endforeach; ?>
@@ -126,7 +151,7 @@ if ( !empty( $order_summary ) ) : $totals = 0;
                 if(!write_txt_file($csvTable,$report_name)){
                     echo "Qualche problema nella scrittura del report per favore contattare l'amministratore del sito!<br>";
                 }else{ ?>
-                    <a href="<?php echo $file_url;?>">Scaricare il repot <b>per tutte le classi della scuola</b></a><br>
+                    <a href="<?php echo $file_url;?>">Scaricare il report <b>per tutte le classi della scuola</b></a><br>
                 <?php }
                 ?>
             </div>
@@ -135,17 +160,3 @@ if ( !empty( $order_summary ) ) : $totals = 0;
     </div>
 <?php endif; ?>
 <?php get_footer(); ?>
-<?php
-function write_txt_file($content, $path, $has_sections=FALSE) {
-
-
-    if (!$handle = fopen($path, 'w+')) {
-        return false;
-    }
-
-    $success = fwrite($handle, $content);
-    fclose($handle);
-
-    return $success;
-}
-?>

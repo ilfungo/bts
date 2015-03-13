@@ -55,6 +55,7 @@
     content:'√';
 }
 
-.addon-name,.addon-description{
-	display:none;
-}
+/* DASHBOARD */
+.page-id-713 .table-vendor-sales-report tr{ border-left: 4px solid #fff;  }
+.page-id-713 .table-vendor-sales-report .done{ border-color: #7ad03a; }
+.page-id-713 .table-vendor-sales-report .not-done{ border-color:#ffba00; }

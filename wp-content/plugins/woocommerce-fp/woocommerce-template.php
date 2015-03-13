@@ -368,13 +368,10 @@ function template_loop_sold_by_cat($product_id) {
     $term = get_term_by('slug', $scuola, 'product_cat');
     $scuola_name = $term->name;
     $link_scuola = "/?product_cat=".$scuola;
-    echo '<small>Scuola: <a href="'.$link_scuola.'">'.$scuola_name.'</a></small> <br />';
+    echo 'Scuola: <a href="'.$link_scuola.'">'.$scuola_name.'</a> <br />';
 }
 
-// Add sold by to product loop before add to cart
-remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9 );
-//add_action( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat', 9 );
-
+//add_action( 'woocommerce_product_meta_start', array( 'WCV_Vendor_Cart', 'sold_by_meta' ), 10, 2 );
 
 add_filter( 'manage_edit-product_columns', 'show_product_order' );
 function show_product_order($columns){

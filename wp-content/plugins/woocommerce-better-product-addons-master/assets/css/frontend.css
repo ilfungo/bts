@@ -53,4 +53,10 @@ h3.addon-name {
    max-width: 50%;
    float: left;
 }
-
+.addon-name,.addon-description{
+    display:none;
+    display:block;
+}
+h3.addon-name{
+    margin:0 0 0.4em 0;
+}

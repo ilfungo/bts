@@ -16,6 +16,17 @@
     <?php } ?>
     <?php wp_head(); ?>
       <link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" />
+      <style type="text/css">
+          @font-face {
+              font-family: Montserrat;
+              src: url('/wp-content/themes/wootique-child/fonts/Montserrat-Light.otf');
+              font-weight: light;
+          }
+          @font-face {
+              font-family: Montserrat;
+              src: url('/wp-content/themes/wootique-child/fonts/Montserrat-Regular.otf');
+          }
+      </style>
   </head>
   <body <?php body_class(); ?>>
     <!--Header Logo & Menus-->

@@ -304,15 +304,18 @@ function wc_custom_user_redirect( $redirect, $user ) {
     if($billing_scuola_taxonomy_slug!=""){//customer & vendor?? no il vendor no
         $redirect = "/?product_cat=".$billing_scuola_taxonomy_slug;
     }else{
-        $redirect = true;
+        $redirect = "/?page_id=9";
     }
-    /*
     $role = $user->roles[0];
     $dashboard = admin_url();
     $myaccount = get_permalink( wc_get_page_id( 'myaccount' ) );
+
     if( $role == 'administrator' ) {
 //Redirect administrators to the dashboard
         $redirect = $dashboard;
+    } elseif ( $role == 'vendor' ) {
+//Redirect shop managers to the dashboard
+        $redirect = $redirect = "/?page_id=713";
     } elseif ( $role == 'shop-manager' ) {
 //Redirect shop managers to the dashboard
         $redirect = $dashboard;
@@ -322,14 +325,16 @@ function wc_custom_user_redirect( $redirect, $user ) {
     } elseif ( $role == 'author' ) {
 //Redirect authors to the dashboard
         $redirect = $dashboard;
-    } elseif ( $role == 'customer' || $role == 'subscriber' ) {
+    } elseif ( $role == 'customer' && $billing_scuola_taxonomy_slug !="") {
 //Redirect customers and subscribers to the "My Account" page
-        $redirect = $myaccount;
+        $redirect = $redirect = "/?product_cat=".$billing_scuola_taxonomy_slug;
     } else {
 //Redirect any other role to the previous visited page or, if not available, to the home
         $redirect = wp_get_referer() ? wp_get_referer() : home_url();
     }
-    */
+    //echo     $role = $user->roles[0];
+    //echo $billing_scuola_taxonomy_slug;
+    //exit;
     return $redirect;
 }
 add_filter( 'woocommerce_login_redirect', 'wc_custom_user_redirect', 10, 2 );
@@ -358,4 +363,25 @@ function attach_txt_file($content, $path, $has_sections=FALSE) {
     fclose($handle);
 
     return $success;
-} 
+}
+
+
+remove_action( 'woocommerce_before_subcategory_title', 'woocommerce_subcategory_thumbnail', 10 );
+add_action( 'woocommerce_before_subcategory_title', 'woocommerce_subcategory_no_thumbnail', 10 );
+
+if ( ! function_exists( 'woocommerce_subcategory_no_thumbnail' ) ) {
+
+    /**
+     * Show subcategory thumbnails.
+     *
+     * @access public
+     * @param mixed $category
+     * @subpackage	Loop
+     * @return void
+     */
+    function woocommerce_subcategory_no_thumbnail( $category ) {
+
+            echo '<div class="category-link category-'.$category->name.'">'.trim(str_replace("classe","",$category->name)).'</div>';
+
+    }
+}

@@ -9,17 +9,42 @@ Version:        0.1.0
 */
 
 /* import montserrat font */
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
-
-/*  icone homepage index-service  */
-#icona-annuario{
-    margin:25px;
+/*
+@font-face {
+    font-family: Montserrat;
+    src: url('/wp-content/themes/wootique-child/fonts/Montserrat-Regular.otf');
+    font-weight: normal;
 }
-#icona-maglieria{
-    margin:25px;
+@font-face {
+    font-family: MontserratBold;
+    font-weight: bold;
+    src: url('/wp-content/themes/wootique-child/fonts/Montserrat-Bold.otf');
+}
+@font-face {
+    font-family: MontserratThin;
+    font-weight: thin;
+    src: url('/wp-content/themes/wootique-child/fonts/Montserrat-Hairline.otf');
+}
+@font-face {
+    font-family: MontserratBlack;
+    font-weight: black;
+    src: url('/wp-content/themes/wootique-child/fonts/Montserrat-Black.otf');
+}
+@font-face {
+    font-family: MontserratLight;
+    font-weight: light;
+    src: url('/wp-content/themes/wootique-child/fonts/Montserrat-Light.otf');
+}
+*/
+/*  icone homepage index-service  */
+#icona-abbigliamento{
+    margin-top:14px;
+}
+#icona-login{
+    margin-top:22px;
 }
 #icona-servizi{
-    margin:25px;
+    margin-top:25px;
 }
 
 /*  rimossa checkbox selezione prodotti  */
@@ -190,12 +215,6 @@ html, body {
 dl.variation dt.variation-Filters,dt.variation-Soldby,dd.variation-Filters,dd.variation-Soldby{
     font-size:14px;
 }
-/* cambio font menu in montserrat */
-#menu-primary a{
-    font-family:'Montserrat';
-    font-weight: 100;
-    font-size: 16px;
-}
 .qua_footer_area p {
     font-size: 13px;
     padding-bottom: 5px;
@@ -210,3 +229,33 @@ dl.variation dt.variation-Filters,dt.variation-Soldby,dd.variation-Filters,dd.va
 .intro-text{
     margin:0 0 28px 0;
 }
+/*   bottone "Torna alla classe"  */
+.woocommerce-page table.cart a.button{
+    margin: 0;
+    vertical-align: middle;
+    line-height: 1em;
+}
+.category-link{
+    width:178px;
+    height:178px;
+    line-height: 178px;
+    text-align: center;
+    background-color:#ff4f49;
+    color:white;
+    font-size:4em;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-family: "MontserratLight";
+    font-size: 16px;
+}
+/* cambio font menu in montserrat */
+#menu-primary a{
+    font-family: "MontserratLight";
+    font-size: 16px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-family: "Montserrat";
+    font-size: 16px;
+} 

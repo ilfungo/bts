@@ -17,6 +17,7 @@
     <?php wp_head(); ?>
       <link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" />
       <link href="<?php echo dirname( get_bloginfo('stylesheet_url')) . '/fonts/stylesheet.css'; ?>" rel="stylesheet" />
+      <link href="<?php echo dirname( get_bloginfo('stylesheet_url')) . '/css/media-responsive.css'; ?>" rel="stylesheet" />
   </head>
   <body <?php body_class(); ?>>
     <!--Header Logo & Menus-->
@@ -32,41 +33,40 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <div class="logo pull-left" >
-              <?php 
-                if($current_options['text_title'] =="on")
-                	{ ?>
-              <div class="qua_title_head">
-                <h1 class="qua-logo" ><a href="<?php echo home_url( '/' ); ?>"><?php echo get_bloginfo( ); ?></a></h1>
+            <div class="logo"><!-- pull-left -->
+                  <?php
+                  if($current_options['text_title'] =="on")
+                  { ?>
+                      <div class="qua_title_head">
+                          <h1 class="qua-logo" ><a href="<?php echo home_url( '/' ); ?>"><?php echo get_bloginfo( ); ?></a></h1>
+                      </div>
+                  <?php
+                  } else if($current_options['upload_image_logo']!='')
+                  { ?>
+                      <a href="<?php echo home_url( '/' ); ?>"><img src="<?php echo esc_url($current_options['upload_image_logo']); ?>" style="height:<?php if($current_options['height']!='') { echo $current_options['height']; }  else { "80"; } ?>px; width:<?php if($current_options['width']!='') { echo $current_options['width']; }  else { "200"; } ?>px;" /></a>
+                  <?php } else { ?>
+                      <a href="<?php echo home_url( '/' ); ?>"><img src="<?php echo QUALITY_TEMPLATE_DIR_URI; ?>/images/logo.png"></a>
+                  <?php } ?>
               </div>
-              <?php 
-                } else if($current_options['upload_image_logo']!='') 
-                	{ ?>
-              <a href="<?php echo home_url( '/' ); ?>"><img src="<?php echo esc_url($current_options['upload_image_logo']); ?>" style="height:<?php if($current_options['height']!='') { echo $current_options['height']; }  else { "80"; } ?>px; width:<?php if($current_options['width']!='') { echo $current_options['width']; }  else { "200"; } ?>px;" /></a>
-              <?php } else { ?> 
-              <a href="<?php echo home_url( '/' ); ?>"><img src="<?php echo QUALITY_TEMPLATE_DIR_URI; ?>/images/logo.png"></a>
-              <?php } ?>			
-            </div>
           </div>
             <?php
             global $current_user;
             if(is_user_logged_in()){
             ?>
-            <div class="login pull-right" >
+            <div class="login pull-right">
                 <?php
                 //var_dump($current_user);
                 $billing_last_name = get_user_meta($current_user->ID, "billing_last_name",true);
                 $billing_first_name = get_user_meta($current_user->ID, "billing_first_name",true);
-                echo '<a href="/?page_id=9">'.$billing_first_name." ".$billing_last_name."</a>";
+                echo '<div id="myName"><a href="/?page_id=9">'.$billing_first_name." ".$billing_last_name."</a></div>";
                 ?>
+                <?php
+                //se l'utente è loggato mostro il pulsante di logout
+                if ( is_user_logged_in() ) { ?>
+                    <div id="logoutDiv"><a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ) );?>" class="round-button export" title="Logout">Logout</a></div>
+                <?php } ?>
             </div>
             <?php } ?>
-          <?php
-          //se l'utente è loggato mostro il pulsante di logout
-          if ( is_user_logged_in() ) { ?>
-            <div id="logoutDiv"><a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ) );?>" class ="export" title="Logout">Logout</a></div>
-          <?php } ?>
-
           <!-- Collect the nav links, forms, and other content for toggling -->
           
             <?php /*	wp_nav_menu( array(  

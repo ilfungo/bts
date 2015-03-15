@@ -16,11 +16,18 @@ get_header(); ?>
        $ruolo=$current_user->roles;
        $role = array_shift($ruolo);
        $product_cat = wp_get_object_terms($post->ID, 'product_cat');
-       //print_r($product_cat);
        $rekeyed_array = array_values($product_cat);
        $product_cat = $rekeyed_array[0];
+
+      //prendo lo slug della product cat e con la funzione get_term link tiro fuori l'url della product_cat
+      global $wp_query;
+      $cat = $wp_query->get_queried_object();
+      $urlClass = get_term_link($product_cat, 'product_cat' );
+
+
        $_SESSION['class_slug']=$product_cat->slug;
        $_SESSION['class_name']=$product_cat->name;
+       $_SESSION['class_url']=$urlClass;
        //if($role=="administrator"){
 
        ?>
@@ -51,15 +58,18 @@ get_header(); ?>
            $annuario=false;
            $fclasse=false;
            $ffocus=false;
+           $i=0;
          ?>
-         <h2>Annuario</h2>
          <?php while ( have_posts() ) : the_post(); ?>
          <?php $results = $wpdb->get_row($wpdb->prepare(
                    "SELECT post_title FROM $wpdb->posts WHERE post_parent =  %s",
                    $post->ID
                ));
-               if($results->post_title=="annuario")
-                wc_get_template_part( 'content', 'product' );
+               if($results->post_title=="annuario"){
+                   if($i==0){echo "<h2>Annuario</h2>";}
+                   wc_get_template_part( 'content', 'product' );
+                   $i++;
+               }
                if($results->post_title=="foto di classe")
                    $fclasse=true;
                if($results->post_title=="foto focus")

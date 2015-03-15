@@ -208,13 +208,17 @@ add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
 
 
 // Add sold by to product loop before add to cart
-//remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9 );
+remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9 );
 //add_action( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat', 9 );
 add_filter( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat',1);
 
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 80 );
-
+/*
+function template_loop_show_product_name() {
+    $product_id
+    echo 'Foto numero:'..'</a> <br />';
+}*/
 
 function woocommerce_template_main_title(){ ?>
     <div class="intro-text">

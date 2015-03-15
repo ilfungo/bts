@@ -5,12 +5,36 @@
 
 /* Cambio stato dell'ordine */
 if( isset($_GET['wc_pv_mark_ready']) ){
-	//TODO SECURITY
-	$order=new WC_Order($_GET['wc_pv_mark_ready']);
-	if($order->get_status() != 'processing')
-		$order->update_status('processing',__('Order status changed from the dashboard.','bts'));
-	else
-		$order->update_status('on-hold',__('Order status changed from the dashboard.','bts'));
+
+
+
+
+	$orders=explode(' ', trim( $_GET['wc_pv_mark_ready'] ));
+
+
+
+	if(count($orders) <= 1 ) {
+
+
+		$order=new WC_Order($orders[0]);
+
+		if($order->get_status() != 'processing'){
+			$order->update_status('processing',__('Lo stato dell\'ordine è stato cambiato dalla Vendor Dashboard.','bts'));
+		}
+		else{
+			$order->update_status('on-hold',__('Lo stato dell\'ordine è stato cambiato dalla Vendor Dashboard.','bts'));
+		}
+
+
+	} else {
+		foreach($orders as $o){
+
+			$order=new WC_Order($o);
+			$order->update_status('processing',__('Lo stato dell\'ordine è stato cambiato dalla Vendor Dashboard.','bts'));
+
+		}
+
+	}
 }
 
 
@@ -207,10 +231,10 @@ if( isset($_GET['wc_pv_change_qty']) ){
 		e.preventDefault();
 		var id = jQuery(this).attr('id');
 
-		if ( jQuery(this).text() == "<?php _e('Hide items', 'wcvendors'); ?>" ) {
-			jQuery(this).text("<?php _e('View items', 'wcvendors'); ?>");
+		if ( jQuery(this).text() == "<?php _e('Nascondi dettagli', 'bts'); ?>" ) {
+			jQuery(this).text("<?php _e('Vedi dettagli', 'bts'); ?>");
 		} else {
-			jQuery(this).text("<?php _e('Hide items', 'wcvendors'); ?>");
+			jQuery(this).text("<?php _e('Vedi dettagli', 'bts'); ?>");
 		}
 
 		jQuery("#view-items-" + id).fadeToggle();
@@ -236,7 +260,7 @@ if( isset($_GET['wc_pv_change_qty']) ){
 });
 </script>
 
-<h2><?php _e( 'Orders', 'wcvendors' ); ?></h2>
+<h2><a href="<?php the_permalink(); ?>"><?php _e( 'Lista Ordini', 'bts' ); ?></a></h2>
 
 
 
@@ -317,8 +341,9 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 		//$shipped = in_array($user_id, $shippers);
 			//Preparo la hasmap che userò in visualizzazione
 		if(isset($_GET['c']) && $_GET['c']>0){
-			if($_GET['c'] == $classe->slug)
-			$allOrders[$classe->slug][$order->get_user()->data->display_name][$order->get_order_number( )]=array('total'=>$order->get_total() , 'date'=>$order->order_date, 'status'=>$order->get_status() );
+			if($_GET['c'] == $classe->slug){
+				$allOrders[$classe->slug][$order->get_user()->data->display_name][$order->get_order_number( )]=array('total'=>$order->get_total() , 'date'=>$order->order_date, 'status'=>$order->get_status() );
+			}
 		} else {
 			$allOrders[$classe->slug][$order->get_user()->data->display_name][$order->get_order_number( )]=array('total'=>$order->get_total() , 'date'=>$order->order_date, 'status'=>$order->get_status() );
 		}
@@ -333,7 +358,7 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 
 			foreach($allOrders as $orderedClassKey => $orderedClass ) :
                     if(isset($_GET['c'])&& $_GET['c']>0){?>
-			<h2><a href="<?php echo $page_link; ?>&c=<?php echo $orderedClassKey; ?>"><?php $idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
+			<h2><a href="<?php echo $page_link; ?>&amp;c=<?php echo $orderedClassKey; ?>"><?php $idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
  				 echo $idObj->name; ?></a></h2>
                     <?php }?>
 
@@ -342,12 +367,12 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 				<?php if(isset($_GET['c'])) : ?>
 				<thead>
 					<tr>
-						<th class="user-header"><?php _e( 'Customer', 'wcvendors' ); ?></th>
-						<th class="product-header"><?php _e( 'Order', 'wcvendors' ); ?></th>
-						<th class="commission-header"><?php _e( 'Total', 'wcvendors' ) ?></th>
-						<th class="rate-header"><?php _e( 'Date', 'wcvendors' ) ?></th>
-						<th class="status-header"><?php _e( 'Status', 'wcvendors' ) ?></th>
-						<th class="rate-header"><?php _e( 'Links', 'wcvendors' ) ?></th>
+						<th class="user-header"><?php _e( 'Acquirente', 'bts' ); ?></th>
+						<th class="product-header"><?php _e( 'Ordine', 'bts' ); ?></th>
+						<th class="commission-header"><?php _e( 'Totale', 'bts' ) ?></th>
+						<th class="rate-header"><?php _e( 'Data', 'bts' ) ?></th>
+						<th class="status-header"><?php _e( 'Stato', 'bts' ) ?></th>
+						<th class="rate-header"><?php _e( 'Azioni', 'bts' ) ?></th>
 					</tr>
 				</thead>
 				<?php endif; ?>
@@ -361,6 +386,8 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 						$processing=0;
 						$ordercount=0;
 
+						$strOrderList='';
+
 						foreach($orderedClass as $orderedCustomerKey => $orderedCustomer ) :
 
 
@@ -368,9 +395,12 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 							ksort($orderedClass);
 							foreach($orderedCustomer as $orderedOrderKey => $orderedOrder ) :
 
+
+							$strOrderList.=substr($orderedOrderKey,1)."+";
 							$totals+=$orderedOrder['total'];
 							$processing+= ($orderedOrder['status']=='processing');
 							$ordercount++;
+							if($processing == $ordercount) $strOrderReady ='done'; else $strOrderReady ='not-done';
 						?>
 						<?php if(isset($_GET['c'])) : ?>
 						<tr>
@@ -379,11 +409,11 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 							<!-- <td><?php $sum = WCV_Queries::sum_for_orders( array( $order->id ), array('vendor_id'=>get_current_user_id()) ); $total = $sum[0]->line_total; $totals += $total; echo woocommerce_price( $total ); ?></td> -->
 							<td><?php echo woocommerce_price($orderedOrder['total']); ?></td>
 							<td><?php echo $orderedOrder['date']; ?></td>
-							<td><?php echo $orderedOrder['status']; ?></td>
-							<!--<td><a href="#" class="view-items" id="<?php echo $order->id; ?>"><?php _e('View details', 'wcvendors'); ?></a> | <a href="?wc_pv_mark_shipped=<?php echo $order->id; ?>" class="mark-shipped"><?php echo $shipped ? __('Unmark shipped', 'wcvendors') : __('Mark shipped', 'wcvendors'); ?></a> <?php if ( $providers ) : ?>  <a href="#" class="view-order-tracking" id="<?php echo $order->id; ?>"><?php _e( 'Tracking', 'wcvendors' ); ?></a><?php endif; ?></td> -->
+							<td><?php if($orderedOrder['status']=='processing') echo 'Pagato'; elseif($orderedOrder['status']=='on-hold') echo 'Non pagato'; else echo $orderedOrder['status'];  ?></td>
+							<!--<td><a href="#" class="view-items" id="<?php echo $order->id; ?>"><?php _e('View details', 'bts'); ?></a> | <a href="?wc_pv_mark_shipped=<?php echo $order->id; ?>" class="mark-shipped"><?php echo $shipped ? __('Unmark shipped', 'bts') : __('Mark shipped', 'bts'); ?></a> <?php if ( $providers ) : ?>  <a href="#" class="view-order-tracking" id="<?php echo $order->id; ?>"><?php _e( 'Tracking', 'bts' ); ?></a><?php endif; ?></td> -->
 							<td>
-								<a href="#" class="view-items" id="<?php echo substr($orderedOrderKey,1); ?>"><?php _e('View details', 'wcvendors'); ?></a> |
-								<a href="<?php echo $page_link; ?>&amp;wc_pv_mark_ready=<?php echo intval(substr($orderedOrderKey,1)) ?>" class="mark-ready"><?php echo $orderedOrder['status']=='processing' ? __('Unmark ready', 'wcvendors') : __('Mark ready', 'wcvendors'); ?></a> <?php if ( $providers ) : ?>  <a href="#" class="view-order-tracking" id="<?php echo $order->id; ?>"><?php _e( 'Tracking', 'wcvendors' ); ?></a><?php endif; ?></td>
+								<a href="#" class="view-items" id="<?php echo substr($orderedOrderKey,1); ?>"><?php _e('Vedi dettagli', 'bts'); ?></a> |
+								<a href="<?php echo $page_link; ?>&amp;wc_pv_mark_ready=<?php echo intval(substr($orderedOrderKey,1)) ?>" class="mark-ready"><?php echo $orderedOrder['status']=='processing' ? __('Segna non pagato', 'bts') : __('Segna pagato', 'bts'); ?></a> <?php if ( $providers ) : ?>  <a href="#" class="view-order-tracking" id="<?php echo $order->id; ?>"><?php _e( 'Tracking', 'bts' ); ?></a><?php endif; ?></td>
 							</tr>
 
 
@@ -427,39 +457,30 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 <?php endif; ?>
 <?php endforeach; //foreach CustomerAsOrder ?>
 <?php endforeach; //foreach ClassAsCustomer ?>
-<tr>
+<tr class="<?php echo $strOrderReady; ?>">
     <?php if(!isset($_GET['c'])){?>
-    <td rowspan="2" width="32%">
+    <td rowspan="2" width="30%">
         <h2><a href="<?php echo $page_link; ?>&c=<?php echo $orderedClassKey; ?>"><?php $idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
             echo $idObj->name; ?></a></h2></td>
     <?php }?>
-	<td width="32%"><b>Total:</b></td>
-	<td colspan="4" width="32%"><?php echo woocommerce_price( $totals ); ?></td>
+	<td width="30%"><b>Totale:</b></td>
+	<td colspan="4" width="30%"><?php echo woocommerce_price( $totals ); ?></td>
+	<td rowspan="2"><a href="<?php echo $page_link; ?>&amp;wc_pv_mark_ready=<?php echo substr($strOrderList, 0, -1) ; ?>">Segna pagato</a></td>
 
 </tr>
 
 <tr>
-	<td><b>Ready:</b></td>
+	<td><b>Pagati:</b></td>
 	<td colspan="4"><?php echo  $processing ; ?>/<?php echo  $ordercount ; ?></td>
 
 </tr>
-<?php if(isset($_GET['c'])) : ?>
-<tr>
-	<td width="10%" rowspan="2"><a href = "#" onclick="downloadFile('ordine_<?php echo $idObj->name;?>.csv', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(csvTable));" class="export">Esporta dettaglio ordini in un file csv</a></td>
-</tr>
-<?php endif;  ?>
-
 </tbody></table>
 <?php endforeach; //foreach AllOrderAsClass ?>
-
-
-
-
 <?php else : ?>
 	<table>
 		<tr>
 			<td colspan="4"
-			style="text-align:center;"><?php _e( 'You have no orders.', 'wcvendors' ); ?></td>
+			style="text-align:center;"><?php _e( 'Non c\'è ancora nessun ordine.', 'bts' ); ?></td>
 		</tr>
 	</table>
 

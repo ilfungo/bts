@@ -65,7 +65,7 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
 		$result .= '	<input class="requiredField" type="password" name="smartPassword" id="smartPassword" value=""/>' . PHP_EOL;
 		$result .= '	<input type="hidden" name="smartParent" value="' .  $post->ID . '" />' . PHP_EOL;
 		$result .= '	<input type="hidden" name="catProtector_nonce" value="' . wp_create_nonce( catProtector ).'" />' . PHP_EOL;
-		$result .= '	<input type="submit" value="' . $label . '" />' . PHP_EOL;
+		$result .= '	<input type="submit" value="' . $label . '" class="button" />' . PHP_EOL;
 		$result .= '</form>' . PHP_EOL;
 		return $result;
 	}

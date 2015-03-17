@@ -112,7 +112,7 @@ class WC_Settings_Emails extends WC_Settings_Page {
 				'id'       => 'woocommerce_email_footer_text',
 				'css'      => 'width:100%; height: 75px;',
 				'type'     => 'textarea',
-				'default'  => get_bloginfo('title') . ' - ' . __( 'Powered by WooCommerce', 'woocommerce' ),
+				'default'  => get_bloginfo('title') . ' - ' ,
 				'autoload' => false
 			),
 

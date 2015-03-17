@@ -57,17 +57,17 @@ function wooc_extra_register_fields() {
     <p class="form-row form-row-first validate-required" id="billing_first_name_field">
         <label for="billing_first_name" class="">Nome <abbr class="required" title="obbligatorio">*</abbr>
         </label>
-        <input type="text" class="input-text " name="billing_first_name" id="billing_first_name" placeholder="" value="">
+        <input type="text" class="input-text " name="billing_first_name" id="billing_first_name" placeholder="nome" value="<?php if(isset($_POST['billing_first_name'])) echo $_POST['billing_first_name'];?>">
     </p>
     <p class="form-row form-row-last validate-required" id="billing_last_name_field">
         <label for="billing_last_name" class="">Cognome <abbr class="required" title="obbligatorio">*</abbr>
         </label>
-        <input type="text" class="input-text " name="billing_last_name" id="billing_last_name" placeholder="" value="">
+        <input type="text" class="input-text " name="billing_last_name" id="billing_last_name" placeholder="cognome" value="<?php if(isset($_POST['billing_last_name'])) echo $_POST['billing_last_name'];?>">
     </p>
     <p class="form-row form-row-first validate-required validate-phone" id="billing_phone_field">
         <label for="billing_phone" class="">Telefono <abbr class="required" title="obbligatorio">*</abbr>
         </label>
-        <input type="text" class="input-text " name="billing_phone" id="billing_phone" placeholder="" value="">
+        <input type="text" class="input-text " name="billing_phone" id="billing_phone" placeholder="telefono" value="<?php if(isset($_POST['billing_phone'])) echo $_POST['billing_phone'];?>">
     </p>
     <div class="clear"></div>
     <p class="form-row form-row-wide validate-required" id="billing_scuola_field">
@@ -220,15 +220,31 @@ function template_loop_show_product_name() {
     echo 'Foto numero:'..'</a> <br />';
 }*/
 
-function woocommerce_template_main_title(){ ?>
+function woocommerce_template_filters_instructions(){ ?>
+    <?php
+    $attentionPage = get_posts(
+     array(
+     'name'      => 'modalita-dacquisto-short',
+     'post_type' => 'page'
+    )
+    );
+    //var_dump($attentionPages);
+    ?>
+    <?php
+    $queried_object = get_queried_object();
+    //var_dump( $queried_object );
+    //echo $_SESSION[pic_type];
+    //if(isset($_SESSION[ffocus])){
+    $attentionPage=$attentionPage[0];
+    ?>
+    <h3><?php echo $attentionPage->post_title; ?></h3>
     <div class="intro-text">
-    Acquista la tua foto, puoi acquistarla "liscia" o applicando filtri colore.<br>
-    La procedura di acquisto è facile, leggi bene in ogni pagina le istruzioni, non è un gioco,
-    quello che acquisti andrà pagato!
+                <?php echo apply_filters('the_content', $attentionPage->post_content); ?>
     </div>
-<?php }
+<?php //}
+}
 
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_main_title', 5 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_filters_instructions', 5 );
 
 // Remove the default Thematic blogtitle function
 function change_BTPI_product_categories() {
@@ -239,7 +255,7 @@ function change_BTPI_product_categories() {
     $current_user = wp_get_current_user();
     $thisUser     = $current_user->ID;
 
-    $sql          = "SELECT meta_value,taxonomy_id";
+    $sql          = "SELECT meta_value,taxonomy_id"; 
     $sql         .= " FROM {$wpdb->taxonomymeta}";
     $sql         .= " WHERE {$wpdb->taxonomymeta}.meta_key = '%s'";
 

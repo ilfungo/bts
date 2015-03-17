@@ -1,9 +1,14 @@
 <?php
 
+
 define('_WP_DIR','/home/federico/public_html/btsb.bnj.xyz/');
-define('_BTSB_DIR','/home/federico/public_html/btsb.bnj.xyz/wp-content/plugins/btsb/');
+
+define('_BTSB_DIR',_WP_DIR.'wp-content/plugins/btsb/');
 define('_ORDERS_DIR','/home/federico/ordini/');
 define( '_SCHEDULE_FILE', _BTSB_DIR."batch.schedule" );
+
+
+
 if(!defined('WP_USE_THEMES'))
   define('WP_USE_THEMES', false);
 
@@ -127,6 +132,7 @@ function getWorkListAsHTML($worklist){
       //$str.='<span>'.$count['numberImagesDone'].'/'.$count['numberImages'].'</span> ';
       $str.='<table class="table">';
       $str.= getHTMLTableHeader($scuola, $scuolaKey );
+
       $str.='</table>';
 
       $str.="<ul>";
@@ -137,14 +143,17 @@ function getWorkListAsHTML($worklist){
 
           $str.='<li class="classe">';
 
-          $str.='<table class="label"><tr>';
+          if($count['numberImagesDone'] == $count['numberImages']) $label_class='done'; else $label_class='not-done';
+
+          $str.='<table class="label"><tr class="'.$label_class.'">';
+
           $str.='<td><h3>'.$classeKey.'</h3></td>';
           //$str.="<button class=\"startBatch\" data-input=\"$scuolaKey\">Start Class Batch</button>";
           $str.='<td>'.$count['numberImagesDone'].'/'.$count['numberImages'].'</td> ';
           $str.='</tr></table>';
 
-          $str.="<table>";
-            $str.="<tr><th>Order</th><th>Type</th><th>Title</th><th>Filter</th><th>Vignette</th><th>Quantity</th><th>Done</th></tr>";
+          $str.='<table class="table">';
+            $str.="<tr><th>Ordine</th><th>Tipo</th><th>Nome</th><th>Filtro</th><th>Vignetta</th><th>Quantità</th><th>Fatto</th></tr>";
           foreach ($classe as $imgKey => $img) {
             $done=is_WorkListItemDone($img['output']);
             $doneClass= $done ? 'done' : 'not-done';
@@ -161,7 +170,7 @@ function getWorkListAsHTML($worklist){
             $str.='<td class="type">'.$img['type'].'</td>';
 
             /*TITLE CELL*/
-            if(!file_exists($img['input'])) { $titleStr='<s>'.$img['title'].'</s>' ; $altStr="title=\"File doesn't exists!\""; } else { $titleStr=$img['title']; }
+            if(!file_exists($img['input'])) { $titleStr='<s>'.$img['title'].'</s>' ; $altStr="title=\"File {$img['input']} doesn't exists!\""; } else { $titleStr=$img['title']; }
             $str.='<td class="title" '.$altStr.'>'.$titleStr.'</td>';
             /*ORDER CELL*/
             $str.='<td class="filter-name">'.$img['filter'].'</td>';
@@ -169,7 +178,7 @@ function getWorkListAsHTML($worklist){
             $str.='<td class="vignette">'.$vignetteStr.'</td>';
             /*ORDER CELL*/
             $str.='<td class="qty">'.$img['qty'].'</td>';
-            if(!$done && $img['type']!='annuario') $buttonStr = "<button class=\"startSingle\" data-input=\"$imgKey\">Start Single</button>"; else $buttonStr = "Yes!";
+            if(!$done && $img['type']!='annuario') $buttonStr = "<button class=\"startSingle\" data-output=\"". base64_encode( $img['output'] ) ."\" data-input=\"$imgKey\">Start Single</button>"; else $buttonStr = "Yes!";
             $str.='<td class="done">'.$buttonStr.'</td>';
 
 
@@ -261,13 +270,15 @@ function isLocked()
 function getHTMLTableHeader($scuola, $scuolaKey){
 
       $count=getWorklistItemCount($scuola);
+      $scuolaName= get_term_by('slug', $scuolaKey, 'product-cat'); $scuolaName = $scuolaName->name;
       $doneClass = ($count['numberImages'] == $count['numberImagesDone']) ? 'done ':'not-done ';
 
       $str.='<tr class="scuola '.$doneClass.$scuolaKey .'">';
 
+
       $str.='<td><h2><a href="'.admin_url( "admin.php?page=".$_GET["page"] ).'&scuola='.$scuolaKey.'">'.$scuolaKey.'</a></td></h2> ';
-      $str.="<td><button class=\"startBatch\" data-input=\"$scuolaKey\">Schedule School Batch</button></td>";
-      $str.="<td><button class=\"showLog\" data-input=\"$scuolaKey\">Show School Log</button></td>";
+      $str.="<td><button class=\"startBatch\" data-input=\"$scuolaKey\">Pianifica il batch di questa scuola</button></td>";
+      $str.="<td><button class=\"showLog\" data-input=\"$scuolaKey\">Mostra Log</button></td>";
       $str.='<td><span>'.$count['numberImagesDone'].'/'.$count['numberImages'].'</span></td>';
 
       $lockFile=_BTSB_DIR.'batch-'.$scuolaKey.'.lock';
@@ -278,14 +289,22 @@ function getHTMLTableHeader($scuola, $scuolaKey){
       $eta += $started;
       $scheduled=file_get_contents(_SCHEDULE_FILE);
       if(file_exists($lockFile)){
-        $runningStr = 'Started at '.date ("H:i:s.", $started).'<br>ETA '.date ("H:i:s.", $eta).'<br>PID:'.file_get_contents($lockFile)."<br>";
-      } else { $runningStr="Stoppped"; }
+        $runningStr = 'Iniziato alle '.date ("H:i:s.", $started).'<br>ETA '.date ("H:i:s.", $eta).'<br>PID:'.file_get_contents($lockFile)."<br>";
+      } else { $runningStr="Fermo"; }
 
       if( trim($scheduled) == $scuolaKey ) {
-        $scheduledStr = 'Scheduled'.'<br>';
+        $scheduledStr = 'Pianificato'.'<br>';
       } else { $scheduledStr =''; }
       $str.='<td><span>'.  $scheduledStr.$runningStr . ' ' .'</span></td>';
+
+
+
       $str.="</tr>";
+
+      $str.='<tr class="' . $scuolaKey .'"><td class="log" colspan="5"></td></tr>';
+
+
+
 
       return $str;
 

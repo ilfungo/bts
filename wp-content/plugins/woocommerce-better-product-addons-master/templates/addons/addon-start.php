@@ -2,8 +2,8 @@
 
 	<?php do_action( 'wc_product_addon_start', $addon ); ?>
 
-	<?php if ( $name ) : ?>
-		<h3 class="addon-name"><?php echo wptexturize( $name ); ?> <?php if ( 1 == $required ) echo '<abbr class="required" title="required">*</abbr>'; ?></h3>
+	<?php if ( $name ) : if($name=='Filters') $strName="Filtri insta-like"; elseif($name=='Vignette') $strName="Vignettatura"; else $strName = $name; ?>
+		<h3 class="addon-name"><?php echo wptexturize( $strName ); ?> <?php if ( 1 == $required ) echo '<abbr class="required" title="required">*</abbr>'; ?></h3>
 	<?php endif; ?>
 
 	<?php if ( $description ) : ?>

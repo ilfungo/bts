@@ -139,7 +139,7 @@ class Product_Addon_Display {
 		}
 
 
-		if(count($prod)==1){
+		if(is_array( $prod ) && count($prod)==1){
 
 			$variation=new WC_Product($prod[0]);
 			if(!($variation->post->post_title == "foto focus"))  $product_addons=null; ;

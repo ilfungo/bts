@@ -72,8 +72,10 @@ get_header(); ?>
                }
                if($results->post_title=="foto di classe")
                    $fclasse=true;
-               if($results->post_title=="foto focus")
+               if($results->post_title=="foto focus"){
                    $ffocus=true;
+                   //$_SESSION[pic_type]="focus";
+               }
                ?>
          <?php endwhile; // end of the loop.
          if($fclasse){?>
@@ -90,7 +92,7 @@ get_header(); ?>
          <?php endwhile; // end of the loop.
            if($ffocus){?>
          <div style="clear:both"></div>
-         <h2>Foto focus</h2>
+         <h2>Foto ritratto</h2>
          <?php }
                while ( have_posts() ) : the_post(); ?>
                <?php $results = $wpdb->get_row($wpdb->prepare(
@@ -102,7 +104,9 @@ get_header(); ?>
          <?php endwhile; // end of the loop. ?>
          <?php woocommerce_product_loop_end(); ?>
 
-         <?php do_action('woocommerce_after_shop_loop'); ?>
+         <?php do_action('woocommerce_after_shop_loop');
+           unset($_SESSION[pic_type]);
+           ?>
 
       <?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
 

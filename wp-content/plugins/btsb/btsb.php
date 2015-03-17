@@ -4,7 +4,7 @@ Plugin Name: BTS plugin
 Description: Who cares
 Author: Bruno Bionaz
 Author URI: http://bnj.xyz
-Version: 1.0.1
+Version: 1.0.2
 */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
@@ -12,19 +12,20 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 if ( ! function_exists( 'getWorkList' ) )
       require_once( 'btsb-functions.php' );
 
-add_action('init', 'bts_localization');
+//add_action('init', 'bts_localization');
 
 add_action('admin_init', 'btsb_scripts_basic' );
 add_action('admin_menu', 'btsb_setup_menu');
 
 add_action( 'wp_enqueue_scripts', 'btsb_frontend_scripts' );
 
-
+/*
 function bts_localization()
 {
 // Localization
-load_plugin_textdomain('bts', false, dirname(plugin_basename(__FILE__)));
+load_plugin_textdomain('bts', false, dirname(plugin_basename(__FILE__))  . '/languages' );
 }
+*/
 
 // Add actions
 
@@ -41,7 +42,7 @@ function btsb_scripts_basic()
 
 
 function btsb_setup_menu(){
-        $page_hook_suffix = add_menu_page( __('BTS'), __('BTS Orders'), 'manage_options', 'bts', 'btsb_init', 'dashicons-images-alt2' );
+        $page_hook_suffix = add_menu_page( __('BTS'), __('Gestione Ordini BTS'), 'manage_options', 'bts', 'btsb_init', 'dashicons-images-alt2' );
 
         add_action('admin_print_scripts-' . $page_hook_suffix, 'btsb_admin_scripts');
 }
@@ -64,15 +65,16 @@ function btsb_frontend_scripts() {
 function btsb_init(){ ?>
 
     <div class="btsb-plugin">
-    <h1>BTS Order Management</h1>
+    <h1><a href="<?php echo admin_url( "admin.php?page=".$_GET["page"] ); ?>" title="BTS Order Management">BTS Gestione Ordini</a></h1>
     <?php
         $workList = getWorkList();
+
         if(count($workList) >0)
             echo getWorkListAsHTML($workList);
         else
-            echo "<table><tr><td>No ununfinished orders found.</td></tr></table>";
+            echo "<table><tr><td>Nessun ordine trovato.</td></tr></table>";
     ?>
-    <div class="wrapper-log"><div class="log"></div></div>
+
     </div>
 
 
@@ -93,7 +95,7 @@ function array2ul($array)
         } /* elseif($depth==2){
             $out.="<li class=\"lev-".$depth."\"><span>$key".array2ul($elem)."</span></li>";
         } else */ {
-            if($depth==5) $button="<button>Start batch</button>";
+            if($depth==5) $button="<button>".__('Inizia batch','bts')."</button>";
             $out.="<li class=\"lev-".$depth."\"><span>$key:$elem</span>$button".array2ul($elem)."</li>";
         }
     }

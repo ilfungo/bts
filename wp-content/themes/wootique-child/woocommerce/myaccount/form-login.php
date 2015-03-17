@@ -110,14 +110,15 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php else : ?>
             <div <?php post_class(); ?>>
 
-                <h1 class="title"><?php the_title(); ?></h1>
+                <h2 class="title"><?php the_title(); //echo get_the_ID(); ?></h2>
 
-                <div class="entry login">
+                <div class="entry login bts-login">
                     <p class="form-row form-row-wide">
-                        <label for="istruzioni">Se non sei già in possesso di un account devi prima inserire la parola d'ordine della scuola
-                            e nella schermata successiva la tua classe.<br>
-                            Una volta inserita la scuola e la classe potranno essere effettuati ordini solo dalla classe e dalla scuola specificata.
-                            <br>Non sarà possibile modificare la scuola e la classe in nessun modo.
+                        <label for="istruzioni">
+                        <?php
+                        $testo=get_post_meta(get_the_ID(), "testo_aggiuntivo");
+                        echo $testo=$testo[0];
+                        ?>
                         </label>
                         <?php echo do_shortcode('[catprotector]');?>
                     </p>

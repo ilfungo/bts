@@ -40,7 +40,10 @@ if ( $products->have_posts() ) : ?>
 	<div class="products">
 
 		<h2><?php //_e( 'Related Products', 'woocommerce' );
-            echo "Altre ". $GLOBALS['main_foto_type'];?></h2>
+            $main_foto_type = $GLOBALS['main_foto_type'];
+            if($main_foto_type=="foto focus")
+                $main_foto_type = "foto ritratto";
+            echo "Altre ". $main_foto_type ;?></h2>
 
 		<?php woocommerce_product_loop_start();?>
 

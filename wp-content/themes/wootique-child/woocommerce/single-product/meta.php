@@ -26,9 +26,10 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 	<?php
     if($GLOBALS['main_foto_type']!="annuario")
         echo $product->get_categories( ', ', '<span class="posted_in">' . _n( 'Classe : ', 'Classi : ', $cat_count, 'woocommerce' ) . ' ', '</span>' );
-    else
-        echo 'Classe: <a href="/?product_cat='.$_SESSION['class_slug'].'">'.$_SESSION['class_name']."</a>";
-    //perchè unset?
+    else{
+        if(isset($_SESSION['class_slug']))echo 'Classe: <a href="/?product_cat='.$_SESSION['class_slug'].'">'.$_SESSION['class_name']."</a>";
+    }
+    //perchè unset? perchè se non arrivo da una classe devo evitare che tenga una classe "vecchia"
     unset($_SESSION['class_slug']);unset($_SESSION['class_name']);
     ?>
 

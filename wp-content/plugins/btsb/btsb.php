@@ -42,7 +42,7 @@ function btsb_scripts_basic()
 
 
 function btsb_setup_menu(){
-        $page_hook_suffix = add_menu_page( __('BTS'), __('Gestione Ordini BTS'), 'manage_options', 'bts', 'btsb_init', 'dashicons-images-alt2' );
+        $page_hook_suffix = add_menu_page( __('BTS'), __('Gestione Ordini BTS'), 'manage_woocommerce', 'bts', 'btsb_init', 'dashicons-images-alt2' );
 
         add_action('admin_print_scripts-' . $page_hook_suffix, 'btsb_admin_scripts');
 }

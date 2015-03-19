@@ -56,8 +56,8 @@ if( isset($_GET['wc_pv_change_qty']) ){
 
 		if(!empty($product)) :
 			$price=$product->price;
-			var_dump(intval($args[3]*$price));
-				echo "<br>";
+			//var_dump(intval($args[3]*$price));
+				//echo "<br>";
 
 			global $wpdb;
 
@@ -96,9 +96,9 @@ if( isset($_GET['wc_pv_change_qty']) ){
 			$p=get_post($args[0]);
 			$order=new WC_Order();
 			$order->populate($p);
-			var_dump($order);
+			//var_dump($order);
 			$order->calculate_totals();
-			var_dump($order);
+			//var_dump($order);
 		endif;
 
 	endif;
@@ -311,9 +311,9 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 		$itemsForOrder[$order->id]=$valid_items;
 		$classe = '';
 		foreach ($valid_items as $valid_item) {
-			if($valid_item['Sold by'] != get_user_meta( $user_id, 'nickname', true) ){
+			/*if($valid_item['Sold by'] != get_user_meta( $user_id, 'nickname', true) ){
 				continue 2; //
-			}
+			}*/
 			$p_id=$valid_item['product_id'];
 			$valid_item=new WC_Product($p_id);
 
@@ -339,7 +339,8 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 		//var_dump(get_post_meta( $order->id ));
 		//$shippers = (array) get_post_meta( $order->id, 'wc_pv_shipped', true );
 		//$shipped = in_array($user_id, $shippers);
-			//Preparo la hasmap che userò in visualizzazione
+
+		//Preparo la hasmap che userò in visualizzazione
 		if(isset($_GET['c']) && $_GET['c']>0){
 			if($_GET['c'] == $classe->slug){
 				$allOrders[$classe->slug][$order->get_user()->data->display_name][$order->get_order_number( )]=array('total'=>$order->get_total() , 'date'=>$order->order_date, 'status'=>$order->get_status() );
@@ -353,7 +354,6 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 			ksort($allOrders);
 
 			//script csv Simone
-
 			//echo "<pre>"; var_dump($allOrders); echo "</pre>";
 
 			foreach($allOrders as $orderedClassKey => $orderedClass ) :
@@ -459,7 +459,7 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 <?php endforeach; //foreach ClassAsCustomer ?>
 <tr class="<?php echo $strOrderReady; ?>">
     <?php if(!isset($_GET['c'])){?>
-    <td rowspan="2" width="30%">
+    <td rowspan="2" width="30%" class="classe">
         <h2><a href="<?php echo $page_link; ?>&c=<?php echo $orderedClassKey; ?>"><?php $idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
             echo $idObj->name; ?></a></h2></td>
     <?php }?>

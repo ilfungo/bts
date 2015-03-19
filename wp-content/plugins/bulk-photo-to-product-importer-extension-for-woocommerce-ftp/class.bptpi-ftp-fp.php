@@ -251,25 +251,54 @@ class bptpi_ftp_fp {
             $error = "Il file ini non è configurato correttamente: parametri dell'utente";
             return $error;
         }
+        
+        if($ini_array[prezzoAN]=='' || !is_numeric($ini_array[prezzoAN])){
+            $error = "Il file ini non è configurato correttamente: prezzi delle foto, annuario";
+            return $error;
+        }
+        if($ini_array[prezzoCL]=='' || !is_numeric($ini_array[prezzoCL])){
+            $error = "Il file ini non è configurato correttamente: prezzi delle foto, classe";
+            return $error;
+        }
+        if($ini_array[prezzoFF]=='' || !is_numeric($ini_array[prezzoFF])){
+            $error = "Il file ini non è configurato correttamente: prezzi delle foto, foto focus";
+            return $error;
+        }
+        //$ini_array[prezzoAN] $ini_array[prezzoCL] $ini_array[prezzoFF]
         return $error;
     }
     function check_file_integrity($file){
         //wp_check_filetype( $file, $mimes )
+        //@todo migliorare l'acquisizione di $cwd
+        $cwd = trailingslashit(stripslashes($_POST['cwd']));
+
         $filetype = wp_check_filetype( $file);
         if($filetype[type] != "image/jpeg"){
             $error = "Il file $file ha un estensione non conforme a quella richiesta";
+            $path = $cwd.'bptpi_import_log.log';
+            if(!attach_txt_file($error, $path)){
+                echo '<div class="updated error"><p>Non posso scrivere il mio log</p></div>';
+            }
             return $error;
         }
         $dati_foto=explode("-",$file);
         //print_r($dati_foto);
         $error = "";
         if(count($dati_foto)<3){
-            $error = "Il file $file ha un nome non conforme ai parametri standard";
+            $error = "Il file $file ha un nome non conforme ai parametri standard"."\r\n";;
+            $path = $cwd.'bptpi_import_log.log';
+            if(!attach_txt_file($error, $path)){
+                echo '<div class="updated error"><p>Non posso scrivere il mio log</p></div>';
+            }
             return $error;
         }
         $pt = array("FF","CL","AN");
         if(!in_array($dati_foto[2],$pt)){
-            $error = "Il file $file ha un nome non conforme ai parametri standard";
+            $error = "Il file $file ha un nome non conforme ai parametri standard"."\r\n";;
+            $path = $cwd.'bptpi_import_log.log';
+            if(!attach_txt_file($error, $path)){
+                echo '<div class="updated error"><p>Non posso scrivere il mio log</p></div>';
+            }
             return $error;
         }
         return $error;
@@ -310,6 +339,11 @@ class bptpi_ftp_fp {
                 return;
             }
             $ini_array = parse_ini_file($ini_file, true);
+            //cambio la virgola in punto
+            $ini_array[prezzoAN] = str_replace(",",".",$ini_array[prezzoAN]);
+            $ini_array[prezzoCL] = str_replace(",",".",$ini_array[prezzoCL]);
+            $ini_array[prezzoFF] = str_replace(",",".",$ini_array[prezzoFF]);
+            //controllo l'integrità dei dati inseriti nel file ini
             $risultato = $this->check_ini_integrity($ini_array);
             if($risultato!=""){
                 $this->admin_error($risultato);
@@ -342,9 +376,8 @@ class bptpi_ftp_fp {
                     return;
                 }
                 //se è l'annuario...
-                if($dati_foto[2]=='AN'){
-                    //per ora faccio tutto mano!
-                }
+                //per ora faccio tutto mano!
+                //if($dati_foto[2]=='AN'){}
 
                 //effettua l'import del file senza creare il watermark e usa delle dimensioni che non so...
                 //effettua upload...
@@ -368,12 +401,15 @@ class bptpi_ftp_fp {
                 switch($dati_foto[2]){
                     case "FF":
                         $variation_group = "8";//foto focus
+                        $variation_group_price = $ini_array[prezzoFF];
                         break;
                     case "CL":
                         $variation_group = "34";//foto di classe
+                        $variation_group_price = $ini_array[prezzoCL];
                         break;
                     case "AN":
                         $variation_group = "35";//annuario
+                        $variation_group_price = $ini_array[prezzoAN];
                         break;
                 }
 
@@ -386,6 +422,7 @@ class bptpi_ftp_fp {
                     '_wp_http_referer' => '/wp-admin/admin.php?page=ptp_bulk_import',
                     'term_id' => $classe_scuola->term_id,
                     'variation_group' => $variation_group,
+                    'variation_group_price' => $variation_group_price,
                     'password_protect' => 'No',
                     'action' => 'ptp_product_import',
                     'attachments' => array('0' => $response[file_id]),
@@ -550,6 +587,7 @@ class bptpi_ftp_fp {
             // Record the variation group id
             $metadata['_ptp_variation_group_id'] = $posted['variation_group'];
 
+            //var_dump($metadata);
             // Update metadata
             foreach ( $metadata as $key => $value ) {
                 update_post_meta( $post_id, $key, $value );
@@ -559,7 +597,7 @@ class bptpi_ftp_fp {
             set_post_thumbnail( $post_id, $file_id );
 
             // Create variations(child products) for this grouped product
-            $this->create_variations( $posted['variation_group'], $post_id, $posted['userID'], $file_data );
+            $this->create_variations( $posted['variation_group'], $post_id, $posted['userID'], $file_data, $posted['variation_group_price'] );
 
             if(isset($posted['assoc'][$file_id]))
             {
@@ -586,7 +624,7 @@ class bptpi_ftp_fp {
      * @param array $file_data
      * @return array $post_ids
      */
-    public function create_variations( $term_id, $parent_id, $current_user, $file_data ) {
+    public function create_variations( $term_id, $parent_id, $current_user, $file_data, $variation_group_price ) {
         $post_ids = array();
 
         $variation_obj = PTPImporter_Variation_Group::getInstance();
@@ -608,10 +646,11 @@ class bptpi_ftp_fp {
 
             // Form product metadata
             $metadata = ptp_product_metadata_defaults();
+            //echo 'variation_group_price'.$variation_group_price;exit();
             // Set price
-            $metadata['_price'] = $variation['price'];
+            $metadata['_price'] = $variation_group_price;//$variation['price'];
             // Set regular price
-            $metadata['_regular_price'] = $variation['price'];
+            $metadata['_regular_price'] = $variation_group_price;//$variation['price'];
             // Set visibility to blank so it won't be displayed
             $metadata['_visibility'] = '';
             // Add meta that determines if this product is used as variation for a grouped data

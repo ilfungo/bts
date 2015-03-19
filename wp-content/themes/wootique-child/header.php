@@ -49,24 +49,27 @@
                   <?php } ?>
               </div>
           </div>
+            <div class="login pull-right">
             <?php
             global $current_user;
             if(is_user_logged_in()){
-            ?>
-            <div class="login pull-right">
-                <?php
+
                 //var_dump($current_user);
                 $billing_last_name = get_user_meta($current_user->ID, "billing_last_name",true);
                 $billing_first_name = get_user_meta($current_user->ID, "billing_first_name",true);
-                echo '<div id="myName"><a href="/?page_id=9">'.$billing_first_name." ".$billing_last_name."</a></div>";
+                $nickname = get_user_meta($current_user->ID, "nickname",true);
+                //echo '<div id="myName"><div  id="myNameAligner"><a href="/?page_id=9">'.$nickname.'<br><small>'.$billing_first_name." ".$billing_last_name."</small></a></div></div>";
+                echo '<div id="myName"><div  id="myNameAligner"><a href="/?page_id=9">'.$nickname.'</a></div></div>';
                 ?>
                 <?php
-                //se l'utente è loggato mostro il pulsante di logout
+                //se l'utente è loggato mostro il pulsante di logout se no quello di login :)
                 if ( is_user_logged_in() ) { ?>
-                    <div id="logoutDiv"><a href="<?php echo wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ) );?>" class="round-button export" title="Logout">Logout</a></div>
-                <?php } ?>
-            </div>
+                    <div id="logoutDiv"><a href="<?php echo htmlentities(wp_logout_url( get_permalink( 9 ) ) );?>" class="round-button export" title="Logout">Logout</a></div>
+                <?php }?>
+            <?php }else{?>
+                <div id="logoutDiv"><a href="/?page_id=9" class="round-button export" title="Loging">Login</a></div>
             <?php } ?>
+            </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           
             <?php /*	wp_nav_menu( array(  

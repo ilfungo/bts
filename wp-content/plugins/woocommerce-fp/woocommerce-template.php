@@ -383,3 +383,43 @@ function show_product_order($columns){
 
     return $columns;
 }
+
+//aggiungo campi scuola e classe all'utente
+add_action( 'show_user_profile', 'add_scuola_fields', 5, 1 );
+add_action( 'edit_user_profile', 'add_scuola_fields', 5, 1 );
+
+function add_scuola_fields( $user )
+{
+    ?>
+    <h3>Campi della scuola</h3>
+
+    <table class="form-table">
+        <tr>
+            <th><label for="user_id">ID utente</label></th>
+            <td><input type="text" name="user_id" value="<?php echo $user->ID; ?>" class="regular-text" readonly /></td>
+        </tr>
+        <tr>
+            <th><label for="scuola">Scuola</label></th>
+            <td><input type="text" name="billing_scuola_taxonomy_id" value="<?php echo esc_attr(get_the_author_meta( 'billing_scuola_taxonomy_id', $user->ID )); ?>" class="regular-text" /> (<?php echo esc_attr(get_the_author_meta( 'billing_scuola_taxonomy_slug', $user->ID )); ?>)</td>
+        </tr>
+
+        <tr>
+            <th><label for="classe">Classe</label></th>
+            <td><input type="text" name="billing_classe_id" value="<?php echo esc_attr(get_the_author_meta( 'billing_classe_id', $user->ID )); ?>" class="regular-text" /></td>
+        </tr>
+
+    </table>
+<?php
+}
+
+add_action( 'personal_options_update', 'save_scuola_fields' );
+add_action( 'edit_user_profile_update', 'save_scuola_fields' );
+
+function save_scuola_fields( $user_id )
+{
+    update_user_meta( $user_id,'billing_scuola_taxonomy_id', sanitize_text_field( $_POST['billing_scuola_taxonomy_id'] ) );
+    $scuola=get_term( sanitize_text_field( $_POST['billing_scuola_taxonomy_id'] ), "product_cat");
+    //print_r($scuola->slug);exit;
+    update_user_meta( $user_id,'billing_scuola_taxonomy_slug', $scuola->slug );
+    update_user_meta( $user_id,'billing_classe_id', sanitize_text_field( $_POST['billing_classe_id'] ) );
+}

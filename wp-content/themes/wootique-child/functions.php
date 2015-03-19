@@ -132,17 +132,19 @@ add_action( 'woocommerce_register_form_start', 'wooc_extra_register_fields' );
 
 
 function wooc_validate_extra_register_fields( $username, $email, $validation_errors ) {
+
     if ( isset( $_POST['billing_first_name'] ) && empty( $_POST['billing_first_name'] ) ) {
         $validation_errors->add( 'billing_first_name_error', __( '<strong>Errore</strong>: Devi inserire il nome!', 'woocommerce' ) );
     }
 
     if ( isset( $_POST['billing_last_name'] ) && empty( $_POST['billing_last_name'] ) ) {
-        $validation_errors->add( 'billing_last_name_error', __( '<strong>Errore</strong>: Devi inserire il cognome!.', 'woocommerce' ) );
+        $validation_errors->add( 'billing_last_name_error', __( '<strong>Errore</strong>: Devi inserire il cognome!', 'woocommerce' ) );
     }
 
 
-    if ( isset( $_POST['billing_phone'] ) && empty( $_POST['billing_phone'] ) ) {
-        $validation_errors->add( 'billing_phone_error', __( '<strong>Errore</strong>: Devi insierire il tuo numero di telefono!.', 'woocommerce' ) );
+    //if (!WC_Validation::is_phone($_POST['billing_phone'])) { // non va :(
+    if (!is_italian_phone($_POST['billing_phone'])) {
+        $validation_errors->add( 'billing_phone_error', __( '<strong>Errore</strong>: Devi insierire un numero di telefono valido!', 'woocommerce' ) );
     }
 
     if ( isset( $_POST['billing_classe_id'] ) && empty( $_POST['billing_classe_id'] ) ) {
@@ -150,17 +152,22 @@ function wooc_validate_extra_register_fields( $username, $email, $validation_err
     }
 
     if ( isset( $_POST['billing_scuola_taxonomy_id'] ) && empty( $_POST['billing_scuola_taxonomy_id'] ) ) {
-        $validation_errors->add( 'billing_scuola_taxonomy_id_error', __( '<strong>Errore</strong>: Contatta l\'amministratore del sito per completare l\'iscrizione riferendo questo errore: billing_scuola_taxonomy_id!.', 'woocommerce' ) );
+        $validation_errors->add( 'billing_scuola_taxonomy_id_error', __( '<strong>Errore</strong>: Contatta l\'amministratore del sito per completare l\'iscrizione riferendo questo errore: billing_scuola_taxonomy_id!', 'woocommerce' ) );
     }
 
     if ( isset( $_POST['billing_scuola_taxonomy_slug'] ) && empty( $_POST['billing_scuola_taxonomy_slug'] ) ) {
-        $validation_errors->add( 'billing_scuola_taxonomy_slug_error', __( '<strong>Errore</strong>: Contatta l\'amministratore del sito per completare l\'iscrizione riferendo questo errore: billing_scuola_taxonomy_slug!.', 'woocommerce' ) );
+        $validation_errors->add( 'billing_scuola_taxonomy_slug_error', __( '<strong>Errore</strong>: Contatta l\'amministratore del sito per completare l\'iscrizione riferendo questo errore: billing_scuola_taxonomy_slug!', 'woocommerce' ) );
     }
 
 
 }
 
 add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 10, 3 );
+
+function is_italian_phone( $phone ) {
+    return preg_match( '/\d{2,4}\s?-?\s?\d{5,9}/', $phone );
+}
+
 
 /**
  * Save the extra register fields.
@@ -170,6 +177,7 @@ add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 
  * @return void
  */
 function wooc_save_extra_register_fields( $customer_id ) {
+
     if ( isset( $_POST['billing_first_name'] ) ) {
         // WordPress default first name field.
         update_user_meta( $customer_id, 'first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
@@ -220,21 +228,22 @@ function template_loop_show_product_name() {
     echo 'Foto numero:'..'</a> <br />';
 }*/
 
-function woocommerce_template_filters_instructions(){ ?>
-    <?php
-    $attentionPage = get_posts(
-     array(
-     'name'      => 'modalita-dacquisto-short',
-     'post_type' => 'page'
-    )
-    );
-    //var_dump($attentionPages);
-    ?>
-    <?php
-    $queried_object = get_queried_object();
-    //var_dump( $queried_object );
-    //echo $_SESSION[pic_type];
-    //if(isset($_SESSION[ffocus])){
+function woocommerce_template_filters_instructions(){
+    global $wpdb;
+
+
+    // $queried_object = get_queried_object();
+    // $results = $wpdb->get_row($wpdb->prepare(
+    //     "SELECT post_title FROM $wpdb->posts WHERE post_parent =  %s",
+    //    $queried_object->ID
+    //));
+    //if($results->post_title=="foto focus"){
+        $attentionPage = get_posts(
+            array(
+                'name'      => 'modalita-dacquisto-short',
+                'post_type' => 'page'
+            )
+        );
     $attentionPage=$attentionPage[0];
     ?>
     <h3><?php echo $attentionPage->post_title; ?></h3>
@@ -242,6 +251,7 @@ function woocommerce_template_filters_instructions(){ ?>
                 <?php echo apply_filters('the_content', $attentionPage->post_content); ?>
     </div>
 <?php //}
+    //}
 }
 
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_filters_instructions', 5 );
@@ -405,3 +415,6 @@ if ( ! function_exists( 'woocommerce_subcategory_no_thumbnail' ) ) {
 
     }
 }
+remove_filter( 'woocommerce_get_item_data', array('WCV_Vendor_Cart', 'sold_by'), 10, 2 );
+remove_filter( 'woocommerce_order_product_title', array( 'WCV_Emails', 'show_vendor_in_email' ), 10, 2 );
+remove_filter( 'woocommerce_product_meta_start', array( 'WCV_Vendor_Cart', 'sold_by_meta' ), 10, 2 );

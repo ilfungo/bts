@@ -19,7 +19,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 <table class="shop_table cart" cellspacing="0">
 	<thead>
 		<tr>
-			<th class="product-remove">&nbsp;</th>
+			<th class="product-remove">&nbsp;</th> 
 			<th class="product-thumbnail">&nbsp;</th>
 			<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
 			<th class="product-price"><?php _e( 'Price', 'woocommerce' ); ?></th>
@@ -45,23 +45,59 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 					</td>
 
-					<td class="product-thumbnail">
+					<td class="product-remove">
 						<?php
 							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+                            //@todo richiamare il parent... per mettere un link, questo è il single product non visibile
 
-							if ( ! $_product->is_visible() )
+							/*if ( ! $_product->is_visible() )
 								echo $thumbnail;
 							else
-								printf( '<a href="%s">%s</a>', $_product->get_permalink(), $thumbnail );
+								printf( '<a href="%s">%s</a>', $_product->get_permalink(), $thumbnail );*/
+                            $filter1 = $cart_item["addons"][1]["value"];
+                            $filter0 = "";
+                            if($cart_item["addons"][0]["value"]=="Vignette"){
+                                $filter0 = "Vignette";
+                            }else{
+                                $filter1 = $cart_item["addons"][0]["value"];
+                            }
+
+
+
+                            if(isset($_product->post->post_parent)){
+                                echo '<a href="'. get_permalink($_product->post->post_parent).'&amp;filter0='.$filter0.'&amp;filter1='.$filter1.'">';
+                                echo $thumbnail;
+                                echo '</a>';
+                            }else{
+                                echo $thumbnail;
+                            }
 						?>
 					</td>
 
 					<td class="product-name">
 						<?php
-							if ( ! $_product->is_visible() )
-								echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key );
-							else
-								echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', $_product->get_permalink(), $_product->get_title() ), $cart_item, $cart_item_key );
+                        //print_r($_product->post->post_parent);
+                        //print_r($cart_item["addons"]);
+							//if ( ! $_product->is_visible() )
+						//controllo se la foto ha un filtro applicato
+						    //if($cart_item["addons"][0]["value"] != "Originale") {
+                if(isset($_product->post->post_parent))
+                    echo '<a href="'. get_permalink($_product->post->post_parent).'&amp;filter0='.$filter0.'&amp;filter1='.$filter1.'">';
+
+				echo apply_filters('woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key);
+
+                if(isset($_product->post->post_parent))
+                    echo "</a>";
+
+                                if(isset($cart_item["addons"][0]["value"]))
+							        echo "</br> Filtro : " . $cart_item["addons"][0]["value"];
+                                if(isset($cart_item["addons"][1]["value"]))
+                                    echo " + ".$cart_item["addons"][1]["value"];
+							//}else{
+								//echo apply_filters('woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key);
+							//s}
+							//else
+							//	echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', $_product->get_permalink(), $_product->get_title() ), $cart_item, $cart_item_key )
 						?>
 					</td>
 

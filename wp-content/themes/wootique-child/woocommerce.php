@@ -68,10 +68,13 @@ get_header(); ?>
                if($results->post_title=="annuario"){
                    if($i==0){echo "<h2>Annuario</h2>";}
                    wc_get_template_part( 'content', 'product' );
+                   //$_SESSION[pic_type]="annuario";
                    $i++;
                }
-               if($results->post_title=="foto di classe")
+               if($results->post_title=="foto di classe"){
                    $fclasse=true;
+                    //$_SESSION[pic_type]="classe";
+               }
                if($results->post_title=="foto focus"){
                    $ffocus=true;
                    //$_SESSION[pic_type]="focus";

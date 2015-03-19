@@ -1,0 +1,303 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: woocommerce-advbulkedit\n"
+"POT-Creation-Date: 2015-02-04 20:09+0200\n"
+"PO-Revision-Date: 2015-02-04 20:09+0200\n"
+"Last-Translator: George Iron <obuilities@abv.bg>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.11\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress\\wp-content\\plugins"
+"\\woocommerce-advanced-bulk-edit\\languages\n"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:5
+msgid "Page"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:6
+msgid "Selection Manager"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:7
+msgid "Bulk Edit"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:8
+msgid "contains"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:9
+msgid "does not contain"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:10
+msgid "starts with"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:11
+msgid "ends with"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:12
+msgid "field is empty"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:13
+msgid "Ignore case"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:14
+msgid "select"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:15
+msgid "deselect"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:16
+msgid "products and variations"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:17
+msgid "products only"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:18
+msgid "variations only"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:19
+msgid "which meet"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:20
+msgid "any of the search criteria"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:21
+msgid "all of the search criteria"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:22
+msgid "set new"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:23
+msgid "prepend"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:24
+msgid "append"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:25
+msgid "replace text"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:26
+msgid "with text"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:27
+msgid "add"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:28
+msgid "remove"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:29
+msgid "delete"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:30
+msgid "increase by value"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:31
+msgid "decrease by value"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:32
+msgid "increase by %"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:33
+msgid "decrease by %"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:34
+msgid "delete value"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:35
+msgid "Get Products"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:36
+msgid "Save Changes"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:37
+msgid "Selected rows for bulk editing"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:38
+msgid ""
+"Changes are saved on going to a different page of products, adding products/"
+"variations or via the 'Save Changes' button"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:39
+msgid "First"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:40
+msgid "Previous"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:41
+msgid "Next"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:42
+msgid "Total records"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:43
+msgid "Revert to original vaue"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:44
+msgid "Active Cell"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:45
+msgid "Active Row"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:46
+msgid "Selected Rows"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:47
+msgid "Show/Hide Fields"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:48
+msgid "Custom Fields"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:49
+msgid "Plugin Settings"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:50
+msgid "Export to CSV"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:51
+msgid "Linked editing"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:52
+msgid "Manual changes on any selected product will affect all of them"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:53
+msgid "All products in table"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:54
+msgid "Selected products only"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:55
+msgid "Delimiter"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:56
+msgid "Are you sure you want to continue ?"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:57
+msgid "Limit on product retrieval"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:58
+msgid "Do not retrieve total number"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:59
+msgid ""
+"check if you have a large number of products and want to speed up the query"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:60
+msgid "Retrieve all variations on attribute search"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:61
+msgid "if the parent has it"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:62
+msgid "Get all children of selected category on search"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:63
+msgid ""
+"Note ! - Linked editing is turned on, all new variations will be added to "
+"all of the selected products. A large number of products * variations can "
+"cause a php timeout"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:64
+msgid "Bulk Add"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:65
+msgid "Add Single Variation"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:66
+msgid "Selected product does not have any attributes"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:67
+msgid "Call woocommerce action on save"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:68
+msgid "for better compatibility with third-party cache plugins"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:69
+msgid "Attributes"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:70
+msgid "Regular/Sale Price"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:71
+msgid "SKU/Tags"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:72
+msgid "Do not check \"Used for variations\" automatically"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:73
+msgid "Convert manually to UTF-8"
+msgstr ""
+
+#: C:\wamp\www\wordpress\wp-content\plugins\woocommerce-advanced-bulk-edit\languages/translate.php:74
+msgid "Disable attribute support"
+msgstr ""

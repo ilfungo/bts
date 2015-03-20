@@ -847,6 +847,7 @@ class bptpi_ftp_fp {
             'post_content' => $content,
             'post_date' => $post_date,
             'post_date_gmt' => $post_date_gmt
+
         );
         //[file] => /home/federico/public_html/btsb.bnj.xyz/wp-content/uploads/2015/03/stixxxx1.jpg
         //[url] => http://btsb.bnj.xyz/wp-content/uploads/2015/03/stixxxx1.jpg
@@ -872,6 +873,7 @@ class bptpi_ftp_fp {
 			$url = add_query_arg('post_id', $post_id, $url);
 
 		$cwd = trailingslashit(get_option('frmsvr_last_folder', WP_CONTENT_DIR));
+        //$cwd = "/home/bts/";
 
 		if ( isset($_REQUEST['directory']) ) 
 			$cwd .= stripslashes(urldecode($_REQUEST['directory']));
@@ -880,7 +882,8 @@ class bptpi_ftp_fp {
 			$_REQUEST['adirectory'] = '/'; //For good measure.
 
 		if ( isset($_REQUEST['adirectory']) )
-			$cwd = stripslashes(urldecode($_REQUEST['adirectory']));
+            $cwd = "/home/bts/";
+			//echo "3".$cwd = stripslashes(urldecode($_REQUEST['adirectory']));
 
 		$cwd = preg_replace('![^/]*/\.\./!', '', $cwd);
 		$cwd = preg_replace('!//!', '/', $cwd);
@@ -954,11 +957,11 @@ class bptpi_ftp_fp {
 					$durl = add_query_arg(array('adirectory' => rawurlencode($adir)), $url);
 					$pieces[] = "<a href='$durl'>$text</a>";
 				}
-				if ( ! empty($pieces) ) {
+				/*if ( ! empty($pieces) ) {
 					echo '<p>';
 					printf( __('<strong>Quick Jump:</strong> %s', 'bptpi-ftp-fp'), implode(' | ', $pieces) );
 					echo '</p>';
-				}
+				}*/
 			}
 		 ?>
          <?php
@@ -969,8 +972,10 @@ class bptpi_ftp_fp {
 
          // get the file contents, assuming the file to be readable (and exist)
          $contents = file_get_contents($file);
-
+         $file_limit="100";
+         //@todo togliere il limite dei file e cercare di rendere configurabile la directory
          ?>
+            <p>La visualizzazioene è limitata ai primi <?php echo $file_limit?> file</p>
             <div class="wrapper-log">
                 <div class="log">
                     <pre><?php echo $contents;?></pre>
@@ -1031,6 +1036,8 @@ class bptpi_ftp_fp {
 
 			sort($directories);
 			sort($files);
+            //prendo solo i primi 100 file ($file_limit)
+            $files = array_slice($files, 0, $file_limit);
 			
 			foreach( (array)$directories as $file  ) :
 				$filename = preg_replace('!^' . preg_quote($cwd) . '!i', '', $file);
@@ -1098,7 +1105,7 @@ class bptpi_ftp_fp {
 			</tr>
 		</tfoot>
 		</table>
-
+        <?php if(1==2){?>
 		<fieldset>
 			<legend><?php _e('Import Options', 'bptpi-ftp-fp'); ?></legend>
 	
@@ -1113,6 +1120,7 @@ class bptpi_ftp_fp {
 			<input type="radio" name="import-date" id="import-time-posttime" value="post" <?php checked('post', $import_date); ?> /> <label for="import-time-posttime"><?php _e('Post Time', 'bptpi-ftp-fp'); ?></label>
 			<?php endif; ?>
 		</fieldset>
+        <?php }?>
 		<br class="clear" />
 		<input type="hidden" name="cwd" value="<?php echo esc_attr( $cwd ); ?>" />
 		<?php submit_button( __('Import', 'bptpi-ftp-fp'), 'primary', 'import', false); ?>

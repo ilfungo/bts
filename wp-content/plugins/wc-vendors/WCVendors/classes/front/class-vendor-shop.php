@@ -249,7 +249,7 @@ class WCV_Vendor_Shop
 	* 	Thanks to Asbjoern Andersen for the code 
 	*
 	*/ 
-	public static function add_vendor_to_order_item_meta( $item_id, $cart_item) {		
+	public static function add_vendor_to_order_item_meta( $item_id, $cart_item) {
 		$vendor_id = $cart_item[ 'data' ]->post->post_author; 
       	$sold_by = WCV_Vendors::is_vendor( $vendor_id ) ? sprintf( WCV_Vendors::get_vendor_shop_name( $vendor_id ) ): get_bloginfo( 'name' );
         wc_add_order_item_meta( $item_id, apply_filters('wcvendors_sold_by_in_email', __('Sold by', 'wcvendors')), $sold_by);

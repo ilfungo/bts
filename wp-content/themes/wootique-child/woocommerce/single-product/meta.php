@@ -15,7 +15,7 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 ?>
 <div class="product_meta">
     <?php //do_action( 'woocommerce_product_meta_start' ); ?>
-    <?php template_loop_sold_by_cat()?>
+    <?php //template_loop_sold_by_cat()?>
 
 	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
 

@@ -41,7 +41,20 @@ function fp_woocommerce_remove_reviews_tab($tabs) {
 }
 
 
-//ciao ciao
+function product_cat_add_id($term) {
+
+    // put the term ID into a variable
+    $t_id = $term->term_id;
+?>
+    <tr class="form-field term-id">
+        <th scope="row"><label for="term-id">ID categoria</label></th>
+        <td><input type="text" size="40" value="<?=$t_id ?>" id="term-id" name="term-id" readonly>
+        </td>
+    </tr>
+<?php
+}
+add_action( 'product_cat_edit_form_fields','product_cat_add_id' , 0, 2 );
+//add_action( 'product_cat_add_form_fields', 'vpwd_taxonomy_add_new_meta_field', 10, 2 );
 
 // Add term page
 // == Aggiungo un campo password in chiaro alla pagina (HALF) categoria
@@ -56,9 +69,12 @@ function vpwd_taxonomy_add_new_meta_field() {
 	</div>
 <?php
 }
-add_action( 'product_cat_add_form_fields', 'vpwd_taxonomy_add_new_meta_field', 10, 2 );
-// == Aggiungo un campo password in chiaro alla pagina (HALF) categoria
+add_action( 'product_cat_add_form_fields', 'vpwd_taxonomy_add_new_meta_field', 2, 2 );
+//remove_action( 'product_cat_edit_form_fields', 'product_cat_description' );
+remove_action( 'product_cat_edit_form_fields', array( $this, 'product_cat_description' ) );
 
+
+// == Aggiungo un campo password in chiaro alla pagina (HALF) categoria
 // == Aggiungo un campo password in chiaro alla pagina (FULL) categoria
 // esempio http://localhost/bts/wp-admin/edit-tags.php?action=edit&taxonomy=product_cat&tag_ID=14&post_type=product
 // Edit term page
@@ -78,7 +94,7 @@ function vpwd_taxonomy_edit_meta_field($term) {
 	</tr>
 <?php
 }
-add_action( 'product_cat_edit_form_fields', 'vpwd_taxonomy_edit_meta_field', 10, 2 );
+add_action( 'product_cat_edit_form_fields', 'vpwd_taxonomy_edit_meta_field', 4, 2 );
 // == Aggiungo un campo password in chiaro alla pagina (FULL) categoria
 
 // Save extra taxonomy fields callback function.
@@ -227,7 +243,8 @@ $role_object = get_role( 'shop_manager' );
 $role_object->add_cap( 'edit_theme_options' );
 */
 
-//remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9, 2);
+remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9, 2);
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 
 // Hook in
 add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
@@ -384,12 +401,15 @@ function show_product_order($columns){
     return $columns;
 }
 
-//aggiungo campi scuola e classe all'utente
-add_action( 'show_user_profile', 'add_scuola_fields', 5, 1 );
-add_action( 'edit_user_profile', 'add_scuola_fields', 5, 1 );
 
-function add_scuola_fields( $user )
-{
+
+//add_action( 'show_user_profile', 'add_scuola_fields', 5, 1 );
+
+//aggiungo campi scuola e classe all'utente
+add_action( 'show_user_profile', 'add_scuola_fields', 2, 1 );
+add_action( 'edit_user_profile', 'add_scuola_fields', 2, 1 );
+
+function add_scuola_fields( $user ){
     ?>
     <h3>Campi della scuola</h3>
 

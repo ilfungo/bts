@@ -59,7 +59,8 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 			 */
 			do_action( 'woocommerce_before_shop_loop_item_title' );
 		?>
-
+    </a>
+    <h4>Numero foto: <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 		<?php
 			/**
 			 * woocommerce_after_shop_loop_item_title hook
@@ -69,8 +70,6 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 			 */
 			do_action( 'woocommerce_after_shop_loop_item_title' );
 		?>
-
-	</a>
 
 	<?php //do_action( 'woocommerce_after_shop_loop_item' ); ?>
 

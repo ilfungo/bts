@@ -176,6 +176,66 @@ class Product_Addon_Display {
 			do_action( 'wc_product_addons_end', $post_id );
          //if(!is_product())
          //   echo "</form>";
+			 echo $_GET['filter'];
+			if(isset($_GET['filter0']) || isset($_GET['filter1'])) {
+
+				if(!empty($_GET['filter0']))  $addons[]=array('name'=>'Vignette','value'=>ucfirst($_GET['filter0']));
+				if(!empty($_GET['filter1']))  $addons[]=array('name'=>'Filters','value'=>ucfirst($_GET['filter1']));
+
+
+
+			} else {
+
+				$c= new WC_Cart();
+				$c->get_cart_from_session( );
+				
+				$a=$c->cart_contents;
+				global $post;
+
+				foreach ($a as $i) {
+				
+					
+					if(intval($i['product_id']) == intval($post->ID +1 )){
+						
+						$addons = $i['addons'];
+					
+					}
+				}
+			
+			}
+
+			if(count($addons)>0):?>
+			<script>jQuery(function(){
+			<?php
+			
+			
+			foreach($addons as $addon){
+				
+			 	//var_dump($a);
+				if($addon['name']=="Vignette" && $addon['value']=="Vignette"): ?>
+					var a = jQuery('.addon-checkbox'); 
+					if(!a.is(':checked')) a.trigger('click');
+			
+				<?php
+				endif;
+			
+				if($addon['name']=="Filters" && !empty($addon['value'])): ?>
+			
+
+				 	var a=jQuery(".addon-radio[value='"+'<?php echo strtolower($addon['value'])?>'+"']");
+				 	if(!a.is(':checked')) a.trigger('click');
+
+		
+			
+			<?php
+			endif; } ?>
+
+
+
+			});</script>
+			<?php
+			endif;
+
 		}
 	}
 

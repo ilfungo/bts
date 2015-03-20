@@ -12,5 +12,5 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 ?>
 <div class="product_title">
-    Foto numero: <span itemprop="name" class="product_title entry-title"><?php the_title(); ?></span>
+    Numero foto: <span itemprop="name" class="product_title entry-title"><?php the_title(); ?></span>
 </div>

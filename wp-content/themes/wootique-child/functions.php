@@ -217,8 +217,11 @@ add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
 
 // Add sold by to product loop before add to cart
 remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9 );
+//visualizza la scuola nella pagina della classe
 //add_action( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat', 9 );
-add_filter( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat',1);
+
+//mostra la scuola nella pagina della classe
+//add_filter( 'woocommerce_after_shop_loop_item', 'template_loop_sold_by_cat',1);
 
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 80 );
@@ -418,3 +421,13 @@ if ( ! function_exists( 'woocommerce_subcategory_no_thumbnail' ) ) {
 remove_filter( 'woocommerce_get_item_data', array('WCV_Vendor_Cart', 'sold_by'), 10, 2 );
 remove_filter( 'woocommerce_order_product_title', array( 'WCV_Emails', 'show_vendor_in_email' ), 10, 2 );
 remove_filter( 'woocommerce_product_meta_start', array( 'WCV_Vendor_Cart', 'sold_by_meta' ), 10, 2 );
+
+//remove_action( 'woocommerce_add_order_item_meta', array('WCV_Vendor_Shop', 'add_vendor_to_order_item_meta'), 10, 2 );
+//add_action( 'woocommerce_add_order_item_meta', array('WCV_Vendor_Shop', 'add_vendor_to_order_item_meta'), 99, 2 );
+
+add_action('wp_logout','go_home');
+function go_home(){
+    wp_redirect( home_url() );
+    session_unset();
+    exit();
+}

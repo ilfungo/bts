@@ -96,6 +96,10 @@ input.quick-order-launch{
     max-width:547px;
     height:auto;
 }
+#imageContainer{
+    margin-left: auto;
+    margin-right: auto;
+}
 .images{
     text-align:center;
 }
@@ -195,6 +199,8 @@ dl.variation dt, dl.variation dd{
 .woocommerce td.product-name dl.variation dt, .woocommerce td.product-name dl.variation dd, .woocommerce-page td.product-name dl.variation dt, .woocommerce-page td.product-name dl.variation dd {
     margin-bottom: 0;
 }
+dt.variation-Soldby, dd.variation-Soldby,.woocommerce td.product-name dl.variation dt.variation-Soldby, .woocommerce td.product-name dl.variation dd.variation-Soldby{display:none;}
+
 .qua_footer_area p {
     font-size: 13px;
     padding-bottom: 5px;
@@ -203,17 +209,44 @@ dl.variation dt, dl.variation dd{
 #credits{
     margin-left: 0px;
 }
+.product_title, .posted_in{
+    font-family: "montserratregular";
+    font-size: 14px;
+    text-transform: uppercase;
+}
 .product_title{
     margin-bottom:28px;
 }
 
-.product h2, .product h3{
+.product h2, .product h3, .product h4{
     font-family: "montserratregular";
     font-size: 20px;
     text-transform: uppercase;
     margin: 0;
     margin: 0 0 0.4em;
 }
+.product h4{
+    font-size: 10px;
+}
+.product h4 a{
+    font-size: 14px;
+}
+form.cart{
+    margin-bottom: 1em;
+}
+.woocommerce form .form-row label, .woocommerce-page form .form-row label, form.cart label {
+    line-height: 2em;
+    max-height:2em;
+}
+/*
+.woocommerce ul.products li.product a, .woocommerce-page ul.products li.product a{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    text-align: center;
+}*/
 /*
 .intro-text h2{
     font-family: "montserratregular";
@@ -470,15 +503,37 @@ text-align: left;
     font-size: 14px;
 }
 
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    text-align: center;
+    /*border:1px solid #EEEEEE;*/
+}
+.woocommerce ul.products li.product a img, .woocommerce-page ul.products li.product a img {
+    display: inline;
+    margin-top:0.5em;
+}
+.product-addon-filters label, .product-addon-vignette label{
+    color: #f7f7f7;
+}
+
 @media only screen and (max-width: 768px) {
     .woocommerce ul.products li.product:nth-child(2n), .woocommerce-page ul.products li.product:nth-child(2n) {
         float:left;
     }
-    .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    /*.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
         width: 48%;
         float: left;
         clear: none !important;
         margin: 0 2px 2.992em;
+    }*/
+    .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+        float: left;
+        display: inline-block;
+        margin: 0 2px 2.992em;
+        width: 48%;
+        vertical-align: top;
+        text-align: center;
+        *display: inline;
+        *zoom: 1;
     }
 }
 
@@ -523,3 +578,5 @@ div.qua_blog_section div.woocommerce h2{
     text-transform: uppercase;
     font-size:22px;
 }
+
+

@@ -61,7 +61,7 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
 			'ID' => 'smartPWLogin',
 		), $atts ) );
 		$result =  '<form ID="' . $ID . '" method="post" action="' . get_permalink() . '" >' . PHP_EOL;
-		if ( isset( $_GET['wrongpw'] ) ) $result .= '<p id="smartPWError">' . __( 'Hai inserito una password non valida</p>.', 'catprotector' ) . PHP_EOL;
+		if ( isset( $_GET['wrongpw'] ) ) $result .= '<p id="smartPWError">' . __( 'Hai inserito una password non valida.</p>', 'catprotector' ) . PHP_EOL;
 		$result .= '	<input class="requiredField" type="password" name="smartPassword" id="smartPassword" value=""/>' . PHP_EOL;
 		$result .= '	<input type="hidden" name="smartParent" value="' .  $post->ID . '" />' . PHP_EOL;
 		$result .= '	<input type="hidden" name="catProtector_nonce" value="' . wp_create_nonce( catProtector ).'" />' . PHP_EOL;

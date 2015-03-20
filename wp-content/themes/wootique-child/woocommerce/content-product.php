@@ -54,7 +54,7 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 		?>
 
     </a>
-        <h3>Numero foto: <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+        <h4>Numero foto: <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 		<?php
 			/**
 			 * woocommerce_after_shop_loop_item_title hook

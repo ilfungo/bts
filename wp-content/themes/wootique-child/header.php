@@ -64,7 +64,7 @@
                 <?php
                 //se l'utente è loggato mostro il pulsante di logout se no quello di login :)
                 if ( is_user_logged_in() ) { ?>
-                    <div id="logoutDiv"><a href="<?php echo htmlentities(wp_logout_url( get_permalink( 9 ) ) );?>" class="round-button export" title="Logout">Logout</a></div>
+                    <div id="logoutDiv"><a href="<?php echo wp_logout_url();?>" class="round-button export" title="Logout">Logout</a></div>
                 <?php }?>
             <?php }else{?>
                 <div id="logoutDiv"><a href="/?page_id=9" class="round-button export" title="Loging">Login</a></div>

@@ -280,7 +280,6 @@ if ( ! function_exists( 'woocommerce_content' ) ) {
 	 * @return void
 	 */
 	function woocommerce_content() {
-
 		if ( is_singular( 'product' ) ) {
 
 			while ( have_posts() ) : the_post();

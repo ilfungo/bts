@@ -79,9 +79,10 @@ get_header(); ?>
                    $ffocus=true;
                    //$_SESSION[pic_type]="focus";
                }
+               endwhile; // end of the loop.
                ?>
-         <?php endwhile; // end of the loop.
-         if($fclasse){?>
+
+         <?php if($fclasse){?>
            <div style="clear:both"></div>
            <h2>Foto di classe</h2>
          <?php }

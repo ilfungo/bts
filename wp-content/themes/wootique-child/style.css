@@ -234,9 +234,11 @@ dt.variation-Soldby, dd.variation-Soldby,.woocommerce td.product-name dl.variati
 form.cart{
     margin-bottom: 1em;
 }
-.woocommerce form .form-row label, .woocommerce-page form .form-row label, form.cart label {
+div.product-addon p.form-row label{
     line-height: 2em;
     max-height:2em;
+    width:101px;
+    text-align: center;
 }
 /*
 .woocommerce ul.products li.product a, .woocommerce-page ul.products li.product a{

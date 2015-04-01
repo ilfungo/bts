@@ -93,11 +93,13 @@ $order = wc_get_order( $order_id );
 	<?php
 		if ( $totals = $order->get_order_item_totals() ) foreach ( $totals as $total ) :
 			?>
+			<?php if($total['label'] != "Subtotale carrello:"): ?>
 			<tr>
 				<th scope="row"><?php echo $total['label']; ?></th>
 				<td><?php echo $total['value']; ?></td>
 			</tr>
 			<?php
+			endif;
 		endforeach;
 	?>
 	</tfoot>
@@ -118,7 +120,4 @@ $order = wc_get_order( $order_id );
 ?>
 </dl>
 		<!-- rimuovo indirizzi cliente -->
-<?php
-var_dump();
-?>
 <div class="clear"></div>

@@ -2,25 +2,25 @@
 </div>
 <?php $current_options=get_option('quality_options'); ?>
 <div id="footer" class="qua_footer_area">
-  <div class="container">
-    <div class="col-md-12">
-      <div id="footer-text"><p>
-          <?php if($current_options['footer_customizations']!='') { echo $current_options['footer_customizations']; } ?></p>
-      </div>
-          <?php if($current_options['created_by_webriti_text']!=''){?>
-        <div id="credits">
-              <a target="_blank" rel="nofollow" href="<?php if($current_options['created_by_link']!='') { echo esc_url($current_options['created_by_link']); } ?>"><?php echo $current_options['created_by_webriti_text']; ?></a>
+    <div class="container">
+        <div class="col-md-12">
+            <div id="footer-text"><p>
+                    <?php if($current_options['footer_customizations']!='') { echo $current_options['footer_customizations']; } ?></p>
+            </div>
+            <?php if($current_options['created_by_webriti_text']!=''){?>
+                <div id="credits">
+                    <a target="_blank" rel="nofollow" href="<?php if($current_options['created_by_link']!='') { echo esc_url($current_options['created_by_link']); } ?>"><?php echo $current_options['created_by_webriti_text']; ?></a>
+                </div>
+            <?php } else { echo $current_options['created_by_webriti_text']; }?>
         </div>
-          <?php } else { echo $current_options['created_by_webriti_text']; }?>
     </div>
-  </div>
 </div>
 <?php
-  if($current_options['quality_custom_css']!='') {  ?>
-<style>
-  <?php echo htmlspecialchars_decode($current_options['quality_custom_css']); ?>
-</style>
-<?php } ?>	
+if($current_options['quality_custom_css']!='') {  ?>
+    <style>
+        <?php echo htmlspecialchars_decode($current_options['quality_custom_css']); ?>
+    </style>
+<?php } ?>
 <!-- /Footer Widget Secton -->
 <?php wp_footer(); ?>
 <?php
@@ -38,7 +38,7 @@ $role = array_shift($ruolo);
 /*if($ruolo[0]=="administrator"){
 	echo $login;
 }*/
-if($role=="administrator" || $role=="vendor" ){
+if(($role=="administrator" || $role=="vendor" || $role=="customer") && 1==2){
     echo "<div>";
     global $wp_query;
     echo $wp_query->request;

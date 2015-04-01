@@ -111,120 +111,9 @@ if( isset($_GET['wc_pv_change_qty']) ){
 
 <script type="text/javascript">
 
-	function downloadFile(fileName, urlData) {
-		var aLink = document.createElement('a');
-		var evt = document.createEvent("HTMLEvents");
-		evt.initEvent("click");
-		aLink.download = fileName;
-		aLink.href = urlData;
-		aLink.dispatchEvent(evt);
-	}
 
 
 
-	<?php
-		// Cerco tutti gli ordini
-
-	$args = array(
-		'post_type' => 'shop_order',
-		'post_status' => array( 'wc-on-hold', 'wc-processing' ),
-		'posts_per_page' => '-1'
-		);
-
-	$my_query = new WP_Query($args);
-
-	$order_summary = $my_query->posts;
-
-
-	if ( !empty( $order_summary ) ) : $totals = 0;
-
-		$user_id = get_current_user_id();
-
-		foreach ( $order_summary as $order_post ) :
-
-			$order = new WC_Order( );
-			$order->populate($order_post);
-			$valid_items = $order->get_items();//WCV_Queries::get_products_for_order( $order->id );
-			$itemsForOrder[$order->id]=$valid_items;
-			$classe = '';
-			foreach ($valid_items as $valid_item) {
-				if($valid_item['Sold by'] != get_user_meta( $user_id, 'nickname', true) ){
-					continue 2; //
-				}
-				$p_id=$valid_item['product_id'];
-				$valid_item=new WC_Product($p_id);
-
-				//$classe=$valid_item->get_categories(' ','','');
-				$cat=get_the_terms( $p_id, 'product_cat' );
-
-				if(empty($cat)){
-
-					$cat=get_the_terms( $valid_item->get_parent(), 'product_cat' );
-					$classe=$cat[0];
-
-				} else {
-					$classe=$cat;
-				}
-			}
-		//$valid = array();
-		//$items = $order->get_items();
-		//foreach ($items as $key => $value) {
-		//	if ( in_array($value['variation_id'], $valid_items) || in_array($value['product_id'], $valid_items)) {
-		//		$valid[] = $value;
-		//	}
-		//}
-		//var_dump(get_post_meta( $order->id ));
-		//$shippers = (array) get_post_meta( $order->id, 'wc_pv_shipped', true );
-		//$shipped = in_array($user_id, $shippers);
-			//Preparo la hasmap che userò in visualizzazione
-		if(isset($_GET['c']) && $_GET['c']>0){
-			if($_GET['c'] == $classe->slug)
-			$allOrders[$classe->slug][$order->get_user()->data->display_name][$order->get_order_number( )]=array('total'=>$order->get_total() , 'date'=>$order->order_date, 'status'=>$order->get_status() );
-		} else {
-			$allOrders[$classe->slug][$order->get_user()->data->display_name][$order->get_order_number( )]=array('total'=>$order->get_total() , 'date'=>$order->order_date, 'status'=>$order->get_status() );
-		}
-
-	endforeach;
-	foreach($allOrders as $orderedClassKey => $orderedClass ){
-		$idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
-	}
-	$className = $idObj-> name;
-	?>
-
-	var csvTable = "<?php echo 'Classe : ' . $className . "\\n".
-		         'Cliente;'. 'ID ordine;' . 'Totale;' . 'Nome file;' . 'Quantita;' . 'Costo;' . "\\n"
-   				 ;
-		        ?>";
-	<?php
-
-	//prendo l'id ordine
-	$idOrdine = '';
-	foreach($allOrders as $orderedClassKey => $orderedClass ):
-		$idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
-		foreach($orderedClass as $orderedCustomerKey => $orderedCustomer ):
-			foreach($orderedCustomer as $orderedOrderKey => $orderedOrder ):
-				foreach ($itemsForOrder[substr($orderedOrderKey,1)] as $key => $item):
-					if(empty ($item['Filters'])) $item['Filters']='Originale';
-					if(empty ($item['Vignette'])) $item['Vignette']='No Vignette';
-
-				$wrongText = array("foto di classe","foto focus","annuario","&rarr;","_new");
-				$goodText   = array("","","","","annuario_new");
-				$name = str_replace($wrongText,$goodText,$item['name']);
-				$fmt = numfmt_create( 'de_DE', NumberFormatter::CURRENCY );
-
-		?>
-	    if(csvTable.indexOf("<?php echo $orderedOrderKey ?>") == -1){
-			csvTable += "<?php echo $orderedCustomerKey .';' . $orderedOrderKey .';'. $orderedOrder['total'].  ' euro ' . ';' . $name . ';' . $item['qty'] .';'. $fmt->formatCurrency($item['line_total'],"EUR") . ';'. "\\n";  ?>";
-		}else{
-			csvTable += "<?php echo $orderedCustomerKey . ';' . $orderedOrderKey . ';' . ' ' . ';' . $name . ';' . $item['qty'] .';'. $item['line_total'] . ' euro' . ';'. "\\n";  ?>";
-		}
-		//csvTable = csvTable.trim();
-	<?php
-				endforeach;
-			endforeach;
-		endforeach;
-	endforeach;
-	endif; ?>
 
 	jQuery(function () {
 	jQuery('a.view-items').on('click', function (e) {
@@ -285,6 +174,12 @@ $page_link=get_the_permalink();
 
 
 // Cerco tutti gli ordini
+// echo "***";
+// var_dump($user_id);
+// var_dump(WCV_Vendors::get_vendor_shop_name($user_id));
+
+// echo "***";
+
 
 $args = array(
 	'post_type' => 'shop_order',
@@ -305,30 +200,51 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 
 	foreach ( $order_summary as $order_post ) :
 
+
 		$order = new WC_Order( );
 		$order->populate($order_post);
 		$valid_items = $order->get_items();//WCV_Queries::get_products_for_order( $order->id );
+		$order_user_meta= get_user_meta($order->get_user()->data->ID );
 		$itemsForOrder[$order->id]=$valid_items;
 		$classe = '';
+		$vendors='';
 		foreach ($valid_items as $valid_item) {
-			/*if($valid_item['Sold by'] != get_user_meta( $user_id, 'nickname', true) ){
-				continue 2; //
-			}*/
-			$p_id=$valid_item['product_id'];
-			$valid_item=new WC_Product($p_id);
 
-			//$classe=$valid_item->get_categories(' ','','');
-			$cat=get_the_terms( $p_id, 'product_cat' );
 
-			if(empty($cat)){
+		 	/*if($valid_item['Sold by'] != get_user_meta( $user_id, 'nickname', true) ){
+		 		continue 2; //*/
+		 		//var_dump($valid_item->get_parent());echo "<br>---<br>";
+		 		//var_dump($valid_item);
 
-				$cat=get_the_terms( $valid_item->get_parent(), 'product_cat' );
-				$classe=$cat[0];
+		 		//$vendors[ $valid_item['Sold by'] ] ++ ;
+		 		$vendors[WCV_Vendors::get_vendor_from_product($valid_item['product_id'])] ++;
 
-			} else {
-				$classe=$cat;
-			}
+
+
 		}
+		// 	$p_id=$valid_item['product_id'];
+		// 	$valid_item=new WC_Product($p_id);
+
+		// 	//$classe=$valid_item->get_categories(' ','','');
+		// 	$cat=get_the_terms( $p_id, 'product_cat' );
+
+		// 	if(empty($cat)){
+
+		// 		$cat=get_the_terms( $valid_item->get_parent(), 'product_cat' );
+		// 		$classe=$cat[0];
+
+		// 	} else {
+		// 		$classe=$cat;
+		// 	}
+		// }
+		//var_dump($order_user_meta['billing_classe_id']);
+
+		if(!array_key_exists($user_id, $vendors)) continue;
+
+		$classe=get_term($order_user_meta['billing_classe_id'][0], 'product_cat');
+		//echo "DDDDDDD".$order->get_user()->data->ID  .' '.$classe1->slug ."DDDDD";
+		//var_dump($vendors);
+
 		//$valid = array();
 		//$items = $order->get_items();
 		//foreach ($items as $key => $value) {
@@ -351,7 +267,22 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 
 	endforeach;
 
+	// $u = get_users() ;
+	// foreach ($u as $a) {
+	// 	$m=get_user_meta($a->ID);
+	// 	//var_dump($m);
+	// 	$n=$m['nickname'][0];
+	// 	$t=$m['billing_classe_id'][0];
+	// 	//$t=get_term($m['billing_classe_id'][0], 'product_cat');
+	// 	echo $a->ID ." -> ". $n ." -> ". $t ."<br>";
+	// }
+
+	// echo "<br>";
+
 			ksort($allOrders);
+
+
+
 
 			//script csv Simone
 			//echo "<pre>"; var_dump($allOrders); echo "</pre>";
@@ -439,7 +370,7 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 
 												?>
 
-												<td><a href="<?php echo $page_link; ?>&amp;wc_pv_change_qty=<?php echo substr($orderedOrderKey,1).'+'.$key.'+'.$item['product_id'].'+'; ?>" class="change-qty">Change quantity</a></td>
+												<td><a href="<?php echo $page_link; ?>&amp;wc_pv_change_qty=<?php echo substr($orderedOrderKey,1).'+'.$key.'+'.$item['product_id'].'+'; ?>" class="change-qty">Cambia quantità</a></td>
 
 						<?php /* if (!empty( $item_meta ) && $item_meta != '<dl class="variation"></dl>') : ?>
 							<?php echo $item_meta; ?>

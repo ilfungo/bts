@@ -320,8 +320,8 @@ class bptpi_ftp_fp {
             //se non mi da errore rinomino e sposto il mio file nella cartella dei file importati
             $done_dir = $cwd."file_importati";
             if ( !file_exists( $done_dir ) ) {
-                chmod($cwd, 777);
-                if (!mkdir( $done_dir, 0755, true )) {
+                chmod($cwd, 774);
+                if (!mkdir( $done_dir, 0774, true )) {
                     $risultato = "Non sono in grado di creare la directory!";
                     $this->admin_error($risultato);
                     return;
@@ -972,7 +972,7 @@ class bptpi_ftp_fp {
 
          // get the file contents, assuming the file to be readable (and exist)
          $contents = file_get_contents($file);
-         $file_limit="100";
+         $file_limit="500";
          //@todo togliere il limite dei file e cercare di rendere configurabile la directory
          ?>
             <p>La visualizzazioene è limitata ai primi <?php echo $file_limit?> file</p>

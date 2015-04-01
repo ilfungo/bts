@@ -47,13 +47,17 @@ if ( !empty( $order_summary ) ) : $totals = 0;
             $p_id=$valid_item['product_id'];
             $valid_item=new WC_Product($p_id);
             $cat=get_the_terms( $p_id, 'product_cat' );
+            $actual_class="";
             if(empty($cat)){
                 $cat=get_the_terms( $valid_item->get_parent(), 'product_cat' );
                 $classe=$cat[0];
 
             } else {
                 $classe=$cat;
+                //$actual_class=$cat;
             }
+
+            //if(is_array($actual_class)){print_r($actual_class);}
 
             $scuola = get_term_by( 'id', $classe->parent, 'product_cat');
             $dir =  ABSPATH.'wp-content/uploads/report/'.$scuola->slug;
@@ -83,6 +87,7 @@ if ( !empty( $order_summary ) ) : $totals = 0;
         $totals =0;
         $idObj = get_term_by('slug',$orderedClassKey, 'product_cat');
         $className = $idObj->name;
+        $classSlug = $idObj->slug;
         $csvTableClass = "\r\n\r\n".$idObj->name. "\r\n";
         $csvTableClass .= "Studente" . ';' . "ID ordine" . ";" . "Nome foto" . ";" . "Quantita" . ";" ."Costo singolo" . ";" ."Totale ordine" . "\r\n" ;
         foreach($orderedClass as $orderedCustomerKey => $orderedCustomer ):
@@ -96,23 +101,19 @@ if ( !empty( $order_summary ) ) : $totals = 0;
                     $name = str_replace($wrongText,$goodText,$item['name']);
                     $fmt = numfmt_create( 'de_DE', NumberFormatter::CURRENCY );
                     //echo $orderedOrderKey;
-                    if($orderedOrderKey==-1){// non si avvera mai cosa vuol dire????
+                    /*if($orderedOrderKey==-1){// non si avvera mai cosa vuol dire????
                         //echo "orderedOrderKey -1 ".$orderedOrderKey."<br>";
                         if (strpos($csvTableClass, $orderedOrderKey) == true) {
                             $csvTableClass .= ';' . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' .$orderedOrder['total'].';'. "\r\n";
                         }
-                        /*elseif(strpos($csvTableClass, $orderedOrderKey) == true){
-                            $csvTableClass .= $orderedCustomerKey . ';' . $orderedOrderKey . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' . "\r\n";
-                            //$csvTableClass .= ';'. ';' .';'.';'.';'. $orderedOrder['total'];
-                        }*/
                         else {
                             $csvTableClass .= $orderedCustomerKey . ';' . $orderedOrderKey . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' . "\r\n";
                         }
                     }
-                    else {
+                    else {*/
                         //echo "orderedOrderKey non è  -1 ".$orderedOrderKey."<br>";
                         if (strpos($csvTableClass, $orderedOrderKey) == true) {
-                            $csvTableClass .= ';' . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' . $orderedOrder['total'] . ' euro;'. "\r\n";
+                            $csvTableClass .= ';' . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';;'. "\r\n";
                         }/*
                         elseif(strpos($csvTableClass, $orderedOrderKey) == true){
                             $csvTableClass .= $orderedCustomerKey . ';' . $orderedOrderKey . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' . "\r\n" ."\r\n";
@@ -120,7 +121,7 @@ if ( !empty( $order_summary ) ) : $totals = 0;
                         else {
                             $csvTableClass .= $orderedCustomerKey . ';' . $orderedOrderKey . ';' . $name . ';' . $item['qty'] . ';' . $item['line_total'] . ' euro' . ';' .$orderedOrder['total'].' euro;' . "\r\n";
                         }
-                    }
+                    //}
                     ?>
                     <?php //comments_template(); ?>
                 <?php endforeach; ?>
@@ -139,7 +140,10 @@ if ( !empty( $order_summary ) ) : $totals = 0;
         if(!write_txt_file($csvTableClass,$report_name)){
             echo "Qualche problema nella scrittura del report per favore contattare l'amministratore del sito!<br>";
         }else{ ?>
-            <a href="<?php echo $file_url;?>">Scaricare il report della <b>classe <?php echo $className?></b></a><br>
+            scaricare il report della <a href="<?php echo $file_url;?>"><b>classe <?php echo $className?></b></a>
+            //
+            vai alla classe per stampare le foto <b><a href="/?product_cat=<?php echo $classSlug;?>" target="_blank">classe <?php echo $className ?></a></b>
+            <br>
         <?php }
         ?>
     <?php endforeach; ?>

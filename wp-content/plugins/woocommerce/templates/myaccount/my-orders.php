@@ -21,6 +21,8 @@ $customer_orders = get_posts( apply_filters( 'woocommerce_my_account_my_orders_q
 	'post_status' => array_keys( wc_get_order_statuses() )
 ) ) );
 
+print_r($customer_orders);
+
 if ( $customer_orders ) : ?>
 
 	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', __( 'Recent Orders', 'woocommerce' ) ); ?></h2>

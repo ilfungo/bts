@@ -352,15 +352,15 @@ class WC_API_Client {
 		curl_setopt( $ch, CURLOPT_URL, $this->_api_url . $endpoint . $paramString );
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
 		curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, 30 );
-        curl_setopt( $ch, CURLOPT_TIMEOUT, 30 );
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt( $ch, CURLOPT_TIMEOUT, 30 );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 
-        if ( 'POST' === $method ) {
+		if ( 'POST' === $method ) {
 			curl_setopt( $ch, CURLOPT_POST, true );
 			curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $params ) );
-    	} else if ( 'DELETE' === $method ) {
+		} else if ( 'DELETE' === $method ) {
 			curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'DELETE' );
-    	}
+		}
 
 		$return = curl_exec( $ch );
 

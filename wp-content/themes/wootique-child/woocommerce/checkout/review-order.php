@@ -8,6 +8,10 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if(isset($_SESSION['class_name']))
+	echo "class_name" . $_SESSION['class_name'];
+else
+	echo "not set";
 ?>
 
 <?php if ( ! $is_ajax ) : ?><div id="order_review"><?php endif; ?>

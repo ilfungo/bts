@@ -443,3 +443,35 @@ function save_scuola_fields( $user_id )
     update_user_meta( $user_id,'billing_scuola_taxonomy_slug', $scuola->slug );
     update_user_meta( $user_id,'billing_classe_id', sanitize_text_field( $_POST['billing_classe_id'] ) );
 }
+
+
+// non qui non così!
+add_action( 'woocommerce_checkout_update_order_meta', 'classe_add_order_meta', 10, 2 );
+
+function classe_add_order_meta( $order_id, $posted ) {
+    if(isset($_SESSION['class_name'])) {
+        $class_name = $_SESSION['class_name'];
+    }else{
+        $class_name = "sessione_scaduta";
+    }
+    update_post_meta( $order_id, '_order_classe', $class_name );
+}
+
+
+/* non va :(
+add_action( 'woocommerce_add_order_item_meta', 'item_classe_order_itemmeta', 10, 2 );
+function item_classe_order_itemmeta( $item_id, $values, $cart_item_key ) {
+    if(isset($_SESSION['class_name'])) {
+        $class_name = $_SESSION['class_name'];
+    }else{
+        $class_name = "sessione_scaduta";
+    }
+    wc_add_order_item_meta( $item_id, '_product_classe', $class_name );
+}*/
+
+/*
+add_action( 'woocommerce_add_order_item_meta', '25979024_add_order_item_meta', 10, 3 );
+function 25979024_add_order_item_meta( $order_item_id, $cart_item, $cart_item_key ) {
+    wc_add_order_item_meta( $order_item_id, '_pdf_something', 'hide this stuff' );
+}
+*/

@@ -30,7 +30,8 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
         if(isset($_SESSION['class_slug']))echo 'Classe: <a href="/?product_cat='.$_SESSION['class_slug'].'">'.$_SESSION['class_name']."</a>";
     }
     //perchè unset? perchè se non arrivo da una classe devo evitare che tenga una classe "vecchia"
-    unset($_SESSION['class_slug']);unset($_SESSION['class_name']);
+    unset($_SESSION['class_slug']);
+    //unset($_SESSION['class_name']);
     ?>
 
 	<?php echo $product->get_tags( ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', $tag_count, 'woocommerce' ) . ' ', '.</span>' ); ?>

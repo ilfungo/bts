@@ -69,6 +69,16 @@ function wooc_extra_register_fields() {
         </label>
         <input type="text" class="input-text " name="billing_phone" id="billing_phone" placeholder="telefono" value="<?php if(isset($_POST['billing_phone'])) echo $_POST['billing_phone'];?>">
     </p>
+    <p class="form-row form-row-last validate-required validate-cap" id="billing_cap_field">
+        <label for="billing_cap" class="">Cap <abbr class="required" title="obbligatorio">*</abbr>
+        </label>
+        <input type="text" class="input-text " name="billing_cap" id="billing_cap" placeholder="C.A.P." value="<?php if(isset($_POST['billing_cap'])) echo $_POST['billing_cap'];?>">
+    </p>
+    <p class="form-row form-row-first validate-required validate-cf" id="billing_cf_field">
+        <label for="billing_cf" class="">Codice Fiscale<abbr class="required" title="obbligatorio">*</abbr>
+        </label>
+        <input type="text" class="input-text " name="billing_cf" id="billing_cf" placeholder="Codice Fiscale" value="<?php if(isset($_POST['billing_cf'])) echo $_POST['billing_cf'];?>">
+    </p>
     <div class="clear"></div>
     <p class="form-row form-row-wide validate-required" id="billing_scuola_field">
         <label for="billing_scuola" class="">Scuola <abbr class="required" title="obbligatorio">*</abbr>
@@ -141,10 +151,17 @@ function wooc_validate_extra_register_fields( $username, $email, $validation_err
         $validation_errors->add( 'billing_last_name_error', __( '<strong>Errore</strong>: Devi inserire il cognome!', 'woocommerce' ) );
     }
 
-
     //if (!WC_Validation::is_phone($_POST['billing_phone'])) { // non va :(
     if (!is_italian_phone($_POST['billing_phone'])) {
         $validation_errors->add( 'billing_phone_error', __( '<strong>Errore</strong>: Devi insierire un numero di telefono valido!', 'woocommerce' ) );
+    }
+
+    if (!is_cap($_POST['billing_cap'])) {
+        $validation_errors->add( 'billing_cap_error', __( '<strong>Errore</strong>: Il CAP non è formalmente valido!', 'woocommerce' ) );
+    }
+
+    if (!is_cf($_POST['billing_cf'])) {
+        $validation_errors->add( 'billing_cf_error', __( '<strong>Errore</strong>: Il codice fiscale non è formalmente corretto!', 'woocommerce' ) );
     }
 
     if ( isset( $_POST['billing_classe_id'] ) && empty( $_POST['billing_classe_id'] ) ) {
@@ -166,6 +183,16 @@ add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 
 
 function is_italian_phone( $phone ) {
     return preg_match( '/\d{2,4}\s?-?\s?\d{5,9}/', $phone );
+}
+//is_italian_phone
+//is_cap
+//is_cf
+
+function is_cap( $billing_cap ){
+    return preg_match( '/^[0-9]{5}$/', $billing_cap );
+}
+function is_cf($billing_cf){
+    return preg_match( '/^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$/', $billing_cf );
 }
 
 
@@ -430,4 +457,16 @@ function go_home(){
     wp_redirect( home_url() );
     session_unset();
     exit();
+}
+
+
+/**
+ * Update the order meta with field value
+ */
+add_action( 'woocommerce_checkout_update_order_meta', 'classe_checkout_field_update_order_meta' );
+
+function classe_checkout_field_update_order_meta( $order_id ) {
+    if ( ! empty( $_POST['classe'] ) ) {
+        update_post_meta( $order_id, '_order_classe', sanitize_text_field( $_POST['classe'] ) );
+    }
 }

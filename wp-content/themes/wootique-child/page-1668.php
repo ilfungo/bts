@@ -24,7 +24,6 @@ $args = array(
 );
 
 $my_query = new WP_Query($args);
-
 $order_summary = $my_query->posts;
 
 if ( !empty( $order_summary ) ) : $totals = 0;
@@ -33,7 +32,8 @@ if ( !empty( $order_summary ) ) : $totals = 0;
 
 
     foreach ( $order_summary as $order_post ) :
-        //echo "<br>entro qui";//questi sono gli ordini
+        //echo "<br>entro qui";
+        //questi sono gli ordini
         $order = new WC_Order( );
         $order->populate($order_post);
         $valid_items = $order->get_items();//WCV_Queries::get_products_for_order( $order->id );
